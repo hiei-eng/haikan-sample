@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>事業内容｜株式会社〇〇サービス</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; }
+
+  /* ===== HEADER ===== */
+  header {
+    background: white; padding: 0 40px;
+    display: flex; justify-content: space-between; align-items: stretch;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; padding: 14px 0; text-decoration: none; }
+  .logo-icon {
+    width: 44px; height: 44px; background: #2a9d5c; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 22px;
+  }
+  .logo-text { font-size: 18px; font-weight: 700; color: #1a5c38; }
+  .logo-text small { display: block; font-size: 11px; color: #888; font-weight: 400; }
+  nav { display: flex; align-items: center; }
+  nav a {
+    color: #555; text-decoration: none; padding: 0 18px; font-size: 14px;
+    height: 100%; display: flex; align-items: center;
+    border-bottom: 3px solid transparent; transition: all 0.2s;
+  }
+  nav a:hover, nav a.active { color: #2a9d5c; border-bottom-color: #2a9d5c; }
+  .header-right { display: flex; align-items: stretch; flex-shrink: 0; border-left: 1px solid #eee; }
+  .audience-btns { display: flex; align-items: center; gap: 8px; padding: 0 20px; border-right: 1px solid #eee; }
+  .btn-corp {
+    display: flex; align-items: center; gap: 5px; background: #1a5c38; color: white;
+    padding: 9px 18px; border-radius: 6px; font-size: 13px; font-weight: 700;
+    text-decoration: none; transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-corp:hover { background: #0d3d24; box-shadow: 0 3px 10px rgba(26,92,56,0.3); }
+  .btn-indiv {
+    display: flex; align-items: center; gap: 5px; background: white; color: #2a9d5c;
+    padding: 8px 18px; border-radius: 6px; border: 2px solid #2a9d5c;
+    font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-indiv:hover { background: #f0faf5; }
+  .header-tel { padding: 0 20px; display: flex; flex-direction: column; justify-content: center; color: #1a5c38; font-size: 17px; font-weight: 700; }
+  .header-tel small { font-size: 10px; color: #888; }
+
+  /* ===== PAGE HERO ===== */
+  .page-hero {
+    background: linear-gradient(160deg, #e8f8ee 0%, #c5edda 100%);
+    padding: 64px 40px 72px; text-align: center;
+  }
+  .breadcrumb { font-size: 13px; color: #888; margin-bottom: 16px; }
+  .breadcrumb a { color: #2a9d5c; text-decoration: none; }
+  .breadcrumb span { margin: 0 8px; }
+  .page-hero h1 { font-size: 36px; font-weight: 900; color: #1a3a28; margin-bottom: 14px; }
+  .page-hero h1 em { color: #2a9d5c; font-style: normal; }
+  .page-hero p { font-size: 15px; color: #556; line-height: 1.9; }
+
+  /* ===== SECTION ===== */
+  section { padding: 80px 40px; }
+  .section-header { text-align: center; margin-bottom: 52px; }
+  .section-tag {
+    display: inline-block; background: #e0f5eb; color: #2a9d5c;
+    font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 20px;
+    margin-bottom: 12px; letter-spacing: 0.1em;
+  }
+  .section-header h2 { font-size: 30px; font-weight: 900; color: #1a3a28; }
+  .section-header p { margin-top: 12px; color: #666; line-height: 1.8; font-size: 15px; }
+
+  /* ===== SERVICES GRID ===== */
+  .services { background: white; }
+  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 860px; margin: 0 auto; }
+  .service-card {
+    border: 1px solid #d4eedd; border-radius: 12px; padding: 28px 24px;
+    display: flex; align-items: flex-start; gap: 16px;
+    transition: all 0.2s; background: white;
+  }
+  .service-card:hover { border-color: #2a9d5c; background: #f9fdf9; transform: translateY(-2px); box-shadow: 0 6px 20px rgba(42,157,92,0.1); }
+  .service-icon-wrap {
+    width: 56px; height: 56px; background: #e0f5eb; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center; font-size: 26px; flex-shrink: 0;
+  }
+  .service-info { flex: 1; }
+  .service-card h3 { font-size: 16px; font-weight: 700; color: #1a3a28; margin-bottom: 8px; }
+  .service-card p { font-size: 13px; color: #666; line-height: 1.7; }
+  .service-tag {
+    display: inline-block; background: #e0f5eb; color: #2a9d5c;
+    font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-top: 8px;
+  }
+
+  /* ===== POINTS ===== */
+  .points { background: #f9fdf9; }
+  .points-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; max-width: 960px; margin: 0 auto; }
+  .point-card {
+    background: white; border-radius: 16px; padding: 36px 28px; text-align: center;
+    box-shadow: 0 4px 24px rgba(42,157,92,0.08); border: 1px solid #d4eedd; transition: all 0.2s;
+  }
+  .point-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(42,157,92,0.15); }
+  .point-icon {
+    width: 72px; height: 72px;
+    background: linear-gradient(135deg, #e0f5eb, #7ed4a8);
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 32px; margin: 0 auto 20px;
+  }
+  .point-card h3 { font-size: 17px; font-weight: 700; color: #1a3a28; margin-bottom: 10px; }
+  .point-card p { font-size: 14px; line-height: 1.8; color: #666; }
+
+  /* ===== FLOW ===== */
+  .flow { background: white; }
+  .flow-steps { display: flex; flex-direction: column; gap: 0; max-width: 680px; margin: 0 auto; }
+  .flow-step {
+    display: flex; gap: 24px; align-items: flex-start; position: relative; padding-bottom: 32px;
+  }
+  .flow-step:last-child { padding-bottom: 0; }
+  .flow-step:not(:last-child)::after {
+    content: ''; position: absolute; left: 23px; top: 52px; bottom: 0;
+    width: 2px; background: #d4eedd;
+  }
+  .step-num {
+    width: 48px; height: 48px; background: #2a9d5c; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 900; font-size: 18px; flex-shrink: 0;
+  }
+  .step-body { flex: 1; padding-top: 8px; }
+  .step-body h3 { font-size: 16px; font-weight: 700; color: #1a3a28; margin-bottom: 6px; }
+  .step-body p { font-size: 14px; color: #666; line-height: 1.7; }
+
+  /* ===== PRICING ===== */
+  .pricing { background: #f0faf5; }
+  .pricing-table { max-width: 760px; margin: 0 auto; border-radius: 16px; overflow: hidden; box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
+  .pricing-table table { width: 100%; border-collapse: collapse; background: white; }
+  .pricing-table th {
+    background: #1a5c38; color: white; padding: 16px 20px;
+    font-size: 14px; font-weight: 700; text-align: left;
+  }
+  .pricing-table td { padding: 16px 20px; font-size: 14px; border-bottom: 1px solid #e8f4ee; color: #444; }
+  .pricing-table tr:last-child td { border-bottom: none; }
+  .pricing-table tr:hover td { background: #f9fdf9; }
+  .price-val { font-weight: 700; color: #1a5c38; font-size: 15px; }
+  .pricing-note { text-align: center; margin-top: 16px; font-size: 13px; color: #888; }
+
+  /* ===== CTA ===== */
+  .cta { background: #2a9d5c; color: white; text-align: center; }
+  .cta h2 { font-size: 30px; font-weight: 900; margin-bottom: 12px; }
+  .cta p { font-size: 15px; opacity: 0.85; margin-bottom: 36px; line-height: 1.8; }
+  .cta-btns { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; }
+  .btn-white {
+    display: inline-flex; align-items: center; gap: 8px; background: white; color: #2a9d5c;
+    padding: 14px 32px; border-radius: 40px; font-weight: 700; font-size: 15px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+  .btn-white-outline {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: transparent; color: white; border: 2px solid rgba(255,255,255,0.8);
+    padding: 12px 28px; border-radius: 40px; font-weight: 700; font-size: 15px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-white-outline:hover { background: rgba(255,255,255,0.15); }
+
+  /* ===== FOOTER ===== */
+  footer { background: #1a3a28; color: #7ab893; padding: 32px 40px; font-size: 13px; text-align: center; }
+  footer a { color: #7ab893; text-decoration: none; margin: 0 12px; }
+  footer a:hover { color: white; }
+  .footer-copy { margin-top: 12px; color: #4a7a60; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="design_B_friendly.html" class="logo-wrap">
+    <div class="logo-icon">💧</div>
+    <div class="logo-text">
+      株式会社〇〇サービス
+      <small>PIPE CLEANING PROFESSIONALS</small>
+    </div>
+  </a>
+  <nav>
+    <a href="design_B_friendly.html">ホーム</a>
+    <a href="service.html" class="active">事業内容</a>
+    <a href="cases.html">施工事例</a>
+    <a href="contact.html">お問い合わせ</a>
+    <a href="company.html">会社概要</a>
+  </nav>
+  <div class="header-right">
+    <div class="audience-btns">
+      <a href="service.html" class="btn-corp">🏢 法人のお客様</a>
+      <a href="b2c.html" class="btn-indiv">🏠 個人のお客様</a>
+    </div>
+    <div class="header-tel">
+      📞 0120-XXX-XXX
+      <small>8:00〜18:00 土日祝OK</small>
+    </div>
+  </div>
+</header>
+
+<!-- PAGE HERO -->
+<div class="page-hero">
+  <div class="breadcrumb">
+    <a href="design_B_friendly.html">ホーム</a><span>＞</span>事業内容
+  </div>
+  <h1>私たちの<em>事業内容</em></h1>
+  <p>マンション・ビル・工場・飲食店まで、あらゆる排水管・配管のお悩みに対応します。<br>豊富な実績と専門技術で、快適な環境をサポートします。</p>
+</div>
+
+<!-- SERVICES -->
+<section class="services">
+  <div class="section-header">
+    <div class="section-tag">SERVICE</div>
+    <h2>サービス一覧</h2>
+    <p>排水管・給水管・貯水槽まで幅広くカバー。<br>法人・個人どちらのニーズにもお応えします。</p>
+  </div>
+  <div class="services-grid">
+    <div class="service-card">
+      <div class="service-icon-wrap">🚿</div>
+      <div class="service-info">
+        <h3>排水管高圧洗浄</h3>
+        <p>高圧水流で排水管内の油脂・スケール・異物を徹底除去。悪臭・詰まりを解消します。</p>
+        <span class="service-tag">法人・個人対応</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap">🏢</div>
+      <div class="service-info">
+        <h3>マンション・ビル定期清掃</h3>
+        <p>年1〜2回の定期プランで建物全体の排水管を計画的にメンテナンス。管理会社様向け一括対応可。</p>
+        <span class="service-tag">法人向け</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap">🏭</div>
+      <div class="service-info">
+        <h3>工場・施設配管清掃</h3>
+        <p>食品工場・製造施設など、特殊な配管構造にも対応。衛生基準を満たした施工を行います。</p>
+        <span class="service-tag">法人向け</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap">🍽️</div>
+      <div class="service-info">
+        <h3>グリストラップ清掃</h3>
+        <p>飲食店の油脂詰まりに特化。定期清掃で悪臭・排水詰まりを予防します。</p>
+        <span class="service-tag">飲食店向け</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap">💧</div>
+      <div class="service-info">
+        <h3>貯水槽・受水槽清掃</h3>
+        <p>法定清掃に対応。水質検査・清掃・消毒まで一括対応。報告書の発行も行います。</p>
+        <span class="service-tag">法定対応</span>
+      </div>
+    </div>
+    <div class="service-card">
+      <div class="service-icon-wrap">🚨</div>
+      <div class="service-info">
+        <h3>緊急排水トラブル対応</h3>
+        <p>急な詰まり・溢れ・悪臭に365日対応。最短即日で駆けつけます。</p>
+        <span class="service-tag">365日対応</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- POINTS -->
+<section class="points">
+  <div class="section-header">
+    <div class="section-tag">STRENGTH</div>
+    <h2>選ばれる3つの理由</h2>
+    <p>創業30年、地域密着で培った技術と信頼が私たちの強みです。</p>
+  </div>
+  <div class="points-grid">
+    <div class="point-card">
+      <div class="point-icon">🏆</div>
+      <h3>30年以上の実績</h3>
+      <p>創業以来、累計5万件以上の施工実績。マンションから工場まで幅広いノウハウを持ちます。</p>
+    </div>
+    <div class="point-card">
+      <div class="point-icon">⚡</div>
+      <h3>最短即日対応</h3>
+      <p>365日24時間受付体制。緊急時も迅速に対応し、トラブルを素早く解決します。</p>
+    </div>
+    <div class="point-card">
+      <div class="point-icon">📋</div>
+      <h3>明確な料金・報告書</h3>
+      <p>作業前に必ずお見積もり。施工後は写真付き報告書を発行し、管理組合様への提出にも対応。</p>
+    </div>
+  </div>
+</section>
+
+<!-- FLOW -->
+<section class="flow">
+  <div class="section-header">
+    <div class="section-tag">FLOW</div>
+    <h2>ご依頼の流れ</h2>
+    <p>お問い合わせから施工完了まで、スムーズにご対応します。</p>
+  </div>
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <h3>お問い合わせ・ご相談</h3>
+        <p>電話またはフォームからお気軽にご連絡ください。内容をヒアリングし、最適なプランをご提案します。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <h3>現地調査・無料お見積もり</h3>
+        <p>担当者が現地を確認し、正確なお見積もりをご提示。料金に納得いただいてからの施工です。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <h3>施工日程のご確認</h3>
+        <p>ご都合の良い日程を調整します。定期清掃の場合は年間スケジュールもご提案します。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <h3>施工・完了報告</h3>
+        <p>専門スタッフが丁寧に施工。完了後は写真付きの報告書をお渡しします。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="pricing">
+  <div class="section-header">
+    <div class="section-tag">PRICE</div>
+    <h2>料金目安</h2>
+    <p>建物の規模・状況により異なります。詳しくは無料でお見積もりします。</p>
+  </div>
+  <div class="pricing-table">
+    <table>
+      <thead>
+        <tr>
+          <th>サービス</th>
+          <th>対象</th>
+          <th>料金目安</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>排水管高圧洗浄（戸建て）</td>
+          <td>一般家庭</td>
+          <td class="price-val">¥15,000〜</td>
+        </tr>
+        <tr>
+          <td>マンション排水管清掃</td>
+          <td>管理会社・オーナー</td>
+          <td class="price-val">要お見積もり</td>
+        </tr>
+        <tr>
+          <td>グリストラップ清掃</td>
+          <td>飲食店</td>
+          <td class="price-val">¥8,800〜</td>
+        </tr>
+        <tr>
+          <td>貯水槽清掃（法定）</td>
+          <td>ビル・マンション</td>
+          <td class="price-val">要お見積もり</td>
+        </tr>
+        <tr>
+          <td>緊急対応（時間外）</td>
+          <td>全般</td>
+          <td class="price-val">¥25,000〜</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <p class="pricing-note">※ 上記はすべて税別の目安価格です。現地調査後に正式なお見積もりをご提示します。</p>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>見積もり・ご相談は無料です。法人のお客様には専任担当者が対応します。</p>
+  <div class="cta-btns">
+    <a href="contact.html" class="btn-white">📩 無料見積もりを依頼する</a>
+    <a href="cases.html" class="btn-white-outline">📂 施工事例を見る</a>
+  </div>
+</section>
+
+<footer>
+  <div>
+    <a href="design_B_friendly.html">ホーム</a>
+    <a href="service.html">事業内容</a>
+    <a href="cases.html">施工事例</a>
+    <a href="contact.html">お問い合わせ</a>
+  </div>
+  <div class="footer-copy">© 2024 株式会社〇〇サービス. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test V2: 入口ページ（タイプ選択）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; }
+
+  .test-label {
+    background: #6c3be8; color: white;
+    text-align: center; padding: 10px;
+    font-weight: 700; font-size: 15px;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: white; padding: 0 40px;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); height: 70px;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; }
+  .logo-icon {
+    width: 44px; height: 44px; background: #2a9d5c; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 22px;
+  }
+  .logo-text { font-size: 18px; font-weight: 700; color: #1a5c38; }
+  .logo-text small { display: block; font-size: 11px; color: #888; font-weight: 400; }
+  .header-tel { color: #1a5c38; font-size: 18px; font-weight: 700; text-align: right; }
+  .header-tel small { font-size: 11px; color: #888; display: block; }
+
+  /* ===== LANDING HERO ===== */
+  .landing {
+    min-height: calc(100vh - 130px);
+    background: linear-gradient(160deg, #e8f8ee 0%, #c5edda 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .landing-logo-big { font-size: 52px; margin-bottom: 20px; }
+  .landing h1 { font-size: 36px; font-weight: 900; color: #1a3a28; margin-bottom: 12px; line-height: 1.4; }
+  .landing h1 em { color: #2a9d5c; font-style: normal; }
+  .landing .tagline { font-size: 16px; color: #556; margin-bottom: 56px; line-height: 1.8; }
+
+  .choice-label {
+    font-size: 14px; font-weight: 700; color: #2a9d5c; letter-spacing: 0.1em;
+    margin-bottom: 24px; text-transform: uppercase;
+  }
+
+  .choice-cards {
+    display: flex; gap: 28px; justify-content: center;
+    flex-wrap: wrap;
+  }
+  .choice-card {
+    background: white;
+    border-radius: 20px;
+    padding: 48px 40px;
+    width: 320px;
+    box-shadow: 0 8px 40px rgba(42,157,92,0.12);
+    border: 2px solid #d4eedd;
+    text-decoration: none; color: inherit;
+    transition: all 0.25s;
+    display: flex; flex-direction: column; align-items: center; text-align: center;
+  }
+  .choice-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 16px 60px rgba(42,157,92,0.2);
+    border-color: #2a9d5c;
+  }
+  .choice-card.b2b:hover { border-color: #1a5c38; }
+  .choice-icon { font-size: 60px; margin-bottom: 20px; }
+  .choice-card h2 { font-size: 20px; font-weight: 900; color: #1a3a28; margin-bottom: 10px; }
+  .choice-card .desc { font-size: 14px; color: #777; line-height: 1.7; margin-bottom: 20px; }
+  .choice-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-bottom: 28px; }
+  .choice-tag {
+    font-size: 11px; font-weight: 700; padding: 3px 10px;
+    border-radius: 12px; background: #e0f5eb; color: #2a9d5c;
+  }
+  .choice-btn {
+    display: inline-block;
+    padding: 14px 32px; border-radius: 40px;
+    font-weight: 700; font-size: 14px;
+    background: #2a9d5c; color: white;
+    transition: all 0.2s; width: 100%; text-align: center;
+  }
+  .choice-card.b2b .choice-btn { background: #1a5c38; }
+  .choice-card:hover .choice-btn { opacity: 0.9; }
+
+  .landing-footer-note {
+    margin-top: 40px; font-size: 13px; color: #999;
+  }
+  .landing-footer-note a { color: #2a9d5c; }
+</style>
+</head>
+<body>
+
+<div class="test-label">🧪 Test V2：入口ページ（タイプ選択） ／ カードをクリックすると各ページへ</div>
+
+<header>
+  <div class="logo-wrap">
+    <div class="logo-icon">💧</div>
+    <div class="logo-text">
+      株式会社〇〇サービス
+      <small>PIPE CLEANING PROFESSIONALS</small>
+    </div>
+  </div>
+  <div class="header-tel">
+    📞 0120-XXX-XXX
+    <small>8:00〜18:00 土日祝OK</small>
+  </div>
+</header>
+
+<div class="landing">
+  <div class="landing-logo-big">💧</div>
+  <h1>配管清掃のことなら<br><em>〇〇サービスへ</em></h1>
+  <p class="tagline">
+    法人・個人問わず、排水管・給水管・貯水槽の清掃に対応。<br>
+    お客様のタイプを選んでください。
+  </p>
+
+  <div class="choice-label">— あなたはどちらですか？ —</div>
+
+  <div class="choice-cards">
+    <a href="test_v2_b2b.html" class="choice-card b2b">
+      <div class="choice-icon">🏢</div>
+      <h2>法人・管理会社の方</h2>
+      <p class="desc">マンション・ビル・工場・飲食店チェーンなど、法人向けの定期保守・年間契約をお考えの方</p>
+      <div class="choice-tags">
+        <span class="choice-tag">定期清掃</span>
+        <span class="choice-tag">年間契約</span>
+        <span class="choice-tag">書類対応</span>
+        <span class="choice-tag">大規模対応</span>
+      </div>
+      <span class="choice-btn">法人向けページへ →</span>
+    </a>
+
+    <a href="test_v2_b2c.html" class="choice-card b2c">
+      <div class="choice-icon">🏠</div>
+      <h2>個人・一般家庭の方</h2>
+      <p class="desc">戸建て・アパートの排水詰まり・悪臭など、一般家庭のトラブルを素早く解決したい方</p>
+      <div class="choice-tags">
+        <span class="choice-tag">即日対応</span>
+        <span class="choice-tag">料金明瞭</span>
+        <span class="choice-tag">緊急OK</span>
+        <span class="choice-tag">戸建て対応</span>
+      </div>
+      <span class="choice-btn">個人向けページへ →</span>
+    </a>
+  </div>
+
+  <p class="landing-footer-note">
+    どちらか迷う場合は <a href="design_B_friendly.html">こちらのページ</a> からもご相談いただけます
+  </p>
+</div>
+
+</body>
+</html>

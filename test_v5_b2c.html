@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>個人・一般家庭向け | 株式会社〇〇サービス</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; }
+
+  /* ===== HEADER ===== */
+  header {
+    background: white; padding: 0 40px;
+    display: flex; justify-content: space-between; align-items: stretch;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; padding: 14px 0; flex-shrink: 0; }
+  .logo-icon { width: 44px; height: 44px; background: #2a9d5c; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; }
+  .logo-text { font-size: 18px; font-weight: 700; color: #1a5c38; }
+  .logo-text small { display: block; font-size: 11px; color: #888; font-weight: 400; }
+  nav { display: flex; align-items: center; }
+  nav a { color: #555; text-decoration: none; padding: 0 14px; font-size: 13px; height: 100%; display: flex; align-items: center; border-bottom: 3px solid transparent; transition: all 0.2s; white-space: nowrap; }
+  nav a:hover, nav a.active { color: #2a9d5c; border-bottom-color: #2a9d5c; }
+
+  /* ★ ヘッダー右：ボタン2つ（電話番号の左）＋ 電話番号 */
+  .header-right { display: flex; align-items: stretch; flex-shrink: 0; border-left: 1px solid #eee; }
+  .audience-btns { display: flex; align-items: center; gap: 8px; padding: 0 20px; border-right: 1px solid #eee; }
+  .btn-corp { display: flex; align-items: center; gap: 5px; background: white; color: #1a5c38; padding: 8px 18px; border-radius: 6px; border: 2px solid #1a5c38; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+  .btn-corp:hover { background: #f0faf5; }
+  .btn-indiv { display: flex; align-items: center; gap: 5px; background: #2a9d5c; color: white; padding: 9px 18px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+  .btn-indiv:hover { background: #218f50; }
+  .btn-indiv.current { background: #218f50; box-shadow: inset 0 2px 4px rgba(0,0,0,0.15); }
+  .header-tel { padding: 0 20px; display: flex; flex-direction: column; justify-content: center; color: #1a5c38; font-size: 17px; font-weight: 700; }
+  .header-tel small { font-size: 10px; color: #888; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(160deg, #e8f8ee 0%, #b8ecd4 100%);
+    padding: 80px 60px 0; display: flex; align-items: flex-end; gap: 60px; min-height: 500px;
+  }
+  .hero-text { flex: 1; padding-bottom: 60px; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: #2a9d5c; color: white; font-size: 12px; font-weight: 700; padding: 6px 16px; border-radius: 20px; margin-bottom: 20px; }
+  .hero h1 { font-size: 42px; font-weight: 900; color: #1a3a28; line-height: 1.35; margin-bottom: 16px; }
+  .hero h1 em { color: #2a9d5c; font-style: normal; border-bottom: 3px solid #2a9d5c; padding-bottom: 2px; }
+  .hero .sub { font-size: 15px; line-height: 1.9; color: #445; margin-bottom: 16px; }
+  .hero-price-box { display: inline-flex; align-items: center; gap: 16px; background: white; border: 2px solid #d4eedd; border-radius: 12px; padding: 14px 20px; margin-bottom: 26px; }
+  .pr-item .pl { font-size: 11px; color: #888; }
+  .pr-item .pv { font-size: 20px; font-weight: 900; color: #2a9d5c; }
+  .pr-div { width: 1px; height: 36px; background: #e0f5eb; }
+  .hero-btns { display: flex; gap: 14px; }
+  .btn-green { background: #2a9d5c; color: white; padding: 16px 36px; border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none; box-shadow: 0 4px 16px rgba(42,157,92,0.4); transition: all 0.2s; }
+  .btn-green:hover { background: #218f50; transform: translateY(-2px); }
+  .btn-outline { border: 2px solid #2a9d5c; color: #2a9d5c; background: white; padding: 14px 26px; border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none; }
+  .hero-img { flex: 0 0 360px; align-self: flex-end; }
+  .hero-img-box { width: 360px; height: 280px; background: linear-gradient(135deg, #7ed4a8, #2a9d5c); border-radius: 16px 16px 0 0; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+
+  /* ===== TRUST BAR ===== */
+  .trust-bar { background: #1a5c38; color: white; padding: 18px 40px; display: flex; justify-content: center; gap: 56px; }
+  .trust-item { text-align: center; }
+  .trust-item .num { font-size: 28px; font-weight: 900; color: #ffd166; }
+  .trust-item .lbl { font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 2px; }
+
+  /* ===== SECTION ===== */
+  section { padding: 72px 40px; }
+  .section-header { text-align: center; margin-bottom: 48px; }
+  .stag { display: inline-block; background: #e0f5eb; color: #2a9d5c; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 10px; }
+  .section-header h2 { font-size: 28px; font-weight: 900; color: #1a3a28; }
+  .section-header p { margin-top: 10px; color: #666; font-size: 14px; line-height: 1.8; }
+
+  /* ===== TROUBLE ===== */
+  .trouble { background: #f9fdf9; }
+  .trouble-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 860px; margin: 0 auto; }
+  .trouble-card { background: white; border-radius: 12px; padding: 24px; border: 1px solid #d4eedd; text-align: center; }
+  .trouble-card .icon { font-size: 34px; margin-bottom: 10px; }
+  .trouble-card h3 { font-size: 15px; font-weight: 700; color: #1a3a28; margin-bottom: 6px; }
+  .trouble-card p { font-size: 13px; color: #888; line-height: 1.6; }
+
+  /* ===== PRICING ===== */
+  .pricing { background: white; }
+  .price-note { text-align: center; font-size: 13px; color: #888; background: #f9fdf9; border: 1px solid #d4eedd; padding: 10px 20px; border-radius: 8px; max-width: 700px; margin: 0 auto 32px; }
+  .price-table { max-width: 720px; margin: 0 auto; border-radius: 12px; overflow: hidden; border: 1px solid #d4eedd; }
+  .price-table table { width: 100%; border-collapse: collapse; }
+  .price-table thead tr { background: #2a9d5c; color: white; }
+  .price-table th { padding: 14px 20px; font-size: 14px; font-weight: 700; text-align: left; }
+  .price-table th:last-child, .price-table td:last-child { text-align: right; }
+  .price-table tbody tr { border-bottom: 1px solid #e8f5ee; }
+  .price-table tbody tr:nth-child(even) { background: #f9fdf9; }
+  .price-table td { padding: 14px 20px; font-size: 14px; color: #444; }
+  .price-table .price { font-size: 16px; font-weight: 700; color: #1a5c38; }
+
+  /* ===== FLOW ===== */
+  .flow { background: #f9fdf9; }
+  .flow-steps { display: flex; align-items: flex-start; max-width: 900px; margin: 0 auto; position: relative; }
+  .flow-steps::before { content: ''; position: absolute; top: 22px; left: 44px; right: 44px; height: 2px; background: #e0f5eb; }
+  .flow-step { flex: 1; text-align: center; position: relative; z-index: 1; padding: 0 8px; }
+  .fdot { width: 44px; height: 44px; border-radius: 50%; background: #2a9d5c; color: white; font-weight: 700; font-size: 15px; display: flex; align-items: center; justify-content: center; margin: 0 auto 10px; box-shadow: 0 2px 8px rgba(42,157,92,0.3); }
+  .flow-step h3 { font-size: 14px; font-weight: 700; color: #1a3a28; margin-bottom: 4px; }
+  .flow-step p { font-size: 12px; color: #777; line-height: 1.5; }
+
+  /* ===== VOICE ===== */
+  .voices { background: white; }
+  .voice-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 860px; margin: 0 auto; }
+  .voice-card { background: #f9fdf9; border-radius: 12px; padding: 20px; border: 1px solid #d4eedd; }
+  .stars { color: #ffd166; font-size: 16px; margin-bottom: 8px; }
+  .voice-card p { font-size: 13px; color: #555; line-height: 1.8; margin-bottom: 10px; }
+  .from { font-size: 12px; color: #888; font-weight: 600; }
+
+  /* ===== CTA ===== */
+  .cta { background: #2a9d5c; color: white; text-align: center; padding: 72px 40px; }
+  .cta h2 { font-size: 28px; font-weight: 900; margin-bottom: 12px; }
+  .cta p { font-size: 15px; opacity: 0.85; margin-bottom: 32px; line-height: 1.8; }
+  .cta-box { background: rgba(255,255,255,0.15); max-width: 560px; margin: 0 auto; padding: 28px 32px; border-radius: 14px; display: flex; justify-content: center; gap: 40px; }
+  .cta-m h4 { font-size: 12px; opacity: 0.8; margin-bottom: 6px; }
+  .cta-m .val { font-size: 26px; font-weight: 900; }
+  .cta-m small { font-size: 11px; opacity: 0.7; }
+  .btn-white { display: inline-block; background: white; color: #2a9d5c; padding: 14px 32px; border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none; margin-top: 20px; }
+
+  footer { background: #1a3a28; color: #7ab893; padding: 28px 40px; font-size: 13px; text-align: center; }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="logo-wrap">
+    <div class="logo-icon">💧</div>
+    <div class="logo-text">株式会社〇〇サービス<small>PIPE CLEANING PROFESSIONALS</small></div>
+  </div>
+  <nav>
+    <a href="#trouble">お悩み</a>
+    <a href="#pricing" class="active">料金表</a>
+    <a href="cases.html">施工事例</a>
+    <a href="#flow">ご依頼の流れ</a>
+    <a href="#">FAQ</a>
+    <a href="#">対応エリア</a>
+  </nav>
+
+  <!-- ★ 電話番号の左に2ボタン（個人ページでは個人ボタンが強調） -->
+  <div class="header-right">
+    <div class="audience-btns">
+      <a href="test_v5_b2b.html" class="btn-corp">🏢 法人のお客様</a>
+      <a href="test_v5_b2c.html" class="btn-indiv current">🏠 個人のお客様</a>
+    </div>
+    <div class="header-tel">
+      📞 0120-XXX-XXX
+      <small>365日 即日対応</small>
+    </div>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">✅ 即日対応・追加料金なし</div>
+    <h1>排水の詰まり・悪臭、<br><em>その日のうちに解決。</em></h1>
+    <p class="sub">台所・浴室・トイレ・洗面台など<br>一般家庭のあらゆる排水トラブルに対応。<br>見積もり無料・作業前に料金を明示します。</p>
+    <div class="hero-price-box">
+      <div class="pr-item"><div class="pl">戸建て洗浄</div><div class="pv">¥15,000〜</div></div>
+      <div class="pr-div"></div>
+      <div class="pr-item"><div class="pl">緊急詰まり対応</div><div class="pv">¥8,800〜</div></div>
+      <div class="pr-div"></div>
+      <div class="pr-item"><div class="pl">見積もり</div><div class="pv">無料</div></div>
+    </div>
+    <div class="hero-btns">
+      <a href="#" class="btn-green">📞 今すぐ相談する（無料）</a>
+      <a href="#pricing" class="btn-outline">料金表を見る</a>
+    </div>
+  </div>
+  <div class="hero-img"><div class="hero-img-box">🔧</div></div>
+</div>
+
+<div class="trust-bar">
+  <div class="trust-item"><div class="num">30年</div><div class="lbl">の実績・信頼</div></div>
+  <div class="trust-item"><div class="num">5万件+</div><div class="lbl">累計施工件数</div></div>
+  <div class="trust-item"><div class="num">98%</div><div class="lbl">顧客満足度</div></div>
+  <div class="trust-item"><div class="num">365日</div><div class="lbl">年中無休受付</div></div>
+</div>
+
+<section class="trouble" id="trouble">
+  <div class="section-header">
+    <div class="stag">TROUBLE</div>
+    <h2>こんなお悩みはありませんか？</h2>
+  </div>
+  <div class="trouble-grid">
+    <div class="trouble-card"><div class="icon">🚿</div><h3>台所の流れが悪い</h3><p>油脂・食材カスが蓄積して流れが遅い</p></div>
+    <div class="trouble-card"><div class="icon">🛁</div><h3>浴室が詰まった</h3><p>髪の毛・石鹸カスで水が流れない</p></div>
+    <div class="trouble-card"><div class="icon">💨</div><h3>排水口から悪臭がする</h3><p>キッチン・洗面台から嫌な臭いが上がる</p></div>
+    <div class="trouble-card"><div class="icon">🚽</div><h3>トイレの流れが悪い</h3><p>水量が少なく流れるまで時間がかかる</p></div>
+    <div class="trouble-card"><div class="icon">👕</div><h3>洗濯機パンが溢れる</h3><p>洗濯機の排水が床に溢れてしまう</p></div>
+    <div class="trouble-card"><div class="icon">🏠</div><h3>家全体を清掃したい</h3><p>引っ越し後・購入後に全体を一度清掃したい</p></div>
+  </div>
+</section>
+
+<section class="pricing" id="pricing">
+  <div class="section-header">
+    <div class="stag">PRICE</div>
+    <h2>料金表（個人・一般家庭向け）</h2>
+    <p>すべて税込・出張費込み。追加料金なし。</p>
+  </div>
+  <p class="price-note">⚠️ 下記は目安料金です。現地確認後に正確なお見積もりをご提示します。見積もり無料・追加料金なし。</p>
+  <div class="price-table">
+    <table>
+      <thead><tr><th>作業内容</th><th>対象</th><th>料金目安</th></tr></thead>
+      <tbody>
+        <tr><td>排水管高圧洗浄</td><td>戸建て（全館）</td><td class="price">¥15,000〜</td></tr>
+        <tr><td>排水管高圧洗浄</td><td>台所のみ</td><td class="price">¥5,500〜</td></tr>
+        <tr><td>排水管高圧洗浄</td><td>浴室・洗面台</td><td class="price">¥4,400〜</td></tr>
+        <tr><td>緊急詰まり対応</td><td>全箇所</td><td class="price">¥8,800〜</td></tr>
+        <tr><td>洗濯機パン清掃</td><td>1箇所</td><td class="price">¥3,300〜</td></tr>
+        <tr><td>屋外排水管洗浄</td><td>1系統</td><td class="price">¥6,600〜</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section class="flow" id="flow">
+  <div class="section-header">
+    <div class="stag">FLOW</div>
+    <h2>ご依頼の流れ</h2>
+  </div>
+  <div class="flow-steps">
+    <div class="flow-step"><div class="fdot">1</div><h3>お電話・Web</h3><p>24時間受付<br>今すぐ相談OK</p></div>
+    <div class="flow-step"><div class="fdot">2</div><h3>現地確認・見積</h3><p>無料でお伺い<br>費用を明示</p></div>
+    <div class="flow-step"><div class="fdot">3</div><h3>ご了承</h3><p>納得してから<br>作業開始</p></div>
+    <div class="flow-step"><div class="fdot">4</div><h3>施工</h3><p>丁寧・迅速に<br>作業完了</p></div>
+    <div class="flow-step"><div class="fdot">5</div><h3>完了・報告</h3><p>作業説明・<br>アフターフォロー</p></div>
+  </div>
+</section>
+
+<section class="voices">
+  <div class="section-header">
+    <div class="stag">VOICE</div>
+    <h2>お客様の声</h2>
+  </div>
+  <div class="voice-grid">
+    <div class="voice-card"><div class="stars">★★★★★</div><p>「連絡してから2時間以内に来てくれて詰まりがすぐ解消。料金も事前説明通りで安心でした。」</p><div class="from">東京都中野区 / 山下様（戸建て）</div></div>
+    <div class="voice-card"><div class="stars">★★★★★</div><p>「台所の流れが悪くて困っていたのがあっという間に解決。スタッフの方がとても親切でした。」</p><div class="from">神奈川県横浜市 / 田中様</div></div>
+    <div class="voice-card"><div class="stars">★★★★☆</div><p>「浴室の排水が詰まって即日来てくれました。料金も明確で安心でした。また頼みたいです。」</p><div class="from">埼玉県さいたま市 / 鈴木様</div></div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>見積もり無料・追加料金なし。急なトラブルも365日対応します。</p>
+  <div class="cta-box">
+    <div class="cta-m"><h4>📞 お電話</h4><div class="val">0120-XXX-XXX</div><small>8:00〜18:00（土日祝可）</small></div>
+    <div class="cta-m"><h4>🌐 Web</h4><div class="val" style="font-size:18px;margin-top:4px;">24時間受付</div><small>フォームから見積依頼</small></div>
+  </div>
+  <a href="#" class="btn-white">Webからお問い合わせ →</a>
+</section>
+
+<footer>
+  <p>株式会社〇〇サービス｜〒XXX-XXXX 東京都〇〇区〇〇 1-2-3｜TEL: 0120-XXX-XXX</p>
+  <p style="margin-top:8px;">© 2024 〇〇Service Co., Ltd. All Rights Reserved.</p>
+</footer>
+</body>
+</html>

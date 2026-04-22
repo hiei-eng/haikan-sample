@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test V1: ヒーロー内タブ切り替え</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; }
+
+  /* ===== LABEL ===== */
+  .test-label {
+    background: #6c3be8; color: white;
+    text-align: center; padding: 10px;
+    font-weight: 700; font-size: 15px;
+  }
+
+  /* ===== HEADER ===== */
+  header {
+    background: white; padding: 0 40px;
+    display: flex; justify-content: space-between; align-items: stretch;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    position: sticky; top: 0; z-index: 100;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; padding: 14px 0; }
+  .logo-icon {
+    width: 44px; height: 44px; background: #2a9d5c; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 22px;
+  }
+  .logo-text { font-size: 18px; font-weight: 700; color: #1a5c38; }
+  .logo-text small { display: block; font-size: 11px; color: #888; font-weight: 400; }
+  nav { display: flex; align-items: center; }
+  nav a {
+    color: #555; text-decoration: none; padding: 0 16px; font-size: 14px;
+    height: 100%; display: flex; align-items: center;
+    border-bottom: 3px solid transparent; transition: all 0.2s;
+  }
+  nav a:hover { color: #2a9d5c; border-bottom-color: #2a9d5c; }
+  .header-cta { display: flex; align-items: center; gap: 16px; padding: 14px 0; }
+  .header-tel { color: #1a5c38; font-size: 18px; font-weight: 700; }
+  .header-tel small { font-size: 11px; color: #888; display: block; }
+  .btn-contact {
+    background: #2a9d5c; color: white; padding: 10px 20px;
+    border-radius: 24px; font-size: 13px; font-weight: 700; text-decoration: none;
+  }
+
+  /* ===== HERO WRAPPER ===== */
+  .hero-wrap { position: relative; }
+
+  /* ===== TAB SWITCHER ===== */
+  .hero-tabs {
+    position: absolute; top: 24px; left: 50%; transform: translateX(-50%);
+    z-index: 10;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255,255,255,0.3);
+    border-radius: 40px;
+    display: flex;
+    padding: 4px;
+    gap: 4px;
+  }
+  .tab-btn {
+    padding: 10px 28px;
+    border-radius: 36px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border: none;
+    transition: all 0.25s;
+    color: rgba(255,255,255,0.8);
+    background: transparent;
+    letter-spacing: 0.03em;
+  }
+  .tab-btn.active {
+    background: white;
+    color: #1a5c38;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  }
+
+  /* ===== HERO PANELS ===== */
+  .hero-panel { display: none; }
+  .hero-panel.visible { display: flex; }
+
+  /* === 法人パネル === */
+  .hero-b2b {
+    background: linear-gradient(150deg, #0d3d24 0%, #1a6b40 60%, #2a9d5c 100%);
+    padding: 100px 60px 70px;
+    min-height: 520px;
+    align-items: center;
+    gap: 60px;
+  }
+  .hero-b2b-text { flex: 1; }
+  .hero-kv {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: rgba(255,255,255,0.15); border: 1px solid rgba(255,255,255,0.25);
+    color: white; font-size: 12px; font-weight: 700;
+    padding: 5px 14px; border-radius: 20px; margin-bottom: 24px;
+    letter-spacing: 0.1em;
+  }
+  .hero-b2b h1 {
+    font-size: 44px; font-weight: 900; color: white; line-height: 1.3; margin-bottom: 20px;
+  }
+  .hero-b2b h1 em { color: #ffd166; font-style: normal; }
+  .hero-b2b .sub { font-size: 15px; line-height: 1.9; color: rgba(255,255,255,0.8); margin-bottom: 36px; }
+  .hero-b2b-btns { display: flex; gap: 14px; }
+  .btn-yellow {
+    background: #ffd166; color: #1a3a28; padding: 16px 36px;
+    border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-yellow:hover { background: #ffdc80; transform: translateY(-2px); }
+  .btn-white-ol {
+    border: 2px solid rgba(255,255,255,0.6); color: white; padding: 14px 28px;
+    border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-white-ol:hover { border-color: white; background: rgba(255,255,255,0.1); }
+
+  .hero-b2b-stats { display: flex; flex-direction: column; gap: 14px; }
+  .b2b-stat {
+    background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
+    border-radius: 12px; padding: 18px 24px; text-align: center; min-width: 160px;
+  }
+  .b2b-stat .val { font-size: 38px; font-weight: 900; color: #ffd166; line-height: 1; }
+  .b2b-stat .val sup { font-size: 16px; }
+  .b2b-stat .lbl { font-size: 12px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+  /* === 個人パネル === */
+  .hero-b2c {
+    background: linear-gradient(160deg, #e8f8ee 0%, #b8ecd4 100%);
+    padding: 100px 60px 70px;
+    min-height: 520px;
+    align-items: center;
+    gap: 60px;
+  }
+  .hero-b2c-text { flex: 1; }
+  .hero-b2c-badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: #2a9d5c; color: white;
+    font-size: 12px; font-weight: 700;
+    padding: 6px 16px; border-radius: 20px; margin-bottom: 24px;
+  }
+  .hero-b2c h1 {
+    font-size: 42px; font-weight: 900; color: #1a3a28; line-height: 1.35; margin-bottom: 20px;
+  }
+  .hero-b2c h1 em { color: #2a9d5c; font-style: normal; border-bottom: 3px solid #2a9d5c; }
+  .hero-b2c .sub { font-size: 15px; line-height: 1.9; color: #445; margin-bottom: 16px; }
+  .hero-b2c-price {
+    background: white; border: 2px solid #d4eedd; border-radius: 12px;
+    padding: 14px 20px; margin-bottom: 28px; display: inline-flex; align-items: center; gap: 16px;
+  }
+  .price-from { font-size: 13px; color: #888; }
+  .price-num { font-size: 28px; font-weight: 900; color: #2a9d5c; }
+  .price-note { font-size: 12px; color: #aaa; }
+  .hero-b2c-btns { display: flex; gap: 14px; }
+  .btn-green {
+    background: #2a9d5c; color: white; padding: 16px 36px;
+    border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none;
+    box-shadow: 0 4px 16px rgba(42,157,92,0.4); transition: all 0.2s;
+  }
+  .btn-green:hover { background: #218f50; transform: translateY(-2px); }
+  .btn-outline-g {
+    border: 2px solid #2a9d5c; color: #2a9d5c; padding: 14px 28px;
+    border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none;
+    background: white;
+  }
+
+  .hero-b2c-points { display: flex; flex-direction: column; gap: 12px; }
+  .b2c-point {
+    background: white; border: 1px solid #d4eedd; border-radius: 12px;
+    padding: 16px 20px; display: flex; align-items: flex-start; gap: 12px; min-width: 200px;
+  }
+  .b2c-point .icon { font-size: 24px; flex-shrink: 0; }
+  .b2c-point h4 { font-size: 14px; font-weight: 700; color: #1a3a28; margin-bottom: 2px; }
+  .b2c-point p { font-size: 12px; color: #888; line-height: 1.5; }
+
+  /* ===== SECTION BELOW HERO ===== */
+  .below { padding: 60px 40px; background: #f9fdf9; text-align: center; color: #888; font-size: 14px; }
+</style>
+</head>
+<body>
+
+<div class="test-label">🧪 Test V1：ヒーロー内タブ切り替え ／ タブをクリックして比較してみてください</div>
+
+<header>
+  <div class="logo-wrap">
+    <div class="logo-icon">💧</div>
+    <div class="logo-text">
+      株式会社〇〇サービス
+      <small>PIPE CLEANING PROFESSIONALS</small>
+    </div>
+  </div>
+  <nav>
+    <a href="#">サービス</a>
+    <a href="#">施工事例</a>
+    <a href="#">料金案内</a>
+    <a href="#">法人プラン</a>
+    <a href="#">対応エリア</a>
+    <a href="#">FAQ</a>
+    <a href="#">会社概要</a>
+  </nav>
+  <div class="header-cta">
+    <div class="header-tel">📞 0120-XXX-XXX<small>8:00〜18:00 土日祝OK</small></div>
+    <a href="#" class="btn-contact">無料見積</a>
+  </div>
+</header>
+
+<div class="hero-wrap">
+  <!-- タブ -->
+  <div class="hero-tabs">
+    <button class="tab-btn active" onclick="switchTab('b2b')">🏢 法人・管理会社のお客様</button>
+    <button class="tab-btn" onclick="switchTab('b2c')">🏠 個人・一般家庭のお客様</button>
+  </div>
+
+  <!-- 法人パネル -->
+  <div class="hero-panel hero-b2b visible" id="panel-b2b">
+    <div class="hero-b2b-text">
+      <div class="hero-kv">✦ 法人・管理会社向け</div>
+      <h1>配管管理を、<br><em>まるごと任せる。</em></h1>
+      <p class="sub">
+        マンション・ビル・工場・飲食店チェーンまで。<br>
+        年間契約・定期保守・書類対応・緊急時対応を<br>
+        ワンストップで提供します。
+      </p>
+      <div class="hero-b2b-btns">
+        <a href="#" class="btn-yellow">📋 定期清掃プランを見る</a>
+        <a href="#" class="btn-white-ol">施工事例を見る</a>
+      </div>
+    </div>
+    <div class="hero-b2b-stats">
+      <div class="b2b-stat">
+        <div class="val">2,000<sup>+</sup></div>
+        <div class="lbl">年間法人施工件数</div>
+      </div>
+      <div class="b2b-stat">
+        <div class="val">30<sup>年</sup></div>
+        <div class="lbl">の法人実績</div>
+      </div>
+      <div class="b2b-stat">
+        <div class="val">書類</div>
+        <div class="lbl">一括対応OK</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 個人パネル -->
+  <div class="hero-panel hero-b2c" id="panel-b2c">
+    <div class="hero-b2c-text">
+      <div class="hero-b2c-badge">✅ 当日・即日対応OK</div>
+      <h1>排水の詰まり・悪臭、<br><em>その日のうちに解決。</em></h1>
+      <p class="sub">
+        台所・浴室・洗面台・トイレなど<br>
+        一般家庭のあらゆる排水トラブルに対応。<br>見積もり無料・追加料金なしの安心価格です。
+      </p>
+      <div class="hero-b2c-price">
+        <span class="price-from">戸建て洗浄</span>
+        <span class="price-num">¥15,000〜</span>
+        <span class="price-note">税込・出張費込み</span>
+      </div>
+      <div class="hero-b2c-btns">
+        <a href="#" class="btn-green">📞 今すぐ相談する（無料）</a>
+        <a href="#" class="btn-outline-g">料金表を見る</a>
+      </div>
+    </div>
+    <div class="hero-b2c-points">
+      <div class="b2c-point">
+        <span class="icon">⚡</span>
+        <div>
+          <h4>最短即日対応</h4>
+          <p>365日24時間受付。急なトラブルも迅速対応。</p>
+        </div>
+      </div>
+      <div class="b2c-point">
+        <span class="icon">💰</span>
+        <div>
+          <h4>明瞭・追加料金なし</h4>
+          <p>見積後の追加請求ゼロ。納得してから作業開始。</p>
+        </div>
+      </div>
+      <div class="b2c-point">
+        <span class="icon">🏅</span>
+        <div>
+          <h4>累計5万件の実績</h4>
+          <p>創業30年・顧客満足度98%の信頼と実績。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="below">
+  ↓ このページの続き（サービス一覧・料金表・FAQ・CTAなど）が続く
+</div>
+
+<script>
+function switchTab(type) {
+  document.getElementById('panel-b2b').classList.remove('visible');
+  document.getElementById('panel-b2c').classList.remove('visible');
+  document.getElementById('panel-' + type).classList.add('visible');
+  document.querySelectorAll('.tab-btn').forEach((btn, i) => {
+    btn.classList.toggle('active', (type === 'b2b' && i === 0) || (type === 'b2c' && i === 1));
+  });
+}
+</script>
+</body>
+</html>

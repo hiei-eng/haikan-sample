@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>こんなサインが出たら要注意！清掃が必要なタイミングと頻度の目安｜株式会社〇〇サービス</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; background: #f9fdf9; }
+  header { background: white; padding: 0 40px; display: flex; justify-content: space-between; align-items: stretch; box-shadow: 0 2px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; padding: 14px 0; text-decoration: none; }
+  .logo-icon { width: 44px; height: 44px; background: #2a9d5c; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; }
+  .logo-text { font-size: 18px; font-weight: 700; color: #1a5c38; }
+  .logo-text small { display: block; font-size: 11px; color: #888; font-weight: 400; }
+  nav { display: flex; align-items: center; }
+  nav a { color: #555; text-decoration: none; padding: 0 16px; font-size: 14px; height: 100%; display: flex; align-items: center; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  nav a:hover { color: #2a9d5c; border-bottom-color: #2a9d5c; }
+  .header-right { display: flex; align-items: stretch; flex-shrink: 0; border-left: 1px solid #eee; }
+  .audience-btns { display: flex; align-items: center; gap: 8px; padding: 0 20px; border-right: 1px solid #eee; }
+  .btn-corp { display: flex; align-items: center; gap: 5px; background: #1a5c38; color: white; padding: 9px 18px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .btn-corp:hover { background: #0d3d24; }
+  .btn-indiv { display: flex; align-items: center; gap: 5px; background: white; color: #2a9d5c; padding: 8px 18px; border-radius: 6px; border: 2px solid #2a9d5c; font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap; }
+  .btn-indiv:hover { background: #f0faf5; }
+  .header-tel { padding: 0 20px; display: flex; flex-direction: column; justify-content: center; color: #1a5c38; font-size: 17px; font-weight: 700; }
+  .header-tel small { font-size: 10px; color: #888; }
+
+  .article-wrap { max-width: 760px; margin: 0 auto; padding: 48px 20px 80px; }
+  .breadcrumb { font-size: 13px; color: #888; margin-bottom: 24px; }
+  .breadcrumb a { color: #2a9d5c; text-decoration: none; }
+  .breadcrumb span { margin: 0 6px; }
+  .article-meta { display: flex; gap: 10px; align-items: center; margin-bottom: 16px; }
+  .article-cat { background: #fff0e8; color: #e07030; font-size: 12px; font-weight: 700; padding: 3px 10px; border-radius: 10px; }
+  .article-date { font-size: 12px; color: #aaa; }
+  .article-title { font-size: 28px; font-weight: 900; color: #1a3a28; line-height: 1.5; margin-bottom: 20px; }
+  .article-hero-img { width: 100%; height: 260px; background: linear-gradient(135deg, #fff0e8, #ffb347); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 80px; margin-bottom: 36px; }
+  .article-body { background: white; border-radius: 16px; padding: 40px; box-shadow: 0 2px 16px rgba(0,0,0,0.06); }
+  .article-body h2 { font-size: 20px; font-weight: 900; color: #1a3a28; margin: 32px 0 14px; padding-left: 14px; border-left: 4px solid #2a9d5c; }
+  .article-body h3 { font-size: 17px; font-weight: 700; color: #1a5c38; margin: 24px 0 10px; }
+  .article-body p { font-size: 15px; color: #444; line-height: 2; margin-bottom: 16px; }
+
+  /* ===== SIGN CARDS ===== */
+  .sign-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin: 20px 0; }
+  .sign-card { background: #fff8f5; border-radius: 10px; padding: 18px; border-left: 4px solid #ff6b35; }
+  .sign-card .icon { font-size: 24px; margin-bottom: 8px; }
+  .sign-card h4 { font-size: 14px; font-weight: 700; color: #333; margin-bottom: 6px; }
+  .sign-card p { font-size: 13px; color: #666; line-height: 1.6; margin-bottom: 0; }
+
+  /* ===== FREQUENCY TABLE ===== */
+  .freq-table { width: 100%; border-collapse: collapse; border-radius: 10px; overflow: hidden; margin: 20px 0; }
+  .freq-table th { background: #1a5c38; color: white; padding: 14px 16px; font-size: 13px; font-weight: 700; text-align: left; }
+  .freq-table td { padding: 14px 16px; font-size: 13px; border-bottom: 1px solid #e8f4ee; color: #444; }
+  .freq-table tr:last-child td { border-bottom: none; }
+  .freq-table tr:nth-child(even) td { background: #f9fdf9; }
+  .freq-val { font-weight: 700; color: #1a5c38; }
+
+  .info-box { background: #f0faf5; border-radius: 10px; padding: 20px 24px; margin: 24px 0; border-left: 4px solid #2a9d5c; }
+  .info-box p { margin-bottom: 0; font-size: 14px; }
+  .warn-box { background: #fff8f0; border-radius: 10px; padding: 20px 24px; margin: 24px 0; border-left: 4px solid #ff6b35; }
+  .warn-box p { margin-bottom: 0; color: #c44; font-size: 14px; }
+
+  .article-cta { background: linear-gradient(135deg, #1a5c38, #2a9d5c); color: white; border-radius: 16px; padding: 32px; text-align: center; margin-top: 40px; }
+  .article-cta h3 { font-size: 20px; font-weight: 900; margin-bottom: 10px; }
+  .article-cta p { font-size: 14px; opacity: 0.85; margin-bottom: 20px; }
+  .btn-white { display: inline-flex; align-items: center; gap: 8px; background: white; color: #2a9d5c; padding: 12px 28px; border-radius: 40px; font-weight: 700; font-size: 14px; text-decoration: none; }
+
+  .related { max-width: 760px; margin: 0 auto 60px; padding: 0 20px; }
+  .related h3 { font-size: 18px; font-weight: 700; color: #1a3a28; margin-bottom: 16px; }
+  .related-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .related-card { background: white; border-radius: 10px; padding: 18px; border: 1px solid #d4eedd; text-decoration: none; color: inherit; display: flex; align-items: flex-start; gap: 12px; transition: all 0.2s; }
+  .related-card:hover { border-color: #2a9d5c; background: #f9fdf9; }
+  .related-icon { font-size: 28px; }
+  .related-card h4 { font-size: 13px; font-weight: 700; color: #1a3a28; line-height: 1.5; }
+
+  footer { background: #1a3a28; color: #7ab893; padding: 32px 40px; font-size: 13px; text-align: center; }
+  footer a { color: #7ab893; text-decoration: none; margin: 0 12px; }
+  footer a:hover { color: white; }
+  .footer-copy { margin-top: 12px; color: #4a7a60; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="design_B_friendly.html" class="logo-wrap">
+    <div class="logo-icon">💧</div>
+    <div class="logo-text">株式会社〇〇サービス<small>PIPE CLEANING PROFESSIONALS</small></div>
+  </a>
+  <nav>
+    <a href="design_B_friendly.html">ホーム</a>
+    <a href="service.html">事業内容</a>
+    <a href="cases.html">施工事例</a>
+    <a href="contact.html">お問い合わせ</a>
+    <a href="company.html">会社概要</a>
+  </nav>
+  <div class="header-right">
+    <div class="audience-btns">
+      <a href="service.html" class="btn-corp">🏢 法人のお客様</a>
+      <a href="b2c.html" class="btn-indiv">🏠 個人のお客様</a>
+    </div>
+    <div class="header-tel">📞 0120-XXX-XXX<small>8:00〜18:00 土日祝OK</small></div>
+  </div>
+</header>
+
+<div class="article-wrap">
+  <div class="breadcrumb">
+    <a href="design_B_friendly.html">ホーム</a><span>＞</span>
+    <a href="blog.html">お役立ちコラム</a><span>＞</span>
+    清掃が必要なタイミングと頻度の目安
+  </div>
+  <div class="article-meta">
+    <span class="article-cat">予防・メンテナンス</span>
+    <span class="article-date">2024年2月20日</span>
+  </div>
+  <h1 class="article-title">こんなサインが出たら要注意！<br>清掃が必要なタイミングと頻度の目安</h1>
+  <div class="article-hero-img">⚠️</div>
+
+  <div class="article-body">
+    <p>「排水管の清掃って、詰まってからやればいいんじゃないの？」と思っていませんか？実は、詰まってから対処するのと、定期的にメンテナンスするのとでは、費用も手間も大きく変わります。</p>
+    <p>この記事では、プロが伝える「清掃が必要なサイン」と「場所・建物別の清掃頻度の目安」を解説します。</p>
+
+    <h2>今すぐ確認！こんなサインが出ていたら要注意</h2>
+    <p>以下のサインが1つでもある場合は、排水管の清掃時期が来ているかもしれません。</p>
+
+    <div class="sign-grid">
+      <div class="sign-card">
+        <div class="icon">🐌</div>
+        <h4>水の流れが遅くなった</h4>
+        <p>以前より流れが遅く感じる。完全に詰まる前のサイン。早めの対処で費用を抑えられます。</p>
+      </div>
+      <div class="sign-card">
+        <div class="icon">💨</div>
+        <h4>排水口から嫌な臭いがする</h4>
+        <p>汚泥・雑菌の繁殖が原因。臭いが気になったらすでに汚れが蓄積しています。</p>
+      </div>
+      <div class="sign-card">
+        <div class="icon">🔊</div>
+        <h4>ゴボゴボと音がする</h4>
+        <p>排水管内に空気が溜まっているサイン。詰まりかけていることを示しています。</p>
+      </div>
+      <div class="sign-card">
+        <div class="icon">💧</div>
+        <h4>水が逆流することがある</h4>
+        <p>洗い物をしていると隣のシンクに水が上がってくる場合は、共有管の詰まりの可能性大。</p>
+      </div>
+      <div class="sign-card">
+        <div class="icon">🦟</div>
+        <h4>排水口に虫が発生する</h4>
+        <p>チョウバエ・コバエは汚泥が大好き。虫の発生は排水管内に汚れが溜まっているサインです。</p>
+      </div>
+      <div class="sign-card">
+        <div class="icon">📅</div>
+        <h4>1年以上清掃していない</h4>
+        <p>目に見えるサインがなくても、1年以上清掃していなければ汚れは必ず蓄積しています。</p>
+      </div>
+    </div>
+
+    <div class="warn-box">
+      <p>⚠️ <strong>3つ以上当てはまる場合は今すぐ専門業者へ。</strong> 放置すると詰まりが深刻化し、高額な修繕が必要になる場合があります。</p>
+    </div>
+
+    <h2>場所・建物別の清掃頻度の目安</h2>
+    <table class="freq-table">
+      <thead>
+        <tr><th>場所・建物の種類</th><th>推奨頻度</th><th>主な理由</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>一般家庭（キッチン）</td><td class="freq-val">年1〜2回</td><td>油脂・食べかすの蓄積</td></tr>
+        <tr><td>一般家庭（浴室・洗面台）</td><td class="freq-val">年1〜2回</td><td>髪の毛・石けんカス</td></tr>
+        <tr><td>マンション（共用排水管）</td><td class="freq-val">年1〜2回</td><td>建物維持管理・住民クレーム防止</td></tr>
+        <tr><td>飲食店・レストラン</td><td class="freq-val">年3〜4回</td><td>油脂の多さ・保健所指導</td></tr>
+        <tr><td>ビル・オフィス</td><td class="freq-val">年1〜2回</td><td>トイレ使用頻度・法令対応</td></tr>
+        <tr><td>食品工場・製造施設</td><td class="freq-val">年3〜6回</td><td>衛生基準・法的要件</td></tr>
+        <tr><td>貯水槽・受水槽</td><td class="freq-val">年1回（法定）</td><td>水道法に基づく義務清掃</td></tr>
+      </tbody>
+    </table>
+
+    <div class="info-box">
+      <p>💡 <strong>ポイント：</strong> 「詰まってから」の緊急対応は、「定期清掃」の2〜3倍の費用がかかるケースがほとんどです。定期的なメンテナンスの方がトータルコストを抑えられます。</p>
+    </div>
+
+    <h2>定期清掃プランのご提案</h2>
+    <p>当社では、年間を通じた定期清掃プランをご用意しています。一度契約いただくと、スケジュール管理・事前通知・施工・報告書発行まで一括でお任せいただけます。</p>
+    <p>管理会社様・建物オーナー様には、複数棟まとめてのご契約で割引もご用意しております。</p>
+
+    <div class="article-cta">
+      <h3>定期清掃プランについてご相談ください</h3>
+      <p>見積もり・出張費は無料。まずはお気軽にご連絡ください。</p>
+      <a href="contact.html" class="btn-white">📩 無料で相談する</a>
+    </div>
+  </div>
+</div>
+
+<div class="related">
+  <h3>関連記事</h3>
+  <div class="related-grid">
+    <a href="blog_clog.html" class="related-card">
+      <div class="related-icon">🚰</div>
+      <h4>排水管が詰まる原因とは？家庭でできる予防策まとめ</h4>
+    </a>
+    <a href="blog.html" class="related-card">
+      <div class="related-icon">💰</div>
+      <h4>排水管清掃の料金相場は？業者選びで失敗しないポイント</h4>
+    </a>
+  </div>
+</div>
+
+<footer>
+  <div>
+    <a href="design_B_friendly.html">ホーム</a>
+    <a href="service.html">事業内容</a>
+    <a href="cases.html">施工事例</a>
+    <a href="contact.html">お問い合わせ</a>
+    <a href="company.html">会社概要</a>
+  </div>
+  <div class="footer-copy">© 2024 株式会社〇〇サービス. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

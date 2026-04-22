@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Test V4: ヘッダーボタン切り替え | 株式会社〇〇サービス</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; }
+
+  .test-label { background: #6c3be8; color: white; text-align: center; padding: 10px; font-weight: 700; font-size: 15px; }
+
+  /* ===== HEADER ===== */
+  header {
+    background: white;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    gap: 20px;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; padding: 14px 0; flex-shrink: 0; }
+  .logo-icon { width: 44px; height: 44px; background: #2a9d5c; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; }
+  .logo-text { font-size: 18px; font-weight: 700; color: #1a5c38; }
+  .logo-text small { display: block; font-size: 11px; color: #888; font-weight: 400; }
+
+  nav { display: flex; align-items: center; }
+  nav a { color: #555; text-decoration: none; padding: 0 14px; font-size: 13px; height: 100%; display: flex; align-items: center; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  nav a:hover { color: #2a9d5c; border-bottom-color: #2a9d5c; }
+
+  /* ★ 法人・個人ボタン */
+  .audience-btns {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 12px 0;
+    border-left: 1px solid #eee;
+    padding-left: 20px;
+    flex-shrink: 0;
+  }
+  .audience-btns .btn-corp {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #1a5c38;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .audience-btns .btn-corp:hover { background: #0d3d24; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(26,92,56,0.3); }
+  .audience-btns .btn-indiv {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: white;
+    color: #2a9d5c;
+    padding: 9px 20px;
+    border-radius: 6px;
+    border: 2px solid #2a9d5c;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.2s;
+    white-space: nowrap;
+  }
+  .audience-btns .btn-indiv:hover { background: #f0faf5; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(42,157,92,0.2); }
+
+  .header-tel { color: #1a5c38; font-size: 16px; font-weight: 700; display: flex; flex-direction: column; justify-content: center; padding: 8px 0; flex-shrink: 0; }
+  .header-tel small { font-size: 10px; color: #888; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(160deg, #e8f8ee 0%, #c5edda 100%);
+    padding: 80px 60px 0;
+    display: flex;
+    align-items: flex-end;
+    gap: 60px;
+    min-height: 480px;
+  }
+  .hero-text { flex: 1; padding-bottom: 60px; }
+  .hero-tagline { display: inline-flex; align-items: center; gap: 8px; background: #2a9d5c; color: white; font-size: 12px; font-weight: 700; padding: 6px 16px; border-radius: 20px; margin-bottom: 24px; }
+  .hero h1 { font-size: 42px; font-weight: 900; color: #1a3a28; line-height: 1.35; margin-bottom: 20px; }
+  .hero h1 em { color: #2a9d5c; font-style: normal; }
+  .hero .sub { font-size: 15px; line-height: 1.9; color: #445; margin-bottom: 36px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-green { background: #2a9d5c; color: white; padding: 16px 36px; border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none; box-shadow: 0 4px 16px rgba(42,157,92,0.4); transition: all 0.2s; }
+  .btn-green:hover { background: #218f50; transform: translateY(-2px); }
+  .btn-outline { border: 2px solid #2a9d5c; color: #2a9d5c; background: white; padding: 14px 28px; border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none; }
+  .hero-img { flex: 0 0 360px; align-self: flex-end; }
+  .hero-img-box { width: 360px; height: 280px; background: linear-gradient(135deg, #7ed4a8, #2a9d5c); border-radius: 16px 16px 0 0; display: flex; align-items: center; justify-content: center; font-size: 80px; }
+
+  /* ===== NOTICE ===== */
+  .notice-bar { background: #1a5c38; color: white; padding: 12px 40px; display: flex; align-items: center; gap: 20px; font-size: 14px; }
+  .notice-label { background: #ffd166; color: #333; font-weight: 700; padding: 3px 10px; border-radius: 4px; font-size: 12px; white-space: nowrap; }
+
+  /* ===== SECTION ===== */
+  section { padding: 80px 40px; }
+  .section-header { text-align: center; margin-bottom: 48px; }
+  .stag { display: inline-block; background: #e0f5eb; color: #2a9d5c; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 12px; letter-spacing: 0.1em; }
+  .section-header h2 { font-size: 30px; font-weight: 900; color: #1a3a28; }
+  .section-header p { margin-top: 12px; color: #666; line-height: 1.8; font-size: 15px; }
+
+  /* ===== SERVICES ===== */
+  .services { background: white; scroll-margin-top: 80px; }
+  .services-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; max-width: 860px; margin: 0 auto; }
+  .service-card { border: 1px solid #d4eedd; border-radius: 12px; padding: 24px; display: flex; align-items: flex-start; gap: 16px; transition: all 0.2s; text-decoration: none; color: inherit; }
+  .service-card:hover { border-color: #2a9d5c; background: #f9fdf9; }
+  .service-icon-wrap { width: 52px; height: 52px; background: #e0f5eb; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 24px; flex-shrink: 0; }
+  .service-card h3 { font-size: 16px; font-weight: 700; color: #1a3a28; margin-bottom: 6px; }
+  .service-card p { font-size: 13px; color: #666; line-height: 1.7; }
+  .service-arrow { color: #2a9d5c; font-size: 20px; margin-left: auto; align-self: center; }
+
+  /* ===== 法人向け事業内容 ===== */
+  .b2b-services { background: #f0faf5; scroll-margin-top: 80px; }
+  .b2b-intro {
+    max-width: 860px; margin: 0 auto 40px;
+    background: linear-gradient(135deg, #1a5c38, #2a9d5c);
+    border-radius: 16px; padding: 32px 40px; color: white;
+    display: flex; align-items: center; gap: 32px;
+  }
+  .b2b-intro-icon { font-size: 56px; flex-shrink: 0; }
+  .b2b-intro h3 { font-size: 22px; font-weight: 900; margin-bottom: 8px; }
+  .b2b-intro p { font-size: 14px; line-height: 1.8; opacity: 0.85; }
+  .b2b-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 960px; margin: 0 auto 40px; }
+  .b2b-card { background: white; border-radius: 12px; padding: 28px 24px; border: 1px solid #d4eedd; }
+  .b2b-card .icon { font-size: 32px; margin-bottom: 14px; }
+  .b2b-card h3 { font-size: 16px; font-weight: 700; color: #1a3a28; margin-bottom: 8px; }
+  .b2b-card p { font-size: 13px; color: #666; line-height: 1.8; }
+  .b2b-plans { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 960px; margin: 0 auto; }
+  .b2b-plan { background: white; border-radius: 12px; overflow: hidden; border: 2px solid #d4eedd; }
+  .b2b-plan.rec { border-color: #2a9d5c; }
+  .plan-head { background: #f9fdf9; padding: 24px; text-align: center; position: relative; }
+  .b2b-plan.rec .plan-head { background: #2a9d5c; color: white; }
+  .plan-badge { position: absolute; top: 0; right: 0; background: #ffd166; color: #333; font-size: 11px; font-weight: 700; padding: 4px 10px; border-radius: 0 0 0 8px; }
+  .plan-name { font-size: 18px; font-weight: 900; }
+  .plan-sub { font-size: 12px; color: #888; margin-top: 4px; }
+  .b2b-plan.rec .plan-sub { color: rgba(255,255,255,0.75); }
+  .plan-body { padding: 20px 24px; }
+  .plan-price { text-align: center; margin-bottom: 16px; padding-bottom: 16px; border-bottom: 1px solid #e8f5ee; font-size: 13px; color: #888; }
+  .plan-price strong { font-size: 28px; font-weight: 900; color: #2a9d5c; }
+  .plan-features { list-style: none; }
+  .plan-features li { font-size: 13px; color: #555; padding: 6px 0; border-bottom: 1px solid #f5f5f5; display: flex; gap: 8px; }
+  .plan-features li::before { content: '✓'; color: #2a9d5c; font-weight: 700; flex-shrink: 0; }
+  .plan-features li.off { color: #ccc; }
+  .plan-features li.off::before { content: '–'; color: #ddd; }
+  .plan-foot { padding: 16px 24px; }
+  .btn-plan { display: block; text-align: center; padding: 12px; border-radius: 30px; font-weight: 700; font-size: 14px; text-decoration: none; border: 2px solid #2a9d5c; color: #2a9d5c; transition: all 0.2s; }
+  .b2b-plan.rec .btn-plan { background: #2a9d5c; color: white; border-color: #2a9d5c; }
+
+  /* ===== CTA ===== */
+  .cta { background: #2a9d5c; color: white; text-align: center; padding: 80px 40px; }
+  .cta h2 { font-size: 30px; font-weight: 900; margin-bottom: 12px; }
+  .cta p { font-size: 15px; opacity: 0.85; margin-bottom: 32px; line-height: 1.8; }
+  .cta-box { background: rgba(255,255,255,0.15); max-width: 560px; margin: 0 auto; padding: 28px 32px; border-radius: 14px; display: flex; justify-content: center; gap: 40px; }
+  .cta-m h4 { font-size: 12px; opacity: 0.8; margin-bottom: 6px; }
+  .cta-m .val { font-size: 26px; font-weight: 900; }
+  .cta-m small { font-size: 11px; opacity: 0.7; }
+  .btn-white { display: inline-block; background: white; color: #2a9d5c; padding: 14px 32px; border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none; margin-top: 20px; }
+
+  footer { background: #1a3a28; color: #7ab893; padding: 28px 40px; font-size: 13px; text-align: center; }
+
+  /* ===== SCROLL HINT ===== */
+  .scroll-hint {
+    display: none;
+    position: fixed;
+    top: 80px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: #1a5c38;
+    color: white;
+    padding: 10px 24px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+    z-index: 200;
+    animation: fadeOut 2s forwards;
+    white-space: nowrap;
+  }
+  @keyframes fadeOut {
+    0%   { opacity: 1; transform: translateX(-50%) translateY(0); }
+    70%  { opacity: 1; }
+    100% { opacity: 0; transform: translateX(-50%) translateY(-8px); }
+  }
+</style>
+</head>
+<body>
+
+<div class="test-label">🧪 Test V4：ヘッダーに法人・個人ボタン ／「法人のお客様」→同ページ事業内容へ、「個人のお客様」→別ページへ</div>
+
+<!-- スクロールヒント -->
+<div class="scroll-hint" id="scroll-hint">🏢 法人向け事業内容へ移動しました</div>
+
+<header>
+  <div class="logo-wrap">
+    <div class="logo-icon">💧</div>
+    <div class="logo-text">
+      株式会社〇〇サービス
+      <small>PIPE CLEANING PROFESSIONALS</small>
+    </div>
+  </div>
+  <nav>
+    <a href="#">サービス</a>
+    <a href="#b2b-services">法人向け</a>
+    <a href="#">施工事例</a>
+    <a href="#">料金案内</a>
+    <a href="#">FAQ</a>
+    <a href="#">会社概要</a>
+  </nav>
+
+  <!-- ★ 法人・個人ボタン -->
+  <div class="audience-btns">
+    <a href="#b2b-services" class="btn-corp" onclick="showHint()">
+      🏢 法人のお客様
+    </a>
+    <a href="test_v2_b2c.html" class="btn-indiv">
+      🏠 個人のお客様
+    </a>
+  </div>
+
+  <div class="header-tel">
+    📞 0120-XXX-XXX
+    <small>8:00〜18:00 土日祝OK</small>
+  </div>
+</header>
+
+<!-- ===== HERO ===== -->
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-tagline">✅ 法人・個人 どちらも対応</div>
+    <h1>排水管の悩み、<br><em>すっきり解決</em>します。</h1>
+    <p class="sub">マンション・ビル・工場・飲食店・一般住宅まで<br>経験豊富なスタッフが安心・丁寧に対応します。<br>まずはお気軽にご相談ください。</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-green">📞 今すぐ相談する（無料）</a>
+      <a href="cases.html" class="btn-outline">施工事例を見る</a>
+    </div>
+  </div>
+  <div class="hero-img">
+    <div class="hero-img-box">🔧</div>
+  </div>
+</div>
+
+<div class="notice-bar">
+  <span class="notice-label">お知らせ</span>
+  <span>年末年始も緊急対応受付中！詰まり・悪臭など急なトラブルはすぐにお電話ください。</span>
+</div>
+
+<!-- ===== 一般サービス ===== -->
+<section class="services" id="services">
+  <div class="section-header">
+    <div class="stag">SERVICE</div>
+    <h2>サービス一覧</h2>
+    <p>排水・給水・衛生設備に関するあらゆる清掃・メンテナンスに対応</p>
+  </div>
+  <div class="services-grid">
+    <a href="#" class="service-card">
+      <div class="service-icon-wrap">🌊</div>
+      <div><h3>排水管高圧洗浄</h3><p>油脂・スケールを徹底除去。定期清掃の契約も承ります。</p></div>
+      <span class="service-arrow">›</span>
+    </a>
+    <a href="#" class="service-card">
+      <div class="service-icon-wrap">💧</div>
+      <div><h3>給水管洗浄・更生</h3><p>安全な飲料水のために。管内錆・汚れを徹底除去します。</p></div>
+      <span class="service-arrow">›</span>
+    </a>
+    <a href="#" class="service-card">
+      <div class="service-icon-wrap">🏗️</div>
+      <div><h3>貯水槽・受水槽清掃</h3><p>法定清掃・水質検査・書類作成まで一括対応。</p></div>
+      <span class="service-arrow">›</span>
+    </a>
+    <a href="#" class="service-card">
+      <div class="service-icon-wrap">🚨</div>
+      <div><h3>緊急対応・詰まり修理</h3><p>24時間365日対応。急なトラブルも迅速解決します。</p></div>
+      <span class="service-arrow">›</span>
+    </a>
+  </div>
+</section>
+
+<!-- ===== 法人向け事業内容（ヘッダーボタンのリンク先） ===== -->
+<section class="b2b-services" id="b2b-services">
+  <div class="section-header">
+    <div class="stag">FOR BUSINESS</div>
+    <h2>法人・管理会社向け 事業内容</h2>
+    <p>マンション・ビル・工場・飲食店チェーンなど、法人様向けのサービスをご紹介します</p>
+  </div>
+
+  <div class="b2b-intro" style="max-width:860px; margin: 0 auto 40px;">
+    <div class="b2b-intro-icon">🏢</div>
+    <div>
+      <h3>年間契約で、配管管理をまるごとお任せください</h3>
+      <p>定期清掃・書類対応・緊急時対応・報告書作成まで一括サポート。管理組合・管理会社・ビルオーナー様の手間を最小化します。法人様向けの割引プランもご用意しています。</p>
+    </div>
+  </div>
+
+  <div class="b2b-grid">
+    <div class="b2b-card">
+      <div class="icon">📋</div>
+      <h3>書類・報告書一括対応</h3>
+      <p>作業報告書・水質検査結果・行政への届出書類まで一括で作成・提出します。管理会社様の事務負担を大幅に削減します。</p>
+    </div>
+    <div class="b2b-card">
+      <div class="icon">🔄</div>
+      <h3>定期保守・年間契約</h3>
+      <p>年間契約で割引適用。春・秋の定期清掃から月次点検まで、スケジュール管理もお任せください。</p>
+    </div>
+    <div class="b2b-card">
+      <div class="icon">⚡</div>
+      <h3>緊急時優先対応</h3>
+      <p>年間契約のお客様は緊急時に優先対応。入居者からのクレームにも迅速に対処します。</p>
+    </div>
+  </div>
+
+  <!-- プランカード -->
+  <div class="b2b-plans">
+    <div class="b2b-plan">
+      <div class="plan-head">
+        <div class="plan-name">ライトプラン</div>
+        <div class="plan-sub">小規模物件向け</div>
+      </div>
+      <div class="plan-body">
+        <div class="plan-price">年1回 <strong>¥3,000</strong>〜 / 戸</div>
+        <ul class="plan-features">
+          <li>排水管高圧洗浄（年1回）</li>
+          <li>作業報告書の提出</li>
+          <li>緊急時優先対応</li>
+          <li class="off">貯水槽清掃</li>
+          <li class="off">水質検査・書類代行</li>
+        </ul>
+      </div>
+      <div class="plan-foot"><a href="#" class="btn-plan">相談する</a></div>
+    </div>
+    <div class="b2b-plan rec">
+      <div class="plan-head">
+        <div class="plan-badge">おすすめ</div>
+        <div class="plan-name">スタンダードプラン</div>
+        <div class="plan-sub">中規模マンション・ビル向け</div>
+      </div>
+      <div class="plan-body">
+        <div class="plan-price">年2回 <strong>¥2,800</strong>〜 / 戸</div>
+        <ul class="plan-features">
+          <li>排水管高圧洗浄（年2回）</li>
+          <li>作業報告書の提出</li>
+          <li>緊急時優先対応</li>
+          <li>貯水槽清掃（年1回）</li>
+          <li>水質検査・書類代行</li>
+        </ul>
+      </div>
+      <div class="plan-foot"><a href="#" class="btn-plan">相談する</a></div>
+    </div>
+    <div class="b2b-plan">
+      <div class="plan-head">
+        <div class="plan-name">プレミアムプラン</div>
+        <div class="plan-sub">大規模・複数棟向け</div>
+      </div>
+      <div class="plan-body">
+        <div class="plan-price">フル対応 <strong>要</strong>お見積もり</div>
+        <ul class="plan-features">
+          <li>排水管高圧洗浄（年複数回）</li>
+          <li>作業報告書の提出</li>
+          <li>緊急時優先対応（24H）</li>
+          <li>貯水槽清掃（年1回〜）</li>
+          <li>水質検査・書類代行</li>
+        </ul>
+      </div>
+      <div class="plan-foot"><a href="#" class="btn-plan">相談する</a></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== CTA ===== -->
+<section class="cta">
+  <h2>お気軽にご相談・お見積もりください</h2>
+  <p>法人様の定期保守契約から、個人宅の緊急対応まで<br>丁寧にご対応いたします。</p>
+  <div class="cta-box">
+    <div class="cta-m"><h4>📞 お電話</h4><div class="val">0120-XXX-XXX</div><small>8:00〜18:00（土日祝可）</small></div>
+    <div class="cta-m"><h4>🌐 Web</h4><div class="val" style="font-size:18px;margin-top:4px;">24時間受付</div><small>フォームから見積依頼</small></div>
+  </div>
+  <a href="#" class="btn-white">Webからお問い合わせ →</a>
+</section>
+
+<footer>
+  <p>株式会社〇〇サービス｜〒XXX-XXXX 東京都〇〇区〇〇 1-2-3｜TEL: 0120-XXX-XXX</p>
+  <p style="margin-top:8px;">© 2024 〇〇Service Co., Ltd. All Rights Reserved.</p>
+</footer>
+
+<script>
+function showHint() {
+  const hint = document.getElementById('scroll-hint');
+  hint.style.display = 'block';
+  // アニメーションをリセットして再実行
+  hint.style.animation = 'none';
+  hint.offsetHeight; // reflow
+  hint.style.animation = 'fadeOut 2.5s forwards';
+  setTimeout(() => { hint.style.display = 'none'; }, 2500);
+}
+</script>
+
+</body>
+</html>

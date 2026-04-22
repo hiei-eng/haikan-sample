@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>お役立ちコラム｜排水管・配管のお悩み解決情報｜株式会社〇〇サービス</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; }
+
+  /* ===== HEADER ===== */
+  header { background: white; padding: 0 40px; display: flex; justify-content: space-between; align-items: stretch; box-shadow: 0 2px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100; }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; padding: 14px 0; text-decoration: none; }
+  .logo-icon { width: 44px; height: 44px; background: #2a9d5c; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; }
+  .logo-text { font-size: 18px; font-weight: 700; color: #1a5c38; }
+  .logo-text small { display: block; font-size: 11px; color: #888; font-weight: 400; }
+  nav { display: flex; align-items: center; }
+  nav a { color: #555; text-decoration: none; padding: 0 16px; font-size: 14px; height: 100%; display: flex; align-items: center; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  nav a:hover, nav a.active { color: #2a9d5c; border-bottom-color: #2a9d5c; }
+  .header-right { display: flex; align-items: stretch; flex-shrink: 0; border-left: 1px solid #eee; }
+  .audience-btns { display: flex; align-items: center; gap: 8px; padding: 0 20px; border-right: 1px solid #eee; }
+  .btn-corp { display: flex; align-items: center; gap: 5px; background: #1a5c38; color: white; padding: 9px 18px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+  .btn-corp:hover { background: #0d3d24; }
+  .btn-indiv { display: flex; align-items: center; gap: 5px; background: white; color: #2a9d5c; padding: 8px 18px; border-radius: 6px; border: 2px solid #2a9d5c; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+  .btn-indiv:hover { background: #f0faf5; }
+  .header-tel { padding: 0 20px; display: flex; flex-direction: column; justify-content: center; color: #1a5c38; font-size: 17px; font-weight: 700; }
+  .header-tel small { font-size: 10px; color: #888; }
+
+  /* ===== PAGE HERO ===== */
+  .page-hero { background: linear-gradient(160deg, #e8f8ee 0%, #c5edda 100%); padding: 64px 40px 72px; text-align: center; }
+  .breadcrumb { font-size: 13px; color: #888; margin-bottom: 16px; }
+  .breadcrumb a { color: #2a9d5c; text-decoration: none; }
+  .breadcrumb span { margin: 0 8px; }
+  .page-hero h1 { font-size: 36px; font-weight: 900; color: #1a3a28; margin-bottom: 14px; }
+  .page-hero p { font-size: 15px; color: #556; line-height: 1.9; }
+
+  /* ===== BLOG LIST ===== */
+  .blog-section { background: #f9fdf9; padding: 72px 40px; }
+  .blog-wrap { max-width: 960px; margin: 0 auto; }
+  .blog-category-tabs { display: flex; gap: 10px; margin-bottom: 36px; flex-wrap: wrap; }
+  .cat-btn { padding: 8px 20px; border-radius: 20px; border: 1px solid #d4eedd; font-size: 13px; font-weight: 600; color: #555; background: white; cursor: pointer; text-decoration: none; transition: all 0.2s; }
+  .cat-btn:hover, .cat-btn.active { background: #2a9d5c; color: white; border-color: #2a9d5c; }
+  .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+  .blog-card { background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 12px rgba(0,0,0,0.06); border: 1px solid #e8f4ee; transition: all 0.2s; text-decoration: none; color: inherit; display: flex; flex-direction: column; }
+  .blog-card:hover { transform: translateY(-4px); box-shadow: 0 8px 28px rgba(42,157,92,0.12); }
+  .blog-img { height: 160px; background: linear-gradient(135deg, #e0f5eb, #7ed4a8); display: flex; align-items: center; justify-content: center; font-size: 52px; }
+  .blog-img.orange { background: linear-gradient(135deg, #fff0e8, #ffb347); }
+  .blog-img.blue { background: linear-gradient(135deg, #e8f4ff, #7eb8d4); }
+  .blog-img.yellow { background: linear-gradient(135deg, #fffde8, #ffd166); }
+  .blog-body { padding: 20px; flex: 1; display: flex; flex-direction: column; }
+  .blog-meta { display: flex; gap: 8px; align-items: center; margin-bottom: 10px; }
+  .blog-cat { background: #e0f5eb; color: #2a9d5c; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; }
+  .blog-date { font-size: 11px; color: #aaa; }
+  .blog-card h3 { font-size: 15px; font-weight: 700; color: #1a3a28; line-height: 1.6; margin-bottom: 10px; }
+  .blog-card p { font-size: 13px; color: #666; line-height: 1.7; flex: 1; }
+  .blog-read-more { display: inline-flex; align-items: center; gap: 4px; color: #2a9d5c; font-size: 13px; font-weight: 700; margin-top: 14px; }
+
+  /* ===== POPULAR ===== */
+  .popular-section { background: white; padding: 72px 40px; }
+  .popular-wrap { max-width: 960px; margin: 0 auto; }
+  .popular-list { display: flex; flex-direction: column; gap: 16px; }
+  .popular-item { display: flex; align-items: center; gap: 16px; background: #f9fdf9; border-radius: 10px; padding: 16px 20px; border: 1px solid #e8f4ee; text-decoration: none; color: inherit; transition: all 0.2s; }
+  .popular-item:hover { border-color: #2a9d5c; background: #f0faf5; }
+  .popular-num { width: 36px; height: 36px; background: #2a9d5c; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 900; font-size: 15px; flex-shrink: 0; }
+  .popular-num.gold { background: #ffd166; color: #333; }
+  .popular-num.silver { background: #aaa; }
+  .popular-num.bronze { background: #cd7f32; }
+  .popular-item h4 { font-size: 14px; font-weight: 700; color: #1a3a28; }
+  .popular-item span { font-size: 12px; color: #888; }
+
+  /* ===== SECTION HEADER ===== */
+  .section-header { margin-bottom: 36px; }
+  .section-header h2 { font-size: 24px; font-weight: 900; color: #1a3a28; display: flex; align-items: center; gap: 10px; }
+  .section-header h2::after { content: ''; flex: 1; height: 2px; background: #e0f5eb; }
+
+  /* ===== CTA ===== */
+  .cta { background: #2a9d5c; color: white; text-align: center; padding: 60px 40px; }
+  .cta h2 { font-size: 26px; font-weight: 900; margin-bottom: 12px; }
+  .cta p { font-size: 15px; opacity: 0.85; margin-bottom: 28px; line-height: 1.8; }
+  .btn-white { display: inline-flex; align-items: center; gap: 8px; background: white; color: #2a9d5c; padding: 14px 32px; border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none; transition: all 0.2s; }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+  /* ===== FOOTER ===== */
+  footer { background: #1a3a28; color: #7ab893; padding: 32px 40px; font-size: 13px; text-align: center; }
+  footer a { color: #7ab893; text-decoration: none; margin: 0 12px; }
+  footer a:hover { color: white; }
+  .footer-copy { margin-top: 12px; color: #4a7a60; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="design_B_friendly.html" class="logo-wrap">
+    <div class="logo-icon">💧</div>
+    <div class="logo-text">株式会社〇〇サービス<small>PIPE CLEANING PROFESSIONALS</small></div>
+  </a>
+  <nav>
+    <a href="design_B_friendly.html">ホーム</a>
+    <a href="service.html">事業内容</a>
+    <a href="cases.html">施工事例</a>
+    <a href="contact.html">お問い合わせ</a>
+    <a href="company.html">会社概要</a>
+  </nav>
+  <div class="header-right">
+    <div class="audience-btns">
+      <a href="service.html" class="btn-corp">🏢 法人のお客様</a>
+      <a href="b2c.html" class="btn-indiv">🏠 個人のお客様</a>
+    </div>
+    <div class="header-tel">📞 0120-XXX-XXX<small>8:00〜18:00 土日祝OK</small></div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="design_B_friendly.html">ホーム</a><span>＞</span>お役立ちコラム</div>
+  <h1>📚 お役立ちコラム</h1>
+  <p>排水管・配管のトラブル予防から応急処置まで、<br>プロが教えるお役立ち情報をお届けします。</p>
+</div>
+
+<!-- BLOG GRID -->
+<div class="blog-section">
+  <div class="blog-wrap">
+    <div class="blog-category-tabs">
+      <a href="#" class="cat-btn active">すべて</a>
+      <a href="#" class="cat-btn">トラブル対処</a>
+      <a href="#" class="cat-btn">予防・メンテナンス</a>
+      <a href="#" class="cat-btn">料金・相場</a>
+      <a href="#" class="cat-btn">法人・管理会社向け</a>
+    </div>
+    <div class="blog-grid">
+      <a href="blog_clog.html" class="blog-card">
+        <div class="blog-img">🚰</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat">トラブル対処</span>
+            <span class="blog-date">2024.03.15</span>
+          </div>
+          <h3>排水管が詰まる原因とは？家庭でできる予防策まとめ</h3>
+          <p>「なんか最近流れが遅い…」そんなサインを見逃していませんか？詰まりの原因と自分でできる対策を解説します。</p>
+          <span class="blog-read-more">続きを読む →</span>
+        </div>
+      </a>
+      <a href="blog_sign.html" class="blog-card">
+        <div class="blog-img orange">⚠️</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat">予防・メンテナンス</span>
+            <span class="blog-date">2024.02.20</span>
+          </div>
+          <h3>こんなサインが出たら要注意！清掃が必要なタイミングと頻度の目安</h3>
+          <p>悪臭・流れの遅さ・音…プロが教える「清掃のタイミング」を見逃さないためのチェックリスト。</p>
+          <span class="blog-read-more">続きを読む →</span>
+        </div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-img blue">🛁</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat">トラブル対処</span>
+            <span class="blog-date">2024.01.10</span>
+          </div>
+          <h3>お風呂の排水が詰まった！業者を呼ぶ前に試せる応急処置3選</h3>
+          <p>まず自分でできることを試してみましょう。ただし、無理は禁物。悪化させないための正しい対処法を紹介します。</p>
+          <span class="blog-read-more">続きを読む →</span>
+        </div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-img yellow">💰</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat">料金・相場</span>
+            <span class="blog-date">2023.12.05</span>
+          </div>
+          <h3>排水管清掃の料金相場は？業者選びで失敗しないポイント</h3>
+          <p>「高い業者に頼んでしまった…」とならないために。適正料金の目安と悪徳業者を見抜くチェックポイント。</p>
+          <span class="blog-read-more">続きを読む →</span>
+        </div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-img">🏢</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat">法人・管理会社向け</span>
+            <span class="blog-date">2023.11.15</span>
+          </div>
+          <h3>マンションの排水管清掃、法律で定められた義務と頻度</h3>
+          <p>建物の種類・規模によって清掃義務が異なります。管理会社・オーナー様向けに法令に基づく清掃頻度を解説。</p>
+          <span class="blog-read-more">続きを読む →</span>
+        </div>
+      </a>
+      <a href="#" class="blog-card">
+        <div class="blog-img orange">🍽️</div>
+        <div class="blog-body">
+          <div class="blog-meta">
+            <span class="blog-cat">法人・管理会社向け</span>
+            <span class="blog-date">2023.10.28</span>
+          </div>
+          <h3>飲食店のグリストラップ清掃、怠ると起こるリスクとは？</h3>
+          <p>油脂詰まりによる排水停止、異臭クレーム、保健所の指導…飲食店が定期清掃を怠ると発生する問題を解説します。</p>
+          <span class="blog-read-more">続きを読む →</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- POPULAR -->
+<div class="popular-section">
+  <div class="popular-wrap">
+    <div class="section-header">
+      <h2>🔥 人気記事ランキング</h2>
+    </div>
+    <div class="popular-list">
+      <a href="blog_clog.html" class="popular-item">
+        <div class="popular-num gold">1</div>
+        <div>
+          <h4>排水管が詰まる原因とは？家庭でできる予防策まとめ</h4>
+          <span>トラブル対処 ／ 2024.03.15</span>
+        </div>
+      </a>
+      <a href="blog_sign.html" class="popular-item">
+        <div class="popular-num silver">2</div>
+        <div>
+          <h4>こんなサインが出たら要注意！清掃が必要なタイミングと頻度の目安</h4>
+          <span>予防・メンテナンス ／ 2024.02.20</span>
+        </div>
+      </a>
+      <a href="#" class="popular-item">
+        <div class="popular-num bronze">3</div>
+        <div>
+          <h4>排水管清掃の料金相場は？業者選びで失敗しないポイント</h4>
+          <span>料金・相場 ／ 2023.12.05</span>
+        </div>
+      </a>
+      <a href="#" class="popular-item">
+        <div class="popular-num" style="background:#e0f5eb; color:#2a9d5c;">4</div>
+        <div>
+          <h4>お風呂の排水が詰まった！業者を呼ぶ前に試せる応急処置3選</h4>
+          <span>トラブル対処 ／ 2024.01.10</span>
+        </div>
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>トラブルが起きたらすぐご相談を</h2>
+  <p>記事を読んでも解決しない場合はプロにお任せください。<br>見積もり・出張費は無料です。</p>
+  <a href="contact.html" class="btn-white">📩 無料で相談する</a>
+</section>
+
+<footer>
+  <div>
+    <a href="design_B_friendly.html">ホーム</a>
+    <a href="service.html">事業内容</a>
+    <a href="cases.html">施工事例</a>
+    <a href="contact.html">お問い合わせ</a>
+    <a href="company.html">会社概要</a>
+  </div>
+  <div class="footer-copy">© 2024 株式会社〇〇サービス. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

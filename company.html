@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>会社概要｜株式会社〇〇サービス</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; }
+
+  /* ===== HEADER ===== */
+  header {
+    background: white; padding: 0 40px;
+    display: flex; justify-content: space-between; align-items: stretch;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; padding: 14px 0; text-decoration: none; }
+  .logo-icon { width: 44px; height: 44px; background: #2a9d5c; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; }
+  .logo-text { font-size: 18px; font-weight: 700; color: #1a5c38; }
+  .logo-text small { display: block; font-size: 11px; color: #888; font-weight: 400; }
+  nav { display: flex; align-items: center; }
+  nav a { color: #555; text-decoration: none; padding: 0 16px; font-size: 14px; height: 100%; display: flex; align-items: center; border-bottom: 3px solid transparent; transition: all 0.2s; }
+  nav a:hover, nav a.active { color: #2a9d5c; border-bottom-color: #2a9d5c; }
+  .header-right { display: flex; align-items: stretch; flex-shrink: 0; border-left: 1px solid #eee; }
+  .audience-btns { display: flex; align-items: center; gap: 8px; padding: 0 20px; border-right: 1px solid #eee; }
+  .btn-corp { display: flex; align-items: center; gap: 5px; background: #1a5c38; color: white; padding: 9px 18px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+  .btn-corp:hover { background: #0d3d24; box-shadow: 0 3px 10px rgba(26,92,56,0.3); }
+  .btn-indiv { display: flex; align-items: center; gap: 5px; background: white; color: #2a9d5c; padding: 8px 18px; border-radius: 6px; border: 2px solid #2a9d5c; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
+  .btn-indiv:hover { background: #f0faf5; }
+  .header-tel { padding: 0 20px; display: flex; flex-direction: column; justify-content: center; color: #1a5c38; font-size: 17px; font-weight: 700; }
+  .header-tel small { font-size: 10px; color: #888; }
+
+  /* ===== PAGE HERO ===== */
+  .page-hero { background: linear-gradient(160deg, #e8f8ee 0%, #c5edda 100%); padding: 64px 40px 72px; text-align: center; }
+  .breadcrumb { font-size: 13px; color: #888; margin-bottom: 16px; }
+  .breadcrumb a { color: #2a9d5c; text-decoration: none; }
+  .breadcrumb span { margin: 0 8px; }
+  .page-hero h1 { font-size: 36px; font-weight: 900; color: #1a3a28; margin-bottom: 14px; }
+  .page-hero p { font-size: 15px; color: #556; line-height: 1.9; }
+
+  /* ===== SECTION ===== */
+  section { padding: 72px 40px; }
+  .section-header { text-align: center; margin-bottom: 48px; }
+  .section-tag { display: inline-block; background: #e0f5eb; color: #2a9d5c; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 12px; letter-spacing: 0.1em; }
+  .section-header h2 { font-size: 28px; font-weight: 900; color: #1a3a28; }
+
+  /* ===== COMPANY TABLE ===== */
+  .company-wrap { max-width: 800px; margin: 0 auto; }
+  .company-table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
+  .company-table th { background: #f0faf5; color: #1a5c38; font-size: 14px; font-weight: 700; padding: 18px 24px; text-align: left; width: 180px; border-bottom: 1px solid #e0f5eb; vertical-align: top; }
+  .company-table td { padding: 18px 24px; font-size: 14px; color: #444; border-bottom: 1px solid #f0f0f0; line-height: 1.8; }
+  .company-table tr:last-child th, .company-table tr:last-child td { border-bottom: none; }
+  .license-list { list-style: none; }
+  .license-list li { padding: 3px 0; display: flex; align-items: center; gap: 8px; }
+  .license-list li::before { content: '✓'; color: #2a9d5c; font-weight: 700; }
+
+  /* ===== MAP PLACEHOLDER ===== */
+  .map-section { background: #f9fdf9; }
+  .map-placeholder { max-width: 800px; margin: 0 auto; background: #e0f5eb; border-radius: 12px; height: 300px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; color: #2a9d5c; }
+  .map-placeholder span { font-size: 48px; }
+  .map-placeholder p { font-size: 14px; font-weight: 700; }
+
+  /* ===== MESSAGE ===== */
+  .message-section { background: white; }
+  .message-wrap { max-width: 720px; margin: 0 auto; }
+  .message-card { background: #f9fdf9; border-radius: 16px; padding: 40px; border-left: 5px solid #2a9d5c; }
+  .message-card h3 { font-size: 20px; font-weight: 900; color: #1a3a28; margin-bottom: 16px; }
+  .message-card p { font-size: 15px; color: #555; line-height: 2; }
+  .message-from { margin-top: 20px; font-size: 13px; color: #888; text-align: right; }
+
+  /* ===== CTA ===== */
+  .cta { background: #2a9d5c; color: white; text-align: center; padding: 60px 40px; }
+  .cta h2 { font-size: 26px; font-weight: 900; margin-bottom: 12px; }
+  .cta p { font-size: 15px; opacity: 0.85; margin-bottom: 28px; }
+  .btn-white { display: inline-flex; align-items: center; gap: 8px; background: white; color: #2a9d5c; padding: 14px 32px; border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none; transition: all 0.2s; }
+  .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+  /* ===== FOOTER ===== */
+  footer { background: #1a3a28; color: #7ab893; padding: 32px 40px; font-size: 13px; text-align: center; }
+  footer a { color: #7ab893; text-decoration: none; margin: 0 12px; }
+  footer a:hover { color: white; }
+  .footer-copy { margin-top: 12px; color: #4a7a60; font-size: 12px; }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="design_B_friendly.html" class="logo-wrap">
+    <div class="logo-icon">💧</div>
+    <div class="logo-text">株式会社〇〇サービス<small>PIPE CLEANING PROFESSIONALS</small></div>
+  </a>
+  <nav>
+    <a href="design_B_friendly.html">ホーム</a>
+    <a href="service.html">事業内容</a>
+    <a href="cases.html">施工事例</a>
+    <a href="contact.html">お問い合わせ</a>
+    <a href="company.html" class="active">会社概要</a>
+  </nav>
+  <div class="header-right">
+    <div class="audience-btns">
+      <a href="service.html" class="btn-corp">🏢 法人のお客様</a>
+      <a href="b2c.html" class="btn-indiv">🏠 個人のお客様</a>
+    </div>
+    <div class="header-tel">📞 0120-XXX-XXX<small>8:00〜18:00 土日祝OK</small></div>
+  </div>
+</header>
+
+<div class="page-hero">
+  <div class="breadcrumb"><a href="design_B_friendly.html">ホーム</a><span>＞</span>会社概要</div>
+  <h1>会社概要</h1>
+  <p>地域に根差した配管清掃のプロフェッショナルとして、<br>30年以上にわたりお客様の安心・安全を支えてきました。</p>
+</div>
+
+<!-- 代表メッセージ -->
+<section class="message-section">
+  <div class="section-header">
+    <div class="section-tag">MESSAGE</div>
+    <h2>代表メッセージ</h2>
+  </div>
+  <div class="message-wrap">
+    <div class="message-card">
+      <h3>「見えない配管を、誠実に。」</h3>
+      <p>配管は建物の「血管」です。目に見えないからこそ、見えないところまで誠実に、丁寧に施工することが私たちの使命だと考えています。<br><br>創業以来、「安心・安全・明瞭」をモットーに、マンション・ビル・工場・一般家庭まで幅広いお客様にご利用いただいてきました。これからも地域の皆様の生活環境を守るため、スタッフ一同、真摯に取り組んでまいります。</p>
+      <p class="message-from">代表取締役　〇〇 〇〇</p>
+    </div>
+  </div>
+</section>
+
+<!-- 会社情報 -->
+<section style="background:#f9fdf9;">
+  <div class="section-header">
+    <div class="section-tag">COMPANY INFO</div>
+    <h2>会社情報</h2>
+  </div>
+  <div class="company-wrap">
+    <table class="company-table">
+      <tr><th>会社名</th><td>株式会社〇〇サービス</td></tr>
+      <tr><th>設立</th><td>〇〇〇〇年〇月（創業：1994年）</td></tr>
+      <tr><th>代表者</th><td>代表取締役　〇〇 〇〇</td></tr>
+      <tr><th>資本金</th><td>〇〇〇万円</td></tr>
+      <tr><th>従業員数</th><td>〇〇名（うち有資格者：〇名）</td></tr>
+      <tr><th>所在地</th><td>〒XXX-XXXX<br>東京都〇〇区〇〇1-2-3　〇〇ビル2F</td></tr>
+      <tr><th>電話番号</th><td>0120-XXX-XXX（8:00〜18:00 土日祝OK）</td></tr>
+      <tr><th>メール</th><td>info@xxxx-service.co.jp</td></tr>
+      <tr><th>事業内容</th><td>排水管清掃・高圧洗浄 / 給水管洗浄・更生 / 貯水槽・受水槽清掃 / グリストラップ清掃 / 緊急排水対応</td></tr>
+      <tr>
+        <th>保有資格・許可</th>
+        <td>
+          <ul class="license-list">
+            <li>建築物環境衛生管理技術者（ビル管理士）</li>
+            <li>一般廃棄物収集運搬業許可</li>
+            <li>浄化槽清掃業許可</li>
+            <li>管工事業（建設業許可）</li>
+            <li>特定化学物質及び四アルキル鉛等作業主任者</li>
+          </ul>
+        </td>
+      </tr>
+      <tr><th>取引実績</th><td>マンション管理会社・不動産会社・ビル管理会社・食品工場・飲食チェーン・官公庁 他</td></tr>
+    </table>
+  </div>
+</section>
+
+<!-- アクセスマップ -->
+<section class="map-section">
+  <div class="section-header">
+    <div class="section-tag">ACCESS</div>
+    <h2>アクセス</h2>
+  </div>
+  <div class="map-placeholder">
+    <span>🗺️</span>
+    <p>Googleマップ埋め込み予定エリア</p>
+    <small style="color:#666;">〒XXX-XXXX 東京都〇〇区〇〇1-2-3 ／ 最寄り駅：〇〇駅 徒歩5分</small>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta">
+  <h2>ご依頼・ご相談はこちら</h2>
+  <p>まずはお気軽にお問い合わせください。見積もり・出張費は無料です。</p>
+  <a href="contact.html" class="btn-white">📩 お問い合わせフォームへ</a>
+</section>
+
+<footer>
+  <div>
+    <a href="design_B_friendly.html">ホーム</a>
+    <a href="service.html">事業内容</a>
+    <a href="cases.html">施工事例</a>
+    <a href="contact.html">お問い合わせ</a>
+    <a href="company.html">会社概要</a>
+  </div>
+  <div class="footer-copy">© 2024 株式会社〇〇サービス. All rights reserved.</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>デザインA：プロフェッショナル・信頼型（ネイビー×白）</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; }
+
+  /* ===== HEADER ===== */
+  header {
+    background: #0a1f4e;
+    color: white;
+    padding: 16px 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+  }
+  .logo { font-size: 22px; font-weight: 700; letter-spacing: 0.05em; }
+  .logo span { color: #4db8ff; }
+  nav a {
+    color: #cdd6e8;
+    text-decoration: none;
+    margin-left: 28px;
+    font-size: 14px;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+  }
+  nav a:hover { color: #4db8ff; }
+  .header-tel { color: white; font-size: 18px; font-weight: 700; }
+  .header-tel small { font-size: 11px; display: block; text-align: right; color: #aab; }
+
+  /* ===== HERO ===== */
+  .hero {
+    background: linear-gradient(135deg, #0a1f4e 0%, #1a3a7a 50%, #0a4080 100%);
+    color: white;
+    padding: 100px 40px;
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    min-height: 500px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    right: -50px;
+    top: -50px;
+    width: 500px;
+    height: 500px;
+    border-radius: 50%;
+    background: rgba(77, 184, 255, 0.08);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    right: 100px;
+    bottom: -100px;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: rgba(77, 184, 255, 0.05);
+  }
+  .hero-text { flex: 1; z-index: 1; }
+  .hero-badge {
+    display: inline-block;
+    background: #4db8ff;
+    color: #0a1f4e;
+    font-size: 12px;
+    font-weight: 700;
+    padding: 4px 14px;
+    border-radius: 20px;
+    margin-bottom: 20px;
+    letter-spacing: 0.1em;
+  }
+  .hero h1 { font-size: 42px; font-weight: 900; line-height: 1.3; margin-bottom: 20px; }
+  .hero h1 span { color: #4db8ff; }
+  .hero p { font-size: 16px; line-height: 1.8; color: #aac4e0; margin-bottom: 36px; }
+  .hero-btns { display: flex; gap: 16px; }
+  .btn-primary {
+    background: #4db8ff;
+    color: #0a1f4e;
+    padding: 16px 36px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-primary:hover { background: white; }
+  .btn-outline {
+    border: 2px solid #4db8ff;
+    color: #4db8ff;
+    padding: 14px 30px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+  .btn-outline:hover { background: rgba(77,184,255,0.1); }
+
+  .hero-stats {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    z-index: 1;
+  }
+  .stat-card {
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(77,184,255,0.3);
+    border-radius: 8px;
+    padding: 20px 30px;
+    text-align: center;
+    backdrop-filter: blur(10px);
+  }
+  .stat-card .num { font-size: 40px; font-weight: 900; color: #4db8ff; }
+  .stat-card .num sup { font-size: 18px; }
+  .stat-card .label { font-size: 13px; color: #aac4e0; margin-top: 4px; }
+
+  /* ===== SECTION COMMON ===== */
+  section { padding: 80px 40px; }
+  .section-header { text-align: center; margin-bottom: 56px; }
+  .section-tag {
+    display: inline-block;
+    color: #1a6bb5;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    margin-bottom: 10px;
+    text-transform: uppercase;
+  }
+  .section-header h2 { font-size: 32px; font-weight: 900; color: #0a1f4e; }
+  .section-header p { margin-top: 14px; color: #666; line-height: 1.8; }
+
+  /* ===== FEATURES ===== */
+  .features { background: #f5f8fc; }
+  .feature-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 28px; max-width: 1000px; margin: 0 auto; }
+  .feature-card {
+    background: white;
+    border-radius: 8px;
+    padding: 36px 28px;
+    box-shadow: 0 4px 20px rgba(10,31,78,0.08);
+    border-top: 4px solid #1a6bb5;
+  }
+  .feature-icon { font-size: 40px; margin-bottom: 16px; }
+  .feature-card h3 { font-size: 18px; font-weight: 700; color: #0a1f4e; margin-bottom: 10px; }
+  .feature-card p { font-size: 14px; line-height: 1.8; color: #666; }
+
+  /* ===== SERVICES ===== */
+  .services { background: white; }
+  .service-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+  .service-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding: 28px;
+    border: 1px solid #dde5f0;
+    border-radius: 8px;
+    transition: all 0.2s;
+  }
+  .service-item:hover { border-color: #1a6bb5; box-shadow: 0 4px 20px rgba(26,107,181,0.1); }
+  .service-num {
+    font-size: 32px;
+    font-weight: 900;
+    color: #dde5f0;
+    min-width: 50px;
+    line-height: 1;
+  }
+  .service-item h3 { font-size: 17px; font-weight: 700; color: #0a1f4e; margin-bottom: 6px; }
+  .service-item p { font-size: 13px; color: #666; line-height: 1.7; }
+
+  /* ===== FLOW ===== */
+  .flow { background: #0a1f4e; color: white; }
+  .flow .section-header h2 { color: white; }
+  .flow .section-tag { color: #4db8ff; }
+  .flow-steps { display: flex; justify-content: center; align-items: flex-start; gap: 0; max-width: 1000px; margin: 0 auto; }
+  .flow-step {
+    flex: 1;
+    text-align: center;
+    padding: 24px 16px;
+    position: relative;
+  }
+  .flow-step::after {
+    content: '→';
+    position: absolute;
+    right: -10px;
+    top: 30px;
+    font-size: 24px;
+    color: #4db8ff;
+  }
+  .flow-step:last-child::after { display: none; }
+  .step-num {
+    width: 52px;
+    height: 52px;
+    background: #4db8ff;
+    color: #0a1f4e;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    font-weight: 900;
+    margin: 0 auto 14px;
+  }
+  .flow-step h3 { font-size: 15px; font-weight: 700; margin-bottom: 8px; }
+  .flow-step p { font-size: 12px; color: #7a99c0; line-height: 1.6; }
+
+  /* ===== CTA ===== */
+  .cta {
+    background: linear-gradient(135deg, #1a6bb5, #0a1f4e);
+    color: white;
+    text-align: center;
+    padding: 80px 40px;
+  }
+  .cta h2 { font-size: 32px; font-weight: 900; margin-bottom: 14px; }
+  .cta p { font-size: 16px; color: #aac4e0; margin-bottom: 36px; }
+  .cta-btns { display: flex; justify-content: center; gap: 20px; }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #060f28;
+    color: #8899bb;
+    padding: 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+  }
+
+  /* ===== LABEL ===== */
+  .design-label {
+    background: #ff6b35;
+    color: white;
+    text-align: center;
+    padding: 12px;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+  }
+</style>
+</head>
+<body>
+
+<div class="design-label">🎨 デザインA：プロフェッショナル・信頼型（ネイビー×白×ブルー）</div>
+
+<header>
+  <div class="logo">株式会社<span>〇〇</span>サービス</div>
+  <nav>
+    <a href="#">サービス内容</a>
+    <a href="#">施工事例</a>
+    <a href="#">お客様の声</a>
+    <a href="#">会社概要</a>
+    <a href="#">採用情報</a>
+  </nav>
+  <div class="header-tel">
+    📞 0120-XXX-XXX
+    <small>受付時間 8:00〜18:00（土日祝可）</small>
+  </div>
+</header>
+
+<div class="hero">
+  <div class="hero-text">
+    <div class="hero-badge">創業30年・法人実績No.1</div>
+    <h1>配管の問題、<br><span>完全解決</span>します。</h1>
+    <p>ビル・マンション・工場・病院など<br>あらゆる施設の排水管・給水管清掃に対応。<br>年中無休・即日対応で、建物の衛生環境を守ります。</p>
+    <div class="hero-btns">
+      <a href="#" class="btn-primary">無料見積を依頼する</a>
+      <a href="#" class="btn-outline">サービス内容を見る</a>
+    </div>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-card">
+      <div class="num">2,000<sup>件+</sup></div>
+      <div class="label">年間施工実績</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">30<sup>年</sup></div>
+      <div class="label">の実績と信頼</div>
+    </div>
+    <div class="stat-card">
+      <div class="num">98<sup>%</sup></div>
+      <div class="label">お客様満足度</div>
+    </div>
+  </div>
+</div>
+
+<section class="features">
+  <div class="section-header">
+    <div class="section-tag">WHY CHOOSE US</div>
+    <h2>選ばれる3つの理由</h2>
+    <p>法人・個人問わず、最高水準のサービスを提供します</p>
+  </div>
+  <div class="feature-grid">
+    <div class="feature-card">
+      <div class="feature-icon">🏆</div>
+      <h3>豊富な施工実績</h3>
+      <p>年間2,000件以上の施工実績。大型ビルから個人宅まで、あらゆる規模・用途に対応した経験があります。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">⚡</div>
+      <h3>最短即日対応</h3>
+      <p>緊急の詰まり・悪臭トラブルにも即日対応。365日年中無休で受け付けています。</p>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📋</div>
+      <h3>明瞭な料金体系</h3>
+      <p>見積後の追加料金なし。作業内容・費用を事前に詳しくご説明し、ご納得いただいてから施工します。</p>
+    </div>
+  </div>
+</section>
+
+<section class="services">
+  <div class="section-header">
+    <div class="section-tag">SERVICES</div>
+    <h2>サービス内容</h2>
+    <p>排水管・給水管に関するあらゆるご要望に対応します</p>
+  </div>
+  <div class="service-list">
+    <div class="service-item">
+      <div class="service-num">01</div>
+      <div>
+        <h3>排水管高圧洗浄</h3>
+        <p>高圧水流で管内の油脂・スケール・異物を徹底除去。ビル・マンションの定期清掃に最適です。</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">02</div>
+      <div>
+        <h3>給水管洗浄・更生</h3>
+        <p>飲料水の安全を守るため、給水管内部の錆・汚れを除去。更生工事も対応可能です。</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">03</div>
+      <div>
+        <h3>貯水槽・受水槽清掃</h3>
+        <p>法定点検・清掃に対応。水質検査から書類作成まで一括サポートします。</p>
+      </div>
+    </div>
+    <div class="service-item">
+      <div class="service-num">04</div>
+      <div>
+        <h3>緊急排水・詰まり対応</h3>
+        <p>急な詰まり・溢れにも24時間365日対応。緊急出動で迅速に解決します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="flow">
+  <div class="section-header">
+    <div class="section-tag">FLOW</div>
+    <h2>ご依頼の流れ</h2>
+  </div>
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="step-num">1</div>
+      <h3>お問い合わせ</h3>
+      <p>電話・Webフォーム<br>いずれでも可</p>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">2</div>
+      <h3>現地確認・見積</h3>
+      <p>無料で現地調査・<br>お見積もり</p>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">3</div>
+      <h3>ご契約</h3>
+      <p>内容・費用に<br>ご納得後に契約</p>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">4</div>
+      <h3>施工</h3>
+      <p>専門スタッフが<br>丁寧に作業</p>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">5</div>
+      <h3>完了・報告</h3>
+      <p>作業報告書を<br>ご提出</p>
+    </div>
+  </div>
+</section>
+
+<section class="cta">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p>見積・相談は無料です。法人のお客様には定期保守契約もご提案できます。</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-primary">📞 0120-XXX-XXX</a>
+    <a href="#" class="btn-outline">Webから無料見積依頼</a>
+  </div>
+</section>
+
+<footer>
+  <div>株式会社〇〇サービス｜〒XXX-XXXX 東京都〇〇区〇〇 1-2-3</div>
+  <div>© 2024 〇〇Service Co., Ltd.</div>
+</footer>
+
+</body>
+</html>

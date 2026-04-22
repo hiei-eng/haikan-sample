@@ -1,0 +1,657 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>施工事例一覧 | 株式会社〇〇サービス</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; }
+
+  /* ===== HEADER（共通） ===== */
+  header {
+    background: white;
+    padding: 0 40px;
+    display: flex;
+    justify-content: space-between;
+    align-items: stretch;
+    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; padding: 14px 0; text-decoration: none; }
+  .logo-icon {
+    width: 44px; height: 44px; background: #2a9d5c; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 22px;
+  }
+  .logo-text { font-size: 18px; font-weight: 700; color: #1a5c38; }
+  .logo-text small { display: block; font-size: 11px; color: #888; font-weight: 400; }
+  nav { display: flex; align-items: center; }
+  nav a {
+    color: #555; text-decoration: none; padding: 0 18px; font-size: 14px;
+    height: 100%; display: flex; align-items: center;
+    border-bottom: 3px solid transparent; transition: all 0.2s;
+  }
+  nav a:hover, nav a.active { color: #2a9d5c; border-bottom-color: #2a9d5c; }
+  .header-right { display: flex; align-items: stretch; flex-shrink: 0; border-left: 1px solid #eee; }
+  .audience-btns { display: flex; align-items: center; gap: 8px; padding: 0 20px; border-right: 1px solid #eee; }
+  .btn-corp {
+    display: flex; align-items: center; gap: 5px; background: #1a5c38; color: white;
+    padding: 9px 18px; border-radius: 6px; font-size: 13px; font-weight: 700;
+    text-decoration: none; transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-corp:hover { background: #0d3d24; box-shadow: 0 3px 10px rgba(26,92,56,0.3); }
+  .btn-indiv {
+    display: flex; align-items: center; gap: 5px; background: white; color: #2a9d5c;
+    padding: 8px 18px; border-radius: 6px; border: 2px solid #2a9d5c;
+    font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap;
+  }
+  .btn-indiv:hover { background: #f0faf5; }
+  .header-tel { padding: 0 20px; display: flex; flex-direction: column; justify-content: center; color: #1a5c38; font-size: 17px; font-weight: 700; }
+  .header-tel small { font-size: 10px; color: #888; }
+
+  /* ===== PAGE HERO ===== */
+  .page-hero {
+    background: linear-gradient(160deg, #e8f8ee 0%, #c5edda 100%);
+    padding: 60px 40px;
+    text-align: center;
+  }
+  .breadcrumb {
+    font-size: 13px; color: #888; margin-bottom: 16px;
+  }
+  .breadcrumb a { color: #2a9d5c; text-decoration: none; }
+  .breadcrumb span { margin: 0 8px; }
+  .page-hero h1 { font-size: 36px; font-weight: 900; color: #1a3a28; margin-bottom: 12px; }
+  .page-hero p { font-size: 15px; color: #556; line-height: 1.8; }
+  .page-hero-stats {
+    display: flex; justify-content: center; gap: 40px; margin-top: 32px;
+  }
+  .ph-stat { text-align: center; }
+  .ph-stat .num { font-size: 36px; font-weight: 900; color: #2a9d5c; line-height: 1; }
+  .ph-stat .lbl { font-size: 12px; color: #778; margin-top: 4px; }
+
+  /* ===== FILTER ===== */
+  .filter-bar {
+    background: white;
+    padding: 20px 40px;
+    border-bottom: 1px solid #e8f5ee;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-wrap: wrap;
+  }
+  .filter-label { font-size: 13px; font-weight: 700; color: #555; }
+  .filter-btn {
+    padding: 7px 18px;
+    border-radius: 20px;
+    border: 1px solid #d4eedd;
+    font-size: 13px;
+    font-weight: 600;
+    color: #555;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+    text-decoration: none;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: #2a9d5c; color: white; border-color: #2a9d5c;
+  }
+
+  /* ===== CASE LIST ===== */
+  .cases-page { padding: 60px 40px; background: #f9fdf9; }
+  .cases-inner { max-width: 1000px; margin: 0 auto; }
+
+  /* ===== CASE ITEM（詳細カード） ===== */
+  .case-item {
+    background: white;
+    border-radius: 16px;
+    border: 1px solid #d4eedd;
+    box-shadow: 0 4px 20px rgba(42,157,92,0.07);
+    margin-bottom: 48px;
+    overflow: hidden;
+    scroll-margin-top: 90px;
+  }
+  .case-item-header {
+    background: linear-gradient(135deg, #1a5c38, #2a9d5c);
+    color: white;
+    padding: 32px 40px;
+    display: flex;
+    gap: 40px;
+    align-items: flex-start;
+  }
+  .case-item-header-main { flex: 1; }
+  .case-tag-row { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 14px; }
+  .case-tag {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    color: white;
+    font-size: 11px; font-weight: 700;
+    padding: 3px 10px; border-radius: 20px;
+  }
+  .case-tag.accent { background: #ffd166; color: #333; }
+  .case-item-header h2 { font-size: 24px; font-weight: 900; margin-bottom: 10px; line-height: 1.4; }
+  .case-meta { font-size: 13px; color: rgba(255,255,255,0.75); line-height: 1.9; }
+  .case-header-stats { display: flex; gap: 16px; }
+  .c-stat {
+    background: rgba(255,255,255,0.12);
+    border-radius: 10px; padding: 14px 20px; text-align: center; min-width: 90px;
+  }
+  .c-stat .val { font-size: 26px; font-weight: 900; color: #ffd166; line-height: 1; }
+  .c-stat .lbl { font-size: 11px; color: rgba(255,255,255,0.7); margin-top: 4px; }
+
+  .case-item-body { padding: 32px 40px; }
+
+  .case-detail-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 18px; margin-bottom: 28px;
+  }
+  .case-detail-card {
+    background: #f9fdf9; border-radius: 10px;
+    padding: 20px; border: 1px solid #d4eedd;
+  }
+  .case-detail-card h4 {
+    font-size: 12px; font-weight: 700; color: #2a9d5c;
+    margin-bottom: 10px; padding-bottom: 8px;
+    border-bottom: 2px solid #e0f5eb;
+  }
+  .case-detail-card ul { list-style: none; }
+  .case-detail-card ul li {
+    font-size: 13px; color: #555; padding: 5px 0;
+    border-bottom: 1px solid #efefef;
+    display: flex; align-items: flex-start; gap: 6px; line-height: 1.6;
+  }
+  .case-detail-card ul li:last-child { border-bottom: none; }
+  .case-detail-card ul li::before { content: '✓'; color: #2a9d5c; font-weight: 700; flex-shrink: 0; }
+
+  /* プロセスタイムライン */
+  .case-process { margin-bottom: 28px; }
+  .case-process h4 {
+    font-size: 15px; font-weight: 700; color: #1a3a28;
+    margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
+  }
+  .process-steps {
+    display: flex; align-items: flex-start; position: relative;
+  }
+  .process-steps::before {
+    content: ''; position: absolute; top: 20px;
+    left: 40px; right: 40px; height: 2px;
+    background: #e0f5eb; z-index: 0;
+  }
+  .process-step { flex: 1; text-align: center; position: relative; z-index: 1; }
+  .process-dot {
+    width: 40px; height: 40px; border-radius: 50%;
+    background: #2a9d5c; color: white; font-weight: 700; font-size: 13px;
+    display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 8px; box-shadow: 0 2px 8px rgba(42,157,92,0.3);
+  }
+  .process-step .time { font-size: 12px; font-weight: 700; color: #2a9d5c; margin-bottom: 3px; }
+  .process-step p { font-size: 11px; color: #777; line-height: 1.5; }
+
+  /* お客様の声 */
+  .case-voice {
+    background: #e8f8ee; border-radius: 12px;
+    padding: 24px 30px; display: flex;
+    align-items: flex-start; gap: 20px;
+    border-left: 4px solid #2a9d5c;
+  }
+  .case-voice-icon { font-size: 32px; flex-shrink: 0; }
+  .case-voice blockquote {
+    font-size: 14px; line-height: 1.9; color: #333;
+    font-style: italic; margin-bottom: 8px;
+  }
+  .case-voice cite { font-size: 12px; color: #2a9d5c; font-weight: 700; font-style: normal; }
+
+  /* ===== CTA ===== */
+  .cases-cta {
+    background: #2a9d5c; color: white; text-align: center; padding: 60px 40px;
+  }
+  .cases-cta h2 { font-size: 28px; font-weight: 900; margin-bottom: 10px; }
+  .cases-cta p { font-size: 15px; opacity: 0.85; margin-bottom: 32px; }
+  .cta-btns { display: flex; justify-content: center; gap: 16px; }
+  .btn-white {
+    background: white; color: #2a9d5c; padding: 14px 32px;
+    border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none;
+  }
+  .btn-outline-w {
+    border: 2px solid white; color: white; padding: 12px 28px;
+    border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none;
+  }
+
+  /* ===== FOOTER ===== */
+  footer {
+    background: #1a3a28; color: #7ab893;
+    padding: 32px 40px; font-size: 13px; text-align: center;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <a href="design_B_friendly.html" class="logo-wrap">
+    <div class="logo-icon">💧</div>
+    <div class="logo-text">
+      株式会社〇〇サービス
+      <small>PIPE CLEANING PROFESSIONALS</small>
+    </div>
+  </a>
+  <nav>
+    <a href="design_B_friendly.html">ホーム</a>
+    <a href="service.html">事業内容</a>
+    <a href="cases.html" class="active">施工事例</a>
+    <a href="contact.html">お問い合わせ</a>
+    <a href="company.html">会社概要</a>
+  </nav>
+  <div class="header-right">
+    <div class="audience-btns">
+      <a href="service.html" class="btn-corp">🏢 法人のお客様</a>
+      <a href="b2c.html" class="btn-indiv">🏠 個人のお客様</a>
+    </div>
+    <div class="header-tel">
+      📞 0120-XXX-XXX
+      <small>8:00〜18:00 土日祝OK</small>
+    </div>
+  </div>
+</header>
+
+<!-- ===== PAGE HERO ===== -->
+<div class="page-hero">
+  <div class="breadcrumb">
+    <a href="design_B_friendly.html">トップ</a>
+    <span>›</span>
+    施工事例
+  </div>
+  <h1>施工事例</h1>
+  <p>戸建て・マンション・飲食店・大型施設まで、実際の現場をご紹介します。<br>作業内容・当日の流れ・お客様の声を掲載しています。</p>
+  <div class="page-hero-stats">
+    <div class="ph-stat">
+      <div class="num">2,000+</div>
+      <div class="lbl">年間施工件数</div>
+    </div>
+    <div class="ph-stat">
+      <div class="num">30年</div>
+      <div class="lbl">の実績</div>
+    </div>
+    <div class="ph-stat">
+      <div class="num">98%</div>
+      <div class="lbl">顧客満足度</div>
+    </div>
+  </div>
+</div>
+
+<!-- ===== フィルター ===== -->
+<div class="filter-bar">
+  <span class="filter-label">絞り込み：</span>
+  <a href="#" class="filter-btn active">すべて</a>
+  <a href="#" class="filter-btn">戸建て</a>
+  <a href="#" class="filter-btn">マンション</a>
+  <a href="#" class="filter-btn">飲食店</a>
+  <a href="#" class="filter-btn">ビル・施設</a>
+  <a href="#" class="filter-btn">緊急対応</a>
+  <a href="#" class="filter-btn">貯水槽</a>
+</div>
+
+<!-- ===== 施工事例リスト ===== -->
+<div class="cases-page">
+  <div class="cases-inner">
+
+    <!-- ===== 事例001 ===== -->
+    <div class="case-item" id="case-001">
+      <div class="case-item-header">
+        <div class="case-item-header-main">
+          <div class="case-tag-row">
+            <span class="case-tag accent">NEW</span>
+            <span class="case-tag">戸建て</span>
+            <span class="case-tag">排水管高圧洗浄</span>
+            <span class="case-tag">全館清掃</span>
+            <span class="case-tag">東京都中野区</span>
+          </div>
+          <h2>山下様邸 排水管全館清掃</h2>
+          <p class="case-meta">
+            📅 施工日：2026年3月4日（水）　⏱ 作業時間：約4時間（8:30〜12:30）<br>
+            📍 施工場所：東京都中野区鷺宮　　👷 依頼元：大成建設ハウジング株式会社
+          </p>
+        </div>
+        <div class="case-header-stats">
+          <div class="c-stat">
+            <div class="val">4h</div>
+            <div class="lbl">作業時間</div>
+          </div>
+          <div class="c-stat">
+            <div class="val">6箇所</div>
+            <div class="lbl">清掃箇所</div>
+          </div>
+          <div class="c-stat">
+            <div class="val">完全</div>
+            <div class="lbl">詰まり解消</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-item-body">
+        <p style="font-size:15px; line-height:1.9; color:#444; margin-bottom:24px;">
+          2階建て戸建て住宅の排水管を全館にわたって高圧洗浄。1階・2階の洗面台・台所・浴室・洗濯機パン・屋外排水管を「降ろし仕様（上から下への高圧洗浄）」で施工し、経年蓄積した油脂・スケールを完全除去しました。
+        </p>
+
+        <div class="case-detail-grid">
+          <div class="case-detail-card">
+            <h4>🔧 清掃した箇所</h4>
+            <ul>
+              <li>1階・2階 洗面台</li>
+              <li>1階・2階 台所（流し台）</li>
+              <li>浴室排水</li>
+              <li>洗濯機パン排水</li>
+              <li>屋外排水管</li>
+            </ul>
+          </div>
+          <div class="case-detail-card">
+            <h4>⚙️ 施工方法・条件</h4>
+            <ul>
+              <li>高圧洗浄「降ろし仕様」（上流→下流の順で施工）</li>
+              <li>到着後まず現地の水栓位置・機材スペースを確認</li>
+              <li>図面に清掃範囲・異常箇所を記録</li>
+              <li>施工完了後に報告書を提出</li>
+            </ul>
+          </div>
+          <div class="case-detail-card">
+            <h4>📋 現場のポイント</h4>
+            <ul>
+              <li>配管の系統（上流・下流）を把握し作業順序を決定</li>
+              <li>駐車場は近隣の有料パーキングを使用</li>
+              <li>現地到着後すぐに担当者へ連絡・確認を実施</li>
+              <li>建物全体をスムーズに清掃完了</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="case-process">
+          <h4>📍 当日の作業の流れ</h4>
+          <div class="process-steps">
+            <div class="process-step">
+              <div class="process-dot">1</div>
+              <div class="time">8:30</div>
+              <p>現地到着<br>担当者へ連絡</p>
+            </div>
+            <div class="process-step">
+              <div class="process-dot">2</div>
+              <div class="time">8:45〜</div>
+              <p>水栓・スペース確認<br>機材セッティング</p>
+            </div>
+            <div class="process-step">
+              <div class="process-dot">3</div>
+              <div class="time">9:00〜</div>
+              <p>2階から順に<br>高圧洗浄開始</p>
+            </div>
+            <div class="process-step">
+              <div class="process-dot">4</div>
+              <div class="time">11:00〜</div>
+              <p>1階・屋外<br>排水管を洗浄</p>
+            </div>
+            <div class="process-step">
+              <div class="process-dot">5</div>
+              <div class="time">12:30</div>
+              <p>作業完了<br>図面・報告書提出</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="case-voice">
+          <div class="case-voice-icon">💬</div>
+          <div>
+            <blockquote>「以前から台所や洗面台の流れが悪くなっていたのですが、作業後はどこも水はけが全く別物になりました。スタッフの方が到着後すぐに状況を確認してくれて、作業の流れも丁寧に説明してくれたので安心して任せられました。図面に記録してもらえるのもとても助かります。また定期的にお願いしたいと思います。」</blockquote>
+            <cite>東京都中野区 / 山下様（戸建て住宅オーナー）</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 事例002 ===== -->
+    <div class="case-item" id="case-002">
+      <div class="case-item-header">
+        <div class="case-item-header-main">
+          <div class="case-tag-row">
+            <span class="case-tag">マンション</span>
+            <span class="case-tag">定期清掃</span>
+            <span class="case-tag">年間契約</span>
+            <span class="case-tag">東京都世田谷区</span>
+          </div>
+          <h2>100世帯マンション 年2回定期排水管清掃</h2>
+          <p class="case-meta">
+            📅 施工：毎年春・秋（年2回）　⏱ 作業時間：各回2日間<br>
+            📍 施工場所：東京都世田谷区　　👷 依頼元：〇〇マンション管理組合
+          </p>
+        </div>
+        <div class="case-header-stats">
+          <div class="c-stat">
+            <div class="val">100戸</div>
+            <div class="lbl">規模</div>
+          </div>
+          <div class="c-stat">
+            <div class="val">年2回</div>
+            <div class="lbl">定期清掃</div>
+          </div>
+          <div class="c-stat">
+            <div class="val">3年目</div>
+            <div class="lbl">継続中</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-item-body">
+        <p style="font-size:15px; line-height:1.9; color:#444; margin-bottom:24px;">
+          築18年・100世帯のマンションで年2回の定期清掃を担当。管理組合様との年間契約により、春（4月）と秋（10月）に全戸の排水管高圧洗浄を実施。作業報告書・居住者向けお知らせ文書の作成も一括でサポートしています。
+        </p>
+
+        <div class="case-detail-grid">
+          <div class="case-detail-card">
+            <h4>🔧 清掃した箇所</h4>
+            <ul>
+              <li>全100戸 台所排水管</li>
+              <li>全100戸 浴室・洗面台排水</li>
+              <li>共用部縦管・横管</li>
+              <li>屋外マンホール周辺</li>
+            </ul>
+          </div>
+          <div class="case-detail-card">
+            <h4>⚙️ サービス内容</h4>
+            <ul>
+              <li>全戸高圧洗浄（年2回）</li>
+              <li>管内カメラ点検（年1回）</li>
+              <li>作業報告書・写真付き提出</li>
+              <li>居住者向けお知らせ文書作成</li>
+              <li>緊急時優先対応付き</li>
+            </ul>
+          </div>
+          <div class="case-detail-card">
+            <h4>📋 ご依頼の背景</h4>
+            <ul>
+              <li>以前は年1回のみで悪臭・詰まりが頻発</li>
+              <li>年2回契約に変更後はトラブル件数がほぼゼロに</li>
+              <li>書類対応もまとめてお任せで管理組合の負担が激減</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="case-voice">
+          <div class="case-voice-icon">💬</div>
+          <div>
+            <blockquote>「以前の業者は作業だけして報告書もなく、居住者からのクレームも多かったのですが、〇〇サービスさんに変えてから全く別物です。事前案内から報告書まで全部やってくれるので管理組合としてもとても助かっています。来年も必ずお願いします。」</blockquote>
+            <cite>東京都世田谷区 / 〇〇マンション管理組合 理事長 様</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 事例003 ===== -->
+    <div class="case-item" id="case-003">
+      <div class="case-item-header">
+        <div class="case-item-header-main">
+          <div class="case-tag-row">
+            <span class="case-tag accent">緊急対応</span>
+            <span class="case-tag">飲食店</span>
+            <span class="case-tag">詰まり修理</span>
+            <span class="case-tag">東京都新宿区</span>
+          </div>
+          <h2>居酒屋 厨房排水管 緊急詰まり対応</h2>
+          <p class="case-meta">
+            📅 施工日：営業中の平日夕方　⏱ 到着まで：連絡から約90分<br>
+            📍 施工場所：東京都新宿区　　👷 依頼元：飲食店オーナー（直接依頼）
+          </p>
+        </div>
+        <div class="case-header-stats">
+          <div class="c-stat">
+            <div class="val">90分</div>
+            <div class="lbl">連絡〜到着</div>
+          </div>
+          <div class="c-stat">
+            <div class="val">2h</div>
+            <div class="lbl">作業時間</div>
+          </div>
+          <div class="c-stat">
+            <div class="val">閉店前</div>
+            <div class="lbl">に解決</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-item-body">
+        <p style="font-size:15px; line-height:1.9; color:#444; margin-bottom:24px;">
+          夕方の営業開始直前に厨房の排水が完全に詰まり、オーナー様から緊急連絡。90分以内に到着し、グリストラップ〜排水本管の油脂詰まりを高圧洗浄で解消。閉店前には通常営業を再開できました。
+        </p>
+
+        <div class="case-detail-grid">
+          <div class="case-detail-card">
+            <h4>🔧 原因と対処</h4>
+            <ul>
+              <li>グリストラップへの油脂・食材カスの蓄積</li>
+              <li>排水本管への固形詰まり</li>
+              <li>高圧洗浄で全箇所を洗浄・完全疎通確認</li>
+              <li>グリストラップ清掃もあわせて実施</li>
+            </ul>
+          </div>
+          <div class="case-detail-card">
+            <h4>⚙️ 実施した作業</h4>
+            <ul>
+              <li>厨房排水管 高圧洗浄</li>
+              <li>グリストラップ清掃</li>
+              <li>疎通確認テスト</li>
+              <li>定期清掃の提案・見積もり</li>
+            </ul>
+          </div>
+          <div class="case-detail-card">
+            <h4>📋 再発防止アドバイス</h4>
+            <ul>
+              <li>飲食店は月1〜2回のグリストラップ清掃を推奨</li>
+              <li>排水管は3〜6ヶ月ごとの高圧洗浄が目安</li>
+              <li>定期契約で緊急時の優先対応が可能に</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="case-voice">
+          <div class="case-voice-icon">💬</div>
+          <div>
+            <blockquote>「営業直前に排水が詰まって真っ青になっていたところ、電話してからあっという間に来てくれて本当に助かりました。作業も素早く、閉店前には全部直っていました。その後は定期清掃も月1回お願いしていますが、それ以来一度もトラブルがありません。」</blockquote>
+            <cite>東京都新宿区 / 居酒屋オーナー 様</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== 事例004 ===== -->
+    <div class="case-item" id="case-004">
+      <div class="case-item-header">
+        <div class="case-item-header-main">
+          <div class="case-tag-row">
+            <span class="case-tag">大型ビル</span>
+            <span class="case-tag">貯水槽清掃</span>
+            <span class="case-tag">法定対応</span>
+            <span class="case-tag">東京都港区</span>
+          </div>
+          <h2>地上12階 オフィスビル 貯水槽法定清掃</h2>
+          <p class="case-meta">
+            📅 施工日：年1回（法定清掃）　⏱ 作業時間：1日<br>
+            📍 施工場所：東京都港区　　👷 依頼元：〇〇ビル管理株式会社
+          </p>
+        </div>
+        <div class="case-header-stats">
+          <div class="c-stat">
+            <div class="val">50t</div>
+            <div class="lbl">貯水槽規模</div>
+          </div>
+          <div class="c-stat">
+            <div class="val">書類</div>
+            <div class="lbl">一括対応</div>
+          </div>
+          <div class="c-stat">
+            <div class="val">5年目</div>
+            <div class="lbl">継続中</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="case-item-body">
+        <p style="font-size:15px; line-height:1.9; color:#444; margin-bottom:24px;">
+          地上12階建てオフィスビルの貯水槽清掃を5年連続で担当。法定清掃・水質検査・行政への届出書類作成まで一括対応。ビル管理会社様の事務負担を最小化しながら、法令遵守と衛生基準の維持をサポートしています。
+        </p>
+
+        <div class="case-detail-grid">
+          <div class="case-detail-card">
+            <h4>🔧 作業内容</h4>
+            <ul>
+              <li>受水槽・高架水槽の内部清掃</li>
+              <li>槽内壁面・底面の消毒・洗浄</li>
+              <li>水質検査（11項目）</li>
+              <li>清掃後の残留塩素確認</li>
+            </ul>
+          </div>
+          <div class="case-detail-card">
+            <h4>⚙️ 書類・行政対応</h4>
+            <ul>
+              <li>清掃記録書の作成・提出</li>
+              <li>水質検査結果報告書</li>
+              <li>行政（保健所）への届出代行</li>
+              <li>次回清掃スケジュールの提案</li>
+            </ul>
+          </div>
+          <div class="case-detail-card">
+            <h4>📋 継続依頼の理由</h4>
+            <ul>
+              <li>書類対応まで全部任せられる安心感</li>
+              <li>作業報告が写真付きで丁寧</li>
+              <li>5年間トラブルゼロの実績</li>
+              <li>急な追加点検にも迅速対応</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="case-voice">
+          <div class="case-voice-icon">💬</div>
+          <div>
+            <blockquote>「貯水槽の法定清掃は毎年義務なのですが、以前は書類の準備が大変でした。〇〇サービスさんは清掃から水質検査・行政への届出まで全部まとめてやってくれるので、こちらは日程を決めるだけ。5年間ずっとお願いしています。」</blockquote>
+            <cite>東京都港区 / 〇〇ビル管理株式会社 様</cite>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div><!-- /.cases-inner -->
+</div><!-- /.cases-page -->
+
+<!-- ===== CTA ===== -->
+<section class="cases-cta">
+  <h2>お気軽にご相談・お見積もりください</h2>
+  <p>法人様の定期保守契約から、個人宅の緊急対応まで丁寧にご対応いたします。</p>
+  <div class="cta-btns">
+    <a href="#" class="btn-white">📞 0120-XXX-XXX</a>
+    <a href="#" class="btn-outline-w">Webから無料見積依頼</a>
+  </div>
+</section>
+
+<footer>
+  <p>株式会社〇〇サービス｜〒XXX-XXXX 東京都〇〇区〇〇 1-2-3｜TEL: 0120-XXX-XXX</p>
+  <p style="margin-top:8px;">© 2024 〇〇Service Co., Ltd. All Rights Reserved.</p>
+</footer>
+
+</body>
+</html>
