@@ -3,125 +3,282 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>会社概要｜株式会社〇〇サービス</title>
+<title>会社概要｜株式会社ミズノミライ</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; }
 
-  /* ===== HEADER ===== */
-  header {
-    background: white; padding: 0 40px;
-    display: flex; justify-content: space-between; align-items: stretch;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08); position: sticky; top: 0; z-index: 100;
-  }
-  .logo-wrap { display: flex; align-items: center; gap: 12px; padding: 14px 0; text-decoration: none; }
-  .logo-icon { width: 44px; height: 44px; background: #2a9d5c; border-radius: 50%; display: flex; align-items: center; justify-content: center; color: white; font-size: 22px; }
-  .logo-text { font-size: 18px; font-weight: 700; color: #1a5c38; }
-  .logo-text small { display: block; font-size: 11px; color: #888; font-weight: 400; }
-  nav { display: flex; align-items: center; }
-  nav a { color: #555; text-decoration: none; padding: 0 16px; font-size: 14px; height: 100%; display: flex; align-items: center; border-bottom: 3px solid transparent; transition: all 0.2s; }
-  nav a:hover, nav a.active { color: #2a9d5c; border-bottom-color: #2a9d5c; }
-  .header-right { display: flex; align-items: stretch; flex-shrink: 0; border-left: 1px solid #eee; }
-  .audience-btns { display: flex; align-items: center; gap: 8px; padding: 0 20px; border-right: 1px solid #eee; }
-  .btn-corp { display: flex; align-items: center; gap: 5px; background: #1a5c38; color: white; padding: 9px 18px; border-radius: 6px; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
-  .btn-corp:hover { background: #0d3d24; box-shadow: 0 3px 10px rgba(26,92,56,0.3); }
-  .btn-indiv { display: flex; align-items: center; gap: 5px; background: white; color: #2a9d5c; padding: 8px 18px; border-radius: 6px; border: 2px solid #2a9d5c; font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap; }
-  .btn-indiv:hover { background: #f0faf5; }
-  .header-tel { padding: 0 20px; display: flex; flex-direction: column; justify-content: center; color: #1a5c38; font-size: 17px; font-weight: 700; }
-  .header-tel small { font-size: 10px; color: #888; }
+/* ===== CSS Variables ===== */
+:root {
+  --dark:    #040c18;
+  --navy:    #0d1f3c;
+  --blue:    #1a4a82;
+  --accent:  #2a7dd4;
+  --sky:     #c8dff5;
+  --light:   #e6f0fa;
+  --white:   #ffffff;
+  --gray:    #f4f6f8;
+  --text:    #0d1f3c;
+  --tmid:    #445566;
+  --tlight:  #8090a8;
+  --border:  rgba(42,125,212,0.16);
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background-color: #ffffff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, '游ゴシック', 'Yu Gothic',
+               'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+}
+
+
+
+/* ===== HEADER ===== */
+header {
+  background: #ffffff;
+  padding: 0 36px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 0 rgba(42,125,212,0.10), 0 2px 16px rgba(4,8,24,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: 72px;
+}
+.logo-wrap { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+.site-logo { height: 62px; width: auto; display: block; object-fit: contain; background: transparent; }
+nav { display: flex; align-items: center; flex: 1; justify-content: center; }
+nav a {
+  color: var(--tmid);
+  text-decoration: none;
+  padding: 0 15px;
+  font-size: 14px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+nav a:hover, nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.header-right {
+  display: flex; align-items: center;
+  flex-shrink: 0;
+  border-left: 1px solid rgba(42,125,212,0.12);
+  padding-left: 20px;
+}
+.audience-btns { display: flex; align-items: center; gap: 8px; margin-right: 20px; }
+.btn-corp {
+  background: var(--navy); color: white;
+  padding: 7px 14px; border-radius: 4px;
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  transition: background 0.2s, transform 0.15s; white-space: nowrap; letter-spacing: 0.02em;
+}
+.btn-corp:hover { background: #060e20; transform: translateY(-1px); }
+.btn-indiv {
+  background: transparent; color: var(--navy);
+  padding: 6px 14px; border-radius: 4px;
+  border: 1.5px solid var(--navy);
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  transition: all 0.2s; white-space: nowrap;
+}
+.btn-indiv:hover { background: var(--light); transform: translateY(-1px); }
+.header-tel {
+  display: flex; flex-direction: column; justify-content: center;
+  color: var(--navy); font-size: 15px; font-weight: 700;
+  letter-spacing: 0.02em; line-height: 1.3; white-space: nowrap;
+}
+.header-tel small { font-size: 10px; color: var(--tlight); font-weight: 400; white-space: nowrap; }
+
+
 
   /* ===== PAGE HERO ===== */
-  .page-hero { background: linear-gradient(160deg, #e8f8ee 0%, #c5edda 100%); padding: 64px 40px 72px; text-align: center; }
+  .page-hero { background-image: linear-gradient(rgba(238,247,255,0.88), rgba(215,235,252,0.90)), url('images/about-bg.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;; padding: 64px 40px 72px; text-align: center; }
   .breadcrumb { font-size: 13px; color: #888; margin-bottom: 16px; }
-  .breadcrumb a { color: #2a9d5c; text-decoration: none; }
+  .breadcrumb a { color: #2a7dd4; text-decoration: none; }
   .breadcrumb span { margin: 0 8px; }
-  .page-hero h1 { font-size: 36px; font-weight: 900; color: #1a3a28; margin-bottom: 14px; }
+  .page-hero h1 { font-size: 36px; font-weight: 900; color: #0d1f3c; margin-bottom: 14px; }
   .page-hero p { font-size: 15px; color: #556; line-height: 1.9; }
 
   /* ===== SECTION ===== */
   section { padding: 72px 40px; }
   .section-header { text-align: center; margin-bottom: 48px; }
-  .section-tag { display: inline-block; background: #e0f5eb; color: #2a9d5c; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 12px; letter-spacing: 0.1em; }
-  .section-header h2 { font-size: 28px; font-weight: 900; color: #1a3a28; }
+  .section-tag { display: inline-block; background: #e6f0fa; color: #2a7dd4; font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 20px; margin-bottom: 12px; letter-spacing: 0.1em; }
+  .section-header h2 { font-size: 28px; font-weight: 900; color: #0d1f3c; }
 
   /* ===== COMPANY TABLE ===== */
   .company-wrap { max-width: 800px; margin: 0 auto; }
   .company-table { width: 100%; border-collapse: collapse; background: white; border-radius: 12px; overflow: hidden; box-shadow: 0 2px 16px rgba(0,0,0,0.07); }
-  .company-table th { background: #f0faf5; color: #1a5c38; font-size: 14px; font-weight: 700; padding: 18px 24px; text-align: left; width: 180px; border-bottom: 1px solid #e0f5eb; vertical-align: top; }
+  .company-table th { background: #f4f7fb; color: #1a4a82; font-size: 14px; font-weight: 700; padding: 18px 24px; text-align: left; width: 180px; border-bottom: 1px solid #e6f0fa; vertical-align: top; }
   .company-table td { padding: 18px 24px; font-size: 14px; color: #444; border-bottom: 1px solid #f0f0f0; line-height: 1.8; }
   .company-table tr:last-child th, .company-table tr:last-child td { border-bottom: none; }
   .license-list { list-style: none; }
   .license-list li { padding: 3px 0; display: flex; align-items: center; gap: 8px; }
-  .license-list li::before { content: '✓'; color: #2a9d5c; font-weight: 700; }
+  .license-list li::before { content: '✓'; color: #2a7dd4; font-weight: 700; }
 
   /* ===== MAP PLACEHOLDER ===== */
-  .map-section { background: #f9fdf9; }
-  .map-placeholder { max-width: 800px; margin: 0 auto; background: #e0f5eb; border-radius: 12px; height: 300px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; color: #2a9d5c; }
+  .map-section { background: #f4f8fd; }
+  .map-placeholder { max-width: 800px; margin: 0 auto; background: #e6f0fa; border-radius: 12px; height: 300px; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 12px; color: #2a7dd4; }
   .map-placeholder span { font-size: 48px; }
   .map-placeholder p { font-size: 14px; font-weight: 700; }
 
   /* ===== MESSAGE ===== */
   .message-section { background: white; }
   .message-wrap { max-width: 720px; margin: 0 auto; }
-  .message-card { background: #f9fdf9; border-radius: 16px; padding: 40px; border-left: 5px solid #2a9d5c; }
-  .message-card h3 { font-size: 20px; font-weight: 900; color: #1a3a28; margin-bottom: 16px; }
+  .message-card { background: #f4f8fd; border-radius: 16px; padding: 40px; border-left: 5px solid #2a7dd4; }
+  .message-card h3 { font-size: 20px; font-weight: 900; color: #0d1f3c; margin-bottom: 16px; }
   .message-card p { font-size: 15px; color: #555; line-height: 2; }
   .message-from { margin-top: 20px; font-size: 13px; color: #888; text-align: right; }
 
   /* ===== CTA ===== */
-  .cta { background: #2a9d5c; color: white; text-align: center; padding: 60px 40px; }
+  .cta { background: #2a7dd4; color: white; text-align: center; padding: 60px 40px; }
   .cta h2 { font-size: 26px; font-weight: 900; margin-bottom: 12px; }
   .cta p { font-size: 15px; opacity: 0.85; margin-bottom: 28px; }
-  .btn-white { display: inline-flex; align-items: center; gap: 8px; background: white; color: #2a9d5c; padding: 14px 32px; border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none; transition: all 0.2s; }
+  .btn-white { display: inline-flex; align-items: center; gap: 8px; background: white; color: #2a7dd4; padding: 14px 32px; border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none; transition: all 0.2s; }
   .btn-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
 
   /* ===== FOOTER ===== */
-  footer { background: #1a3a28; color: #7ab893; padding: 32px 40px; font-size: 13px; text-align: center; }
-  footer a { color: #7ab893; text-decoration: none; margin: 0 12px; }
+  footer { background: #0d1f3c; color: rgba(200,223,245,0.68); padding: 32px 40px; font-size: 13px; text-align: center; }
+  footer a { color: rgba(200,223,245,0.68); text-decoration: none; margin: 0 12px; }
   footer a:hover { color: white; }
-  .footer-copy { margin-top: 12px; color: #4a7a60; font-size: 12px; }
+  .footer-copy { margin-top: 12px; color: rgba(200,223,245,0.42); font-size: 12px; }
+
+
+
+
+
+/* ===== FOOTER ===== */
+footer {
+  background: rgba(4,8,20,0.97) !important;
+  color: rgba(200,223,245,0.68) !important;
+  padding: 36px 40px; font-size: 13px; text-align: center;
+  border-top: 1px solid rgba(42,125,212,0.15);
+  position: relative; z-index: 0;
+}
+footer a { color: rgba(200,223,245,0.68) !important; text-decoration: none; margin: 0 12px; }
+footer a:hover { color: #c8dff5 !important; }
+.footer-copy { margin-top: 12px; color: rgba(200,223,245,0.42) !important; font-size: 12px; }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  header { padding: 0 16px !important; height: 58px !important; }
+  .site-logo { height: 52px !important; }
+  nav { display: none !important; }
+  .header-right { border-left: none !important; padding-left: 8px !important; }
+  .audience-btns { margin-right: 8px !important; gap: 6px !important; }
+  .btn-corp, .btn-indiv { padding: 6px 10px !important; font-size: 12px !important; }
+  .header-tel { font-size: 13px !important; }
+  section { padding: 48px 20px; }
+}
+
+
+  /* ===== FOOTER SITEMAP ===== */
+  .footer-sitemap {
+    background: #f5f2ea;
+    padding: 56px 40px 40px;
+    border-top: 1px solid #e8e2d6;
+  }
+  .footer-sitemap-inner {
+    max-width: 1120px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+  }
+  .footer-sitemap h3 {
+    font-size: 13px; font-weight: 700; color: #9a7428;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid #e0d8c8;
+  }
+  .footer-sitemap h3.sub-head {
+    font-size: 12px; color: #b58a32;
+    margin-top: 16px; margin-bottom: 8px;
+    border-bottom: none; padding-bottom: 0;
+  }
+  .footer-sitemap ul { list-style: none; padding: 0; margin: 0; }
+  .footer-sitemap li { margin-bottom: 9px; }
+  .footer-sitemap a {
+    color: #333; text-decoration: none;
+    font-size: 13px; line-height: 1.6;
+    display: inline-flex; align-items: baseline;
+  }
+  .footer-sitemap a::before {
+    content: "\203A";
+    color: #b58a32; margin-right: 6px; font-size: 14px; line-height: 1;
+  }
+  .footer-sitemap a:hover { color: #2a7dd4; }
+  .footer-copy-bar {
+    background: #0d1f3c;
+    color: rgba(200,223,245,0.65);
+    padding: 20px 40px;
+    font-size: 12px; text-align: center;
+  }
+  .footer-copy-bar a { color: rgba(200,223,245,0.65); text-decoration: none; margin: 0 10px; }
+  .footer-copy-bar a:hover { color: #c8dff5; }
+  @media (max-width: 900px) {
+    .footer-sitemap-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .footer-sitemap { padding: 40px 20px 28px; }
+    .footer-sitemap-inner { grid-template-columns: 1fr; gap: 24px; }
+    .footer-copy-bar { padding: 16px 20px; }
+  }
+
 </style>
 </head>
 <body>
 
 <header>
-  <a href="design_B_friendly.html" class="logo-wrap">
-    <div class="logo-icon">💧</div>
-    <div class="logo-text">株式会社〇〇サービス<small>PIPE CLEANING PROFESSIONALS</small></div>
+  <a href="index.html" class="logo-wrap">
+    <img src="images/logo-mizunomirai-header.png" alt="株式会社ミズノミライ" class="site-logo" onerror="this.src='images/logo-mizunomirai.png'">
   </a>
   <nav>
-    <a href="design_B_friendly.html">ホーム</a>
+    <a href="index.html">ホーム</a>
     <a href="service.html">事業内容</a>
     <a href="cases.html">施工事例</a>
-    <a href="contact.html">お問い合わせ</a>
     <a href="company.html" class="active">会社概要</a>
+    <a href="contact.html">お問い合わせ</a>
   </nav>
   <div class="header-right">
     <div class="audience-btns">
-      <a href="service.html" class="btn-corp">🏢 法人のお客様</a>
-      <a href="b2c.html" class="btn-indiv">🏠 個人のお客様</a>
+      <a href="service.html" class="btn-corp">法人のお客様</a>
+      <a href="b2c.html" class="btn-indiv">個人のお客様</a>
     </div>
-    <div class="header-tel">📞 0120-XXX-XXX<small>8:00〜18:00 土日祝OK</small></div>
+    <div class="header-tel">
+      080-2157-1605
+      <small>365日24時間受付</small>
+    </div>
   </div>
 </header>
 
 <div class="page-hero">
-  <div class="breadcrumb"><a href="design_B_friendly.html">ホーム</a><span>＞</span>会社概要</div>
+  <div class="breadcrumb"><a href="index.html">ホーム</a><span>＞</span>会社概要</div>
   <h1>会社概要</h1>
-  <p>地域に根差した配管清掃のプロフェッショナルとして、<br>30年以上にわたりお客様の安心・安全を支えてきました。</p>
+  <p>排水管清掃・カメラ調査・定期清掃・緊急対応。<br>法人・個人のあらゆる配管のご相談をお受けします。</p>
 </div>
 
-<!-- 代表メッセージ -->
+<!-- サービス概要 -->
 <section class="message-section">
   <div class="section-header">
-    <div class="section-tag">MESSAGE</div>
-    <h2>代表メッセージ</h2>
+    <div class="section-tag">ABOUT</div>
+    <h2>株式会社ミズノミライについて</h2>
   </div>
   <div class="message-wrap">
+    <div style="margin-bottom:28px; border-radius:12px; overflow:hidden; height:220px; background:#e0f5eb;">
+      <img src="images/about-maintenance.jpeg" alt="株式会社ミズノミライ 施工イメージ" style="width:100%;height:100%;object-fit:cover;" onerror="this.style.display='none'">
+    </div>
     <div class="message-card">
-      <h3>「見えない配管を、誠実に。」</h3>
-      <p>配管は建物の「血管」です。目に見えないからこそ、見えないところまで誠実に、丁寧に施工することが私たちの使命だと考えています。<br><br>創業以来、「安心・安全・明瞭」をモットーに、マンション・ビル・工場・一般家庭まで幅広いお客様にご利用いただいてきました。これからも地域の皆様の生活環境を守るため、スタッフ一同、真摯に取り組んでまいります。</p>
-      <p class="message-from">代表取締役　〇〇 〇〇</p>
+      <h3>大手現場で培った技術を、より身近な価格で。</h3>
+      <p>株式会社ミズノミライは、排水管清掃・高圧洗浄・カメラ調査・定期清掃・緊急対応を行う、配管清掃の専門会社です。</p>
+      <p style="margin-top:16px;">私たちはこれまで、大手配管清掃会社の下請けとして、アパート・マンション・ビル・商業施設など、さまざまな現場で施工経験を積んできました。現場で求められるスピード、確実な作業、丁寧な報告を大切にしながら、排水トラブルの解決に取り組んでいます。</p>
+      <p style="margin-top:16px;">また、現場で培った技術を活かしながら、できる限り中間コストを抑えることで、管理会社様・オーナー様・店舗様にもご相談いただきやすい料金での対応を目指しています。</p>
+      <p style="margin-top:16px;">排水管の詰まりや悪臭、飲食店厨房の油汚れ、集合住宅の定期清掃、個人宅の急な排水トラブルまで、幅広くご相談ください。価格だけでなく、確かな技術と誠実な対応で、建物の水まわりを支えます。</p>
     </div>
   </div>
 </section>
@@ -134,28 +291,13 @@
   </div>
   <div class="company-wrap">
     <table class="company-table">
-      <tr><th>会社名</th><td>株式会社〇〇サービス</td></tr>
-      <tr><th>設立</th><td>〇〇〇〇年〇月（創業：1994年）</td></tr>
-      <tr><th>代表者</th><td>代表取締役　〇〇 〇〇</td></tr>
-      <tr><th>資本金</th><td>〇〇〇万円</td></tr>
-      <tr><th>従業員数</th><td>〇〇名（うち有資格者：〇名）</td></tr>
-      <tr><th>所在地</th><td>〒XXX-XXXX<br>東京都〇〇区〇〇1-2-3　〇〇ビル2F</td></tr>
-      <tr><th>電話番号</th><td>0120-XXX-XXX（8:00〜18:00 土日祝OK）</td></tr>
-      <tr><th>メール</th><td>info@xxxx-service.co.jp</td></tr>
-      <tr><th>事業内容</th><td>排水管清掃・高圧洗浄 / 給水管洗浄・更生 / 貯水槽・受水槽清掃 / グリストラップ清掃 / 緊急排水対応</td></tr>
-      <tr>
-        <th>保有資格・許可</th>
-        <td>
-          <ul class="license-list">
-            <li>建築物環境衛生管理技術者（ビル管理士）</li>
-            <li>一般廃棄物収集運搬業許可</li>
-            <li>浄化槽清掃業許可</li>
-            <li>管工事業（建設業許可）</li>
-            <li>特定化学物質及び四アルキル鉛等作業主任者</li>
-          </ul>
-        </td>
-      </tr>
-      <tr><th>取引実績</th><td>マンション管理会社・不動産会社・ビル管理会社・食品工場・飲食チェーン・官公庁 他</td></tr>
+      <tr><th>会社名</th><td>株式会社ミズノミライ</td></tr>
+      <tr><th>所在地</th><td>〒154-0001<br>東京都世田谷区池尻3-18-16-302</td></tr>
+      <tr><th>電話番号</th><td><a href="tel:08021571605" style="color:#1a4a82; font-weight:700;">080-2157-1605</a></td></tr>
+      <tr><th>メール</th><td><a href="mailto:mizunomirai37@gmail.com" style="color:#1a4a82;">mizunomirai37@gmail.com</a></td></tr>
+      <tr><th>受付時間</th><td>365日24時間受付<br><span style="font-size:13px; color:#888;">通常対応 9:00〜18:00 ／ 夜間緊急対応 18:00〜翌9:00</span></td></tr>
+      <tr><th>対応エリア</th><td>全国対応<br><span style="font-size:13px; color:#888;">※ 対応が難しい地域については、現場近くの提携配管業者と連携して対応します</span></td></tr>
+      <tr><th>事業内容</th><td>排水管清掃・カメラ調査・定期清掃・緊急対応</td></tr>
     </table>
   </div>
 </section>
@@ -167,9 +309,9 @@
     <h2>アクセス</h2>
   </div>
   <div class="map-placeholder">
-    <span>🗺️</span>
+    <span></span>
     <p>Googleマップ埋め込み予定エリア</p>
-    <small style="color:#666;">〒XXX-XXXX 東京都〇〇区〇〇1-2-3 ／ 最寄り駅：〇〇駅 徒歩5分</small>
+    <p style="font-size:14px; color:#666; margin-top:8px;">〒154-0001 東京都世田谷区池尻3-18-16-302</p>
   </div>
 </section>
 
@@ -177,19 +319,63 @@
 <section class="cta">
   <h2>ご依頼・ご相談はこちら</h2>
   <p>まずはお気軽にお問い合わせください。見積もり・出張費は無料です。</p>
-  <a href="contact.html" class="btn-white">📩 お問い合わせフォームへ</a>
+  <a href="contact.html" class="btn-white"> お問い合わせフォームへ</a>
 </section>
 
-<footer>
-  <div>
-    <a href="design_B_friendly.html">ホーム</a>
-    <a href="service.html">事業内容</a>
-    <a href="cases.html">施工事例</a>
-    <a href="contact.html">お問い合わせ</a>
-    <a href="company.html">会社概要</a>
+<!-- ===== NEW FOOTER ===== -->
+<div class="footer-sitemap">
+  <div class="footer-sitemap-inner">
+    <div>
+      <h3>サイトマップ</h3>
+      <ul>
+        <li><a href="index.html">TOP</a></li>
+        <li><a href="service.html">定期清掃</a></li>
+      </ul>
+      <h3 class="sub-head">建物から探す</h3>
+      <ul>
+        <li><a href="index.html#building">ビル清掃</a></li>
+        <li><a href="index.html#building">オフィス清掃</a></li>
+        <li><a href="index.html#building">店舗・テナント清掃</a></li>
+        <li><a href="index.html#building">マンション・アパート清掃</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>清掃内容から探す</h3>
+      <ul>
+        <li><a href="service.html">排水管清掃</a></li>
+        <li><a href="service.html">カメラ調査</a></li>
+        <li><a href="service.html">アパート・マンション・ビル定期清掃</a></li>
+        <li><a href="service.html">定期清掃契約</a></li>
+        <li><a href="service.html">緊急排水トラブル対応</a></li>
+        <li><a href="service.html">個人宅の排水トラブル対応</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>ミズノミライについて</h3>
+      <ul>
+        <li><a href="service.html#points">選ばれる理由</a></li>
+        <li><a href="service.html#flow">サービスの流れ</a></li>
+        <li><a href="service.html#pricing">料金案内</a></li>
+        <li><a href="cases.html">施工事例</a></li>
+        <li><a href="blog.html">お役立ちコラム</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>会社情報・お問い合わせ</h3>
+      <ul>
+        <li><a href="company.html">会社概要</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+        <li><a href="contact.html">お見積り依頼</a></li>
+        <li><a href="service.html">法人のお客様</a></li>
+        <li><a href="b2c.html">個人のお客様</a></li>
+      </ul>
+    </div>
   </div>
-  <div class="footer-copy">© 2024 株式会社〇〇サービス. All rights reserved.</div>
-</footer>
+</div>
+<div class="footer-copy-bar">
+  <p>株式会社ミズノミライ｜〒154-0001 東京都世田谷区池尻3-18-16-302｜TEL: 080-2157-1605</p>
+  <p style="margin-top:6px; opacity:0.55;">© 2024 株式会社ミズノミライ All Rights Reserved.</p>
+</div>
 
 </body>
 </html>

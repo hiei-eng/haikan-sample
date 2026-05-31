@@ -3,117 +3,138 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>施工事例一覧 | 株式会社〇〇サービス</title>
+<title>施工事例一覧 | 株式会社ミズノミライ</title>
 <style>
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; }
 
-  /* ===== HEADER（共通） ===== */
-  header {
-    background: white;
-    padding: 0 40px;
-    display: flex;
-    justify-content: space-between;
-    align-items: stretch;
-    box-shadow: 0 2px 12px rgba(0,0,0,0.08);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-  }
-  .logo-wrap { display: flex; align-items: center; gap: 12px; padding: 14px 0; text-decoration: none; }
-  .logo-icon {
-    width: 44px; height: 44px; background: #2a9d5c; border-radius: 50%;
-    display: flex; align-items: center; justify-content: center; color: white; font-size: 22px;
-  }
-  .logo-text { font-size: 18px; font-weight: 700; color: #1a5c38; }
-  .logo-text small { display: block; font-size: 11px; color: #888; font-weight: 400; }
-  nav { display: flex; align-items: center; }
-  nav a {
-    color: #555; text-decoration: none; padding: 0 18px; font-size: 14px;
-    height: 100%; display: flex; align-items: center;
-    border-bottom: 3px solid transparent; transition: all 0.2s;
-  }
-  nav a:hover, nav a.active { color: #2a9d5c; border-bottom-color: #2a9d5c; }
-  .header-right { display: flex; align-items: stretch; flex-shrink: 0; border-left: 1px solid #eee; }
-  .audience-btns { display: flex; align-items: center; gap: 8px; padding: 0 20px; border-right: 1px solid #eee; }
-  .btn-corp {
-    display: flex; align-items: center; gap: 5px; background: #1a5c38; color: white;
-    padding: 9px 18px; border-radius: 6px; font-size: 13px; font-weight: 700;
-    text-decoration: none; transition: all 0.2s; white-space: nowrap;
-  }
-  .btn-corp:hover { background: #0d3d24; box-shadow: 0 3px 10px rgba(26,92,56,0.3); }
-  .btn-indiv {
-    display: flex; align-items: center; gap: 5px; background: white; color: #2a9d5c;
-    padding: 8px 18px; border-radius: 6px; border: 2px solid #2a9d5c;
-    font-size: 13px; font-weight: 700; text-decoration: none; transition: all 0.2s; white-space: nowrap;
-  }
-  .btn-indiv:hover { background: #f0faf5; }
-  .header-tel { padding: 0 20px; display: flex; flex-direction: column; justify-content: center; color: #1a5c38; font-size: 17px; font-weight: 700; }
-  .header-tel small { font-size: 10px; color: #888; }
+/* ===== CSS Variables ===== */
+:root {
+  --dark:    #040c18;
+  --navy:    #0d1f3c;
+  --blue:    #1a4a82;
+  --accent:  #2a7dd4;
+  --sky:     #c8dff5;
+  --light:   #e6f0fa;
+  --white:   #ffffff;
+  --gray:    #f4f6f8;
+  --text:    #0d1f3c;
+  --tmid:    #445566;
+  --tlight:  #8090a8;
+  --border:  rgba(42,125,212,0.16);
+}
+
+/* ===== RESET & BASE ===== */
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  background-color: #ffffff;
+  font-family: 'Helvetica Neue', Helvetica, Arial, '游ゴシック', 'Yu Gothic',
+               'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif;
+  color: var(--text);
+  min-height: 100vh;
+}
+
+
+
+/* ===== HEADER ===== */
+header {
+  background: #ffffff;
+  padding: 0 36px 0 16px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 1px 0 rgba(42,125,212,0.10), 0 2px 16px rgba(4,8,24,0.06);
+  position: sticky;
+  top: 0;
+  z-index: 200;
+  height: 72px;
+}
+.logo-wrap { display: flex; align-items: center; text-decoration: none; flex-shrink: 0; }
+.site-logo { height: 62px; width: auto; display: block; object-fit: contain; background: transparent; }
+nav { display: flex; align-items: center; flex: 1; justify-content: center; }
+nav a {
+  color: var(--tmid);
+  text-decoration: none;
+  padding: 0 15px;
+  font-size: 14px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  transition: color 0.2s, border-color 0.2s;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  font-weight: 500;
+}
+nav a:hover, nav a.active { color: var(--accent); border-bottom-color: var(--accent); }
+.header-right {
+  display: flex; align-items: center;
+  flex-shrink: 0;
+  border-left: 1px solid rgba(42,125,212,0.12);
+  padding-left: 20px;
+}
+.audience-btns { display: flex; align-items: center; gap: 8px; margin-right: 20px; }
+.btn-corp {
+  background: var(--navy); color: white;
+  padding: 7px 14px; border-radius: 4px;
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  transition: background 0.2s, transform 0.15s; white-space: nowrap; letter-spacing: 0.02em;
+}
+.btn-corp:hover { background: #060e20; transform: translateY(-1px); }
+.btn-indiv {
+  background: transparent; color: var(--navy);
+  padding: 6px 14px; border-radius: 4px;
+  border: 1.5px solid var(--navy);
+  font-size: 14px; font-weight: 600; text-decoration: none;
+  transition: all 0.2s; white-space: nowrap;
+}
+.btn-indiv:hover { background: var(--light); transform: translateY(-1px); }
+.header-tel {
+  display: flex; flex-direction: column; justify-content: center;
+  color: var(--navy); font-size: 15px; font-weight: 700;
+  letter-spacing: 0.02em; line-height: 1.3; white-space: nowrap;
+}
+.header-tel small { font-size: 10px; color: var(--tlight); font-weight: 400; white-space: nowrap; }
+
+
 
   /* ===== PAGE HERO ===== */
   .page-hero {
-    background: linear-gradient(160deg, #e8f8ee 0%, #c5edda 100%);
+    background-image: linear-gradient(rgba(238,247,255,0.88), rgba(215,235,252,0.90)), url('images/about-bg.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
     padding: 60px 40px;
     text-align: center;
   }
   .breadcrumb {
     font-size: 13px; color: #888; margin-bottom: 16px;
   }
-  .breadcrumb a { color: #2a9d5c; text-decoration: none; }
+  .breadcrumb a { color: #2a7dd4; text-decoration: none; }
   .breadcrumb span { margin: 0 8px; }
-  .page-hero h1 { font-size: 36px; font-weight: 900; color: #1a3a28; margin-bottom: 12px; }
+  .page-hero h1 { font-size: 36px; font-weight: 900; color: #0d1f3c; margin-bottom: 12px; }
   .page-hero p { font-size: 15px; color: #556; line-height: 1.8; }
   .page-hero-stats {
     display: flex; justify-content: center; gap: 40px; margin-top: 32px;
   }
   .ph-stat { text-align: center; }
-  .ph-stat .num { font-size: 36px; font-weight: 900; color: #2a9d5c; line-height: 1; }
+  .ph-stat .num { font-size: 36px; font-weight: 900; color: #2a7dd4; line-height: 1; }
   .ph-stat .lbl { font-size: 12px; color: #778; margin-top: 4px; }
 
-  /* ===== FILTER ===== */
-  .filter-bar {
-    background: white;
-    padding: 20px 40px;
-    border-bottom: 1px solid #e8f5ee;
-    display: flex;
-    align-items: center;
-    gap: 12px;
-    flex-wrap: wrap;
-  }
-  .filter-label { font-size: 13px; font-weight: 700; color: #555; }
-  .filter-btn {
-    padding: 7px 18px;
-    border-radius: 20px;
-    border: 1px solid #d4eedd;
-    font-size: 13px;
-    font-weight: 600;
-    color: #555;
-    background: white;
-    cursor: pointer;
-    transition: all 0.2s;
-    text-decoration: none;
-  }
-  .filter-btn:hover, .filter-btn.active {
-    background: #2a9d5c; color: white; border-color: #2a9d5c;
-  }
-
   /* ===== CASE LIST ===== */
-  .cases-page { padding: 60px 40px; background: #f9fdf9; }
+  .cases-page { padding: 60px 40px; background: #f4f8fd; }
   .cases-inner { max-width: 1000px; margin: 0 auto; }
 
   /* ===== CASE ITEM（詳細カード） ===== */
   .case-item {
     background: white;
     border-radius: 16px;
-    border: 1px solid #d4eedd;
-    box-shadow: 0 4px 20px rgba(42,157,92,0.07);
+    border: 1px solid rgba(42,125,212,0.15);
+    box-shadow: 0 4px 20px rgba(42,125,212,0.07);
     margin-bottom: 48px;
     overflow: hidden;
     scroll-margin-top: 90px;
   }
   .case-item-header {
-    background: linear-gradient(135deg, #1a5c38, #2a9d5c);
+    background: linear-gradient(135deg, #1a4a82, #2a7dd4);
     color: white;
     padding: 32px 40px;
     display: flex;
@@ -147,13 +168,13 @@
     gap: 18px; margin-bottom: 28px;
   }
   .case-detail-card {
-    background: #f9fdf9; border-radius: 10px;
-    padding: 20px; border: 1px solid #d4eedd;
+    background: #f4f8fd; border-radius: 10px;
+    padding: 20px; border: 1px solid rgba(42,125,212,0.15);
   }
   .case-detail-card h4 {
-    font-size: 12px; font-weight: 700; color: #2a9d5c;
+    font-size: 12px; font-weight: 700; color: #2a7dd4;
     margin-bottom: 10px; padding-bottom: 8px;
-    border-bottom: 2px solid #e0f5eb;
+    border-bottom: 2px solid #e6f0fa;
   }
   .case-detail-card ul { list-style: none; }
   .case-detail-card ul li {
@@ -162,12 +183,12 @@
     display: flex; align-items: flex-start; gap: 6px; line-height: 1.6;
   }
   .case-detail-card ul li:last-child { border-bottom: none; }
-  .case-detail-card ul li::before { content: '✓'; color: #2a9d5c; font-weight: 700; flex-shrink: 0; }
+  .case-detail-card ul li::before { content: '✓'; color: #2a7dd4; font-weight: 700; flex-shrink: 0; }
 
   /* プロセスタイムライン */
   .case-process { margin-bottom: 28px; }
   .case-process h4 {
-    font-size: 15px; font-weight: 700; color: #1a3a28;
+    font-size: 15px; font-weight: 700; color: #0d1f3c;
     margin-bottom: 20px; display: flex; align-items: center; gap: 8px;
   }
   .process-steps {
@@ -176,41 +197,41 @@
   .process-steps::before {
     content: ''; position: absolute; top: 20px;
     left: 40px; right: 40px; height: 2px;
-    background: #e0f5eb; z-index: 0;
+    background: #e6f0fa; z-index: 0;
   }
   .process-step { flex: 1; text-align: center; position: relative; z-index: 1; }
   .process-dot {
     width: 40px; height: 40px; border-radius: 50%;
-    background: #2a9d5c; color: white; font-weight: 700; font-size: 13px;
+    background: #2a7dd4; color: white; font-weight: 700; font-size: 13px;
     display: flex; align-items: center; justify-content: center;
-    margin: 0 auto 8px; box-shadow: 0 2px 8px rgba(42,157,92,0.3);
+    margin: 0 auto 8px; box-shadow: 0 2px 8px rgba(42,125,212,0.3);
   }
-  .process-step .time { font-size: 12px; font-weight: 700; color: #2a9d5c; margin-bottom: 3px; }
+  .process-step .time { font-size: 12px; font-weight: 700; color: #2a7dd4; margin-bottom: 3px; }
   .process-step p { font-size: 11px; color: #777; line-height: 1.5; }
 
   /* お客様の声 */
   .case-voice {
-    background: #e8f8ee; border-radius: 12px;
+    background: #e6f0fa; border-radius: 12px;
     padding: 24px 30px; display: flex;
     align-items: flex-start; gap: 20px;
-    border-left: 4px solid #2a9d5c;
+    border-left: 4px solid #2a7dd4;
   }
   .case-voice-icon { font-size: 32px; flex-shrink: 0; }
   .case-voice blockquote {
     font-size: 14px; line-height: 1.9; color: #333;
     font-style: italic; margin-bottom: 8px;
   }
-  .case-voice cite { font-size: 12px; color: #2a9d5c; font-weight: 700; font-style: normal; }
+  .case-voice cite { font-size: 12px; color: #2a7dd4; font-weight: 700; font-style: normal; }
 
   /* ===== CTA ===== */
   .cases-cta {
-    background: #2a9d5c; color: white; text-align: center; padding: 60px 40px;
+    background: #2a7dd4; color: white; text-align: center; padding: 60px 40px;
   }
   .cases-cta h2 { font-size: 28px; font-weight: 900; margin-bottom: 10px; }
   .cases-cta p { font-size: 15px; opacity: 0.85; margin-bottom: 32px; }
   .cta-btns { display: flex; justify-content: center; gap: 16px; }
   .btn-white {
-    background: white; color: #2a9d5c; padding: 14px 32px;
+    background: white; color: #2a7dd4; padding: 14px 32px;
     border-radius: 40px; font-weight: 700; font-size: 15px; text-decoration: none;
   }
   .btn-outline-w {
@@ -220,36 +241,113 @@
 
   /* ===== FOOTER ===== */
   footer {
-    background: #1a3a28; color: #7ab893;
+    background: #0d1f3c; color: rgba(200,223,245,0.68);
     padding: 32px 40px; font-size: 13px; text-align: center;
   }
+
+
+
+
+
+/* ===== FOOTER ===== */
+footer {
+  background: rgba(4,8,20,0.97) !important;
+  color: rgba(200,223,245,0.68) !important;
+  padding: 36px 40px; font-size: 13px; text-align: center;
+  border-top: 1px solid rgba(42,125,212,0.15);
+  position: relative; z-index: 0;
+}
+footer a { color: rgba(200,223,245,0.68) !important; text-decoration: none; margin: 0 12px; }
+footer a:hover { color: #c8dff5 !important; }
+.footer-copy { margin-top: 12px; color: rgba(200,223,245,0.42) !important; font-size: 12px; }
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  header { padding: 0 16px !important; height: 58px !important; }
+  .site-logo { height: 52px !important; }
+  nav { display: none !important; }
+  .header-right { border-left: none !important; padding-left: 8px !important; }
+  .audience-btns { margin-right: 8px !important; gap: 6px !important; }
+  .btn-corp, .btn-indiv { padding: 6px 10px !important; font-size: 12px !important; }
+  .header-tel { font-size: 13px !important; }
+  section { padding: 48px 20px; }
+}
+
+
+  /* ===== FOOTER SITEMAP ===== */
+  .footer-sitemap {
+    background: #f5f2ea;
+    padding: 56px 40px 40px;
+    border-top: 1px solid #e8e2d6;
+  }
+  .footer-sitemap-inner {
+    max-width: 1120px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+  }
+  .footer-sitemap h3 {
+    font-size: 13px; font-weight: 700; color: #9a7428;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid #e0d8c8;
+  }
+  .footer-sitemap h3.sub-head {
+    font-size: 12px; color: #b58a32;
+    margin-top: 16px; margin-bottom: 8px;
+    border-bottom: none; padding-bottom: 0;
+  }
+  .footer-sitemap ul { list-style: none; padding: 0; margin: 0; }
+  .footer-sitemap li { margin-bottom: 9px; }
+  .footer-sitemap a {
+    color: #333; text-decoration: none;
+    font-size: 13px; line-height: 1.6;
+    display: inline-flex; align-items: baseline;
+  }
+  .footer-sitemap a::before {
+    content: "\203A";
+    color: #b58a32; margin-right: 6px; font-size: 14px; line-height: 1;
+  }
+  .footer-sitemap a:hover { color: #2a7dd4; }
+  .footer-copy-bar {
+    background: #0d1f3c;
+    color: rgba(200,223,245,0.65);
+    padding: 20px 40px;
+    font-size: 12px; text-align: center;
+  }
+  .footer-copy-bar a { color: rgba(200,223,245,0.65); text-decoration: none; margin: 0 10px; }
+  .footer-copy-bar a:hover { color: #c8dff5; }
+  @media (max-width: 900px) {
+    .footer-sitemap-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .footer-sitemap { padding: 40px 20px 28px; }
+    .footer-sitemap-inner { grid-template-columns: 1fr; gap: 24px; }
+    .footer-copy-bar { padding: 16px 20px; }
+  }
+
 </style>
 </head>
 <body>
 
 <header>
-  <a href="design_B_friendly.html" class="logo-wrap">
-    <div class="logo-icon">💧</div>
-    <div class="logo-text">
-      株式会社〇〇サービス
-      <small>PIPE CLEANING PROFESSIONALS</small>
-    </div>
+  <a href="index.html" class="logo-wrap">
+    <img src="images/logo-mizunomirai-header.png" alt="株式会社ミズノミライ" class="site-logo" onerror="this.src='images/logo-mizunomirai.png'">
   </a>
   <nav>
-    <a href="design_B_friendly.html">ホーム</a>
+    <a href="index.html">ホーム</a>
     <a href="service.html">事業内容</a>
     <a href="cases.html" class="active">施工事例</a>
-    <a href="contact.html">お問い合わせ</a>
     <a href="company.html">会社概要</a>
+    <a href="contact.html">お問い合わせ</a>
   </nav>
   <div class="header-right">
     <div class="audience-btns">
-      <a href="service.html" class="btn-corp">🏢 法人のお客様</a>
-      <a href="b2c.html" class="btn-indiv">🏠 個人のお客様</a>
+      <a href="service.html" class="btn-corp">法人のお客様</a>
+      <a href="b2c.html" class="btn-indiv">個人のお客様</a>
     </div>
     <div class="header-tel">
-      📞 0120-XXX-XXX
-      <small>8:00〜18:00 土日祝OK</small>
+      080-2157-1605
+      <small>365日24時間受付</small>
     </div>
   </div>
 </header>
@@ -257,39 +355,15 @@
 <!-- ===== PAGE HERO ===== -->
 <div class="page-hero">
   <div class="breadcrumb">
-    <a href="design_B_friendly.html">トップ</a>
+    <a href="index.html">トップ</a>
     <span>›</span>
     施工事例
   </div>
   <h1>施工事例</h1>
   <p>戸建て・マンション・飲食店・大型施設まで、実際の現場をご紹介します。<br>作業内容・当日の流れ・お客様の声を掲載しています。</p>
-  <div class="page-hero-stats">
-    <div class="ph-stat">
-      <div class="num">2,000+</div>
-      <div class="lbl">年間施工件数</div>
-    </div>
-    <div class="ph-stat">
-      <div class="num">30年</div>
-      <div class="lbl">の実績</div>
-    </div>
-    <div class="ph-stat">
-      <div class="num">98%</div>
-      <div class="lbl">顧客満足度</div>
-    </div>
-  </div>
+
 </div>
 
-<!-- ===== フィルター ===== -->
-<div class="filter-bar">
-  <span class="filter-label">絞り込み：</span>
-  <a href="#" class="filter-btn active">すべて</a>
-  <a href="#" class="filter-btn">戸建て</a>
-  <a href="#" class="filter-btn">マンション</a>
-  <a href="#" class="filter-btn">飲食店</a>
-  <a href="#" class="filter-btn">ビル・施設</a>
-  <a href="#" class="filter-btn">緊急対応</a>
-  <a href="#" class="filter-btn">貯水槽</a>
-</div>
 
 <!-- ===== 施工事例リスト ===== -->
 <div class="cases-page">
@@ -308,8 +382,8 @@
           </div>
           <h2>山下様邸 排水管全館清掃</h2>
           <p class="case-meta">
-            📅 施工日：2026年3月4日（水）　⏱ 作業時間：約4時間（8:30〜12:30）<br>
-            📍 施工場所：東京都中野区鷺宮　　👷 依頼元：大成建設ハウジング株式会社
+             施工日：2026年3月4日（水）　⏱ 作業時間：約4時間（8:30〜12:30）<br>
+             施工場所：東京都中野区鷺宮　　 依頼元：大成建設ハウジング株式会社
           </p>
         </div>
         <div class="case-header-stats">
@@ -335,7 +409,7 @@
 
         <div class="case-detail-grid">
           <div class="case-detail-card">
-            <h4>🔧 清掃した箇所</h4>
+            <h4> 清掃した箇所</h4>
             <ul>
               <li>1階・2階 洗面台</li>
               <li>1階・2階 台所（流し台）</li>
@@ -345,7 +419,7 @@
             </ul>
           </div>
           <div class="case-detail-card">
-            <h4>⚙️ 施工方法・条件</h4>
+            <h4> 施工方法・条件</h4>
             <ul>
               <li>高圧洗浄「降ろし仕様」（上流→下流の順で施工）</li>
               <li>到着後まず現地の水栓位置・機材スペースを確認</li>
@@ -354,7 +428,7 @@
             </ul>
           </div>
           <div class="case-detail-card">
-            <h4>📋 現場のポイント</h4>
+            <h4> 現場のポイント</h4>
             <ul>
               <li>配管の系統（上流・下流）を把握し作業順序を決定</li>
               <li>駐車場は近隣の有料パーキングを使用</li>
@@ -365,7 +439,7 @@
         </div>
 
         <div class="case-process">
-          <h4>📍 当日の作業の流れ</h4>
+          <h4> 当日の作業の流れ</h4>
           <div class="process-steps">
             <div class="process-step">
               <div class="process-dot">1</div>
@@ -396,7 +470,7 @@
         </div>
 
         <div class="case-voice">
-          <div class="case-voice-icon">💬</div>
+          <div class="case-voice-icon"></div>
           <div>
             <blockquote>「以前から台所や洗面台の流れが悪くなっていたのですが、作業後はどこも水はけが全く別物になりました。スタッフの方が到着後すぐに状況を確認してくれて、作業の流れも丁寧に説明してくれたので安心して任せられました。図面に記録してもらえるのもとても助かります。また定期的にお願いしたいと思います。」</blockquote>
             <cite>東京都中野区 / 山下様（戸建て住宅オーナー）</cite>
@@ -417,8 +491,8 @@
           </div>
           <h2>100世帯マンション 年2回定期排水管清掃</h2>
           <p class="case-meta">
-            📅 施工：毎年春・秋（年2回）　⏱ 作業時間：各回2日間<br>
-            📍 施工場所：東京都世田谷区　　👷 依頼元：〇〇マンション管理組合
+             施工：毎年春・秋（年2回）　⏱ 作業時間：各回2日間<br>
+             施工場所：東京都世田谷区　　 依頼元：マンション管理組合（東京都世田谷区）
           </p>
         </div>
         <div class="case-header-stats">
@@ -444,7 +518,7 @@
 
         <div class="case-detail-grid">
           <div class="case-detail-card">
-            <h4>🔧 清掃した箇所</h4>
+            <h4> 清掃した箇所</h4>
             <ul>
               <li>全100戸 台所排水管</li>
               <li>全100戸 浴室・洗面台排水</li>
@@ -453,7 +527,7 @@
             </ul>
           </div>
           <div class="case-detail-card">
-            <h4>⚙️ サービス内容</h4>
+            <h4> サービス内容</h4>
             <ul>
               <li>全戸高圧洗浄（年2回）</li>
               <li>管内カメラ点検（年1回）</li>
@@ -463,7 +537,7 @@
             </ul>
           </div>
           <div class="case-detail-card">
-            <h4>📋 ご依頼の背景</h4>
+            <h4> ご依頼の背景</h4>
             <ul>
               <li>以前は年1回のみで悪臭・詰まりが頻発</li>
               <li>年2回契約に変更後はトラブル件数がほぼゼロに</li>
@@ -473,10 +547,10 @@
         </div>
 
         <div class="case-voice">
-          <div class="case-voice-icon">💬</div>
+          <div class="case-voice-icon"></div>
           <div>
-            <blockquote>「以前の業者は作業だけして報告書もなく、居住者からのクレームも多かったのですが、〇〇サービスさんに変えてから全く別物です。事前案内から報告書まで全部やってくれるので管理組合としてもとても助かっています。来年も必ずお願いします。」</blockquote>
-            <cite>東京都世田谷区 / 〇〇マンション管理組合 理事長 様</cite>
+            <blockquote>「以前の業者は作業だけして報告書もなく、居住者からのクレームも多かったのですが、ミズノミライさんに変えてから全く別物です。事前案内から報告書まで全部やってくれるので管理組合としてもとても助かっています。来年も必ずお願いします。」</blockquote>
+            <cite>東京都世田谷区 / マンション管理組合 理事長 様</cite>
           </div>
         </div>
       </div>
@@ -494,8 +568,8 @@
           </div>
           <h2>居酒屋 厨房排水管 緊急詰まり対応</h2>
           <p class="case-meta">
-            📅 施工日：営業中の平日夕方　⏱ 到着まで：連絡から約90分<br>
-            📍 施工場所：東京都新宿区　　👷 依頼元：飲食店オーナー（直接依頼）
+             施工日：営業中の平日夕方　⏱ 到着まで：連絡から約90分<br>
+             施工場所：東京都新宿区　　 依頼元：飲食店オーナー（直接依頼）
           </p>
         </div>
         <div class="case-header-stats">
@@ -521,7 +595,7 @@
 
         <div class="case-detail-grid">
           <div class="case-detail-card">
-            <h4>🔧 原因と対処</h4>
+            <h4> 原因と対処</h4>
             <ul>
               <li>グリストラップへの油脂・食材カスの蓄積</li>
               <li>排水本管への固形詰まり</li>
@@ -530,7 +604,7 @@
             </ul>
           </div>
           <div class="case-detail-card">
-            <h4>⚙️ 実施した作業</h4>
+            <h4> 実施した作業</h4>
             <ul>
               <li>厨房排水管 高圧洗浄</li>
               <li>グリストラップ清掃</li>
@@ -539,7 +613,7 @@
             </ul>
           </div>
           <div class="case-detail-card">
-            <h4>📋 再発防止アドバイス</h4>
+            <h4> 再発防止アドバイス</h4>
             <ul>
               <li>飲食店は月1〜2回のグリストラップ清掃を推奨</li>
               <li>排水管は3〜6ヶ月ごとの高圧洗浄が目安</li>
@@ -549,7 +623,7 @@
         </div>
 
         <div class="case-voice">
-          <div class="case-voice-icon">💬</div>
+          <div class="case-voice-icon"></div>
           <div>
             <blockquote>「営業直前に排水が詰まって真っ青になっていたところ、電話してからあっという間に来てくれて本当に助かりました。作業も素早く、閉店前には全部直っていました。その後は定期清掃も月1回お願いしていますが、それ以来一度もトラブルがありません。」</blockquote>
             <cite>東京都新宿区 / 居酒屋オーナー 様</cite>
@@ -570,8 +644,8 @@
           </div>
           <h2>地上12階 オフィスビル 貯水槽法定清掃</h2>
           <p class="case-meta">
-            📅 施工日：年1回（法定清掃）　⏱ 作業時間：1日<br>
-            📍 施工場所：東京都港区　　👷 依頼元：〇〇ビル管理株式会社
+             施工日：年1回（法定清掃）　⏱ 作業時間：1日<br>
+             施工場所：東京都港区　　 依頼元：ビル管理会社（東京都港区）
           </p>
         </div>
         <div class="case-header-stats">
@@ -597,7 +671,7 @@
 
         <div class="case-detail-grid">
           <div class="case-detail-card">
-            <h4>🔧 作業内容</h4>
+            <h4> 作業内容</h4>
             <ul>
               <li>受水槽・高架水槽の内部清掃</li>
               <li>槽内壁面・底面の消毒・洗浄</li>
@@ -606,7 +680,7 @@
             </ul>
           </div>
           <div class="case-detail-card">
-            <h4>⚙️ 書類・行政対応</h4>
+            <h4> 書類・行政対応</h4>
             <ul>
               <li>清掃記録書の作成・提出</li>
               <li>水質検査結果報告書</li>
@@ -615,7 +689,7 @@
             </ul>
           </div>
           <div class="case-detail-card">
-            <h4>📋 継続依頼の理由</h4>
+            <h4> 継続依頼の理由</h4>
             <ul>
               <li>書類対応まで全部任せられる安心感</li>
               <li>作業報告が写真付きで丁寧</li>
@@ -626,10 +700,10 @@
         </div>
 
         <div class="case-voice">
-          <div class="case-voice-icon">💬</div>
+          <div class="case-voice-icon"></div>
           <div>
-            <blockquote>「貯水槽の法定清掃は毎年義務なのですが、以前は書類の準備が大変でした。〇〇サービスさんは清掃から水質検査・行政への届出まで全部まとめてやってくれるので、こちらは日程を決めるだけ。5年間ずっとお願いしています。」</blockquote>
-            <cite>東京都港区 / 〇〇ビル管理株式会社 様</cite>
+            <blockquote>「貯水槽の法定清掃は毎年義務なのですが、以前は書類の準備が大変でした。ミズノミライさんは清掃から水質検査・行政への届出まで全部まとめてやってくれるので、こちらは日程を決めるだけ。5年間ずっとお願いしています。」</blockquote>
+            <cite>東京都港区 / ビル管理会社 様</cite>
           </div>
         </div>
       </div>
@@ -643,15 +717,65 @@
   <h2>お気軽にご相談・お見積もりください</h2>
   <p>法人様の定期保守契約から、個人宅の緊急対応まで丁寧にご対応いたします。</p>
   <div class="cta-btns">
-    <a href="#" class="btn-white">📞 0120-XXX-XXX</a>
-    <a href="#" class="btn-outline-w">Webから無料見積依頼</a>
+    <a href="tel:08021571605" class="btn-white"> 080-2157-1605</a>
+    <a href="contact.html" class="btn-outline-w"> メールで問い合わせ</a>
   </div>
 </section>
 
-<footer>
-  <p>株式会社〇〇サービス｜〒XXX-XXXX 東京都〇〇区〇〇 1-2-3｜TEL: 0120-XXX-XXX</p>
-  <p style="margin-top:8px;">© 2024 〇〇Service Co., Ltd. All Rights Reserved.</p>
-</footer>
+<!-- ===== NEW FOOTER ===== -->
+<div class="footer-sitemap">
+  <div class="footer-sitemap-inner">
+    <div>
+      <h3>サイトマップ</h3>
+      <ul>
+        <li><a href="index.html">TOP</a></li>
+        <li><a href="service.html">定期清掃</a></li>
+      </ul>
+      <h3 class="sub-head">建物から探す</h3>
+      <ul>
+        <li><a href="index.html#building">ビル清掃</a></li>
+        <li><a href="index.html#building">オフィス清掃</a></li>
+        <li><a href="index.html#building">店舗・テナント清掃</a></li>
+        <li><a href="index.html#building">マンション・アパート清掃</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>清掃内容から探す</h3>
+      <ul>
+        <li><a href="service.html">排水管清掃</a></li>
+        <li><a href="service.html">カメラ調査</a></li>
+        <li><a href="service.html">アパート・マンション・ビル定期清掃</a></li>
+        <li><a href="service.html">定期清掃契約</a></li>
+        <li><a href="service.html">緊急排水トラブル対応</a></li>
+        <li><a href="service.html">個人宅の排水トラブル対応</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>ミズノミライについて</h3>
+      <ul>
+        <li><a href="service.html#points">選ばれる理由</a></li>
+        <li><a href="service.html#flow">サービスの流れ</a></li>
+        <li><a href="service.html#pricing">料金案内</a></li>
+        <li><a href="cases.html">施工事例</a></li>
+        <li><a href="blog.html">お役立ちコラム</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>会社情報・お問い合わせ</h3>
+      <ul>
+        <li><a href="company.html">会社概要</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+        <li><a href="contact.html">お見積り依頼</a></li>
+        <li><a href="service.html">法人のお客様</a></li>
+        <li><a href="b2c.html">個人のお客様</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="footer-copy-bar">
+  <p>株式会社ミズノミライ｜〒154-0001 東京都世田谷区池尻3-18-16-302｜TEL: 080-2157-1605</p>
+  <p style="margin-top:6px; opacity:0.55;">© 2024 株式会社ミズノミライ All Rights Reserved.</p>
+</div>
 
 </body>
 </html>
