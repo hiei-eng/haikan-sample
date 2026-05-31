@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>一般家庭の排水管清掃｜株式会社ミズノミライ</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', 'Meiryo', sans-serif; color: #333; }
+
+  /* ===== HEADER ===== */
+  .header-indiv-bar {
+    background: #2a7dd4; color: white;
+    text-align: center; padding: 6px 40px;
+    font-size: 12px; font-weight: 700; letter-spacing: 0.15em;
+  }
+  header {
+    background: #ffffff; padding: 0 36px 0 16px;
+    display: flex; justify-content: space-between; align-items: center;
+    box-shadow: 0 1px 0 rgba(42,125,212,0.10), 0 2px 16px rgba(4,8,24,0.06);
+    position: sticky; top: 0; z-index: 100; height: 72px;
+  }
+  .logo-wrap { display: flex; align-items: center; gap: 12px; padding: 14px 0; text-decoration: none; }
+  .logo-icon {
+    width: 44px; height: 44px; background: #2a7dd4; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center; color: white; font-size: 22px;
+  }
+  .site-logo { height: 62px; width: auto; display: block; object-fit: contain; background: transparent; }
+  .logo-text { font-size: 15px; font-weight: 700; color: #0d1f3c; }
+  .logo-text small { display: block; font-size: 11px; color: #888; font-weight: 400; }
+  nav { display: flex; align-items: center; flex-shrink: 0; white-space: nowrap; }
+  nav a {
+    color: #445566; text-decoration: none; padding: 0 12px; font-size: 14px;
+    height: 72px; display: flex; align-items: center;
+    border-bottom: 2px solid transparent; transition: all 0.2s; white-space: nowrap;
+  }
+  nav a:hover, nav a.active { color: #2a7dd4; border-bottom-color: #2a7dd4; }
+  .header-right { display: flex; align-items: stretch; flex-shrink: 0; border-left: 1px solid #eee; }
+  .audience-btns { display: flex; align-items: center; gap: 8px; padding: 0 20px; border-right: 1px solid #eee; }
+  /* 法人ボタン（非アクティブ） */
+  .btn-corp {
+    display: flex; align-items: center; gap: 5px;
+    background: white; color: #999; border: 1px solid #ddd;
+    padding: 8px 18px; border-radius: 6px;
+    font-size: 13px; font-weight: 600; text-decoration: none; white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .btn-corp:hover { color: #555; border-color: #bbb; }
+  /* 個人ボタン（アクティブ・現在地） */
+  .btn-indiv {
+    display: flex; align-items: center; gap: 6px;
+    background: #2a7dd4; color: white;
+    padding: 9px 18px; border-radius: 6px;
+    font-size: 13px; font-weight: 700; text-decoration: none; white-space: nowrap;
+    transition: all 0.2s;
+  }
+  .btn-indiv:hover { background: #1a6ab8; box-shadow: 0 3px 10px rgba(42,125,212,0.3); }
+  .header-tel { padding: 0 20px; display: flex; flex-direction: column; justify-content: center; color: #1a4a82; font-size: 17px; font-weight: 700; }
+  .header-tel small { font-size: 10px; color: #888; }
+
+  /* ===== HERO ===== */
+  .hero {
+    position: relative;
+    min-height: 720px;
+    background-image: url('images/b2c-hero-bg.jpeg');
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: flex-start;
+    padding: 90px 40px 220px;
+  }
+  .hero-text {
+    max-width: 560px;
+    position: relative;
+    z-index: 2;
+    margin-left: 40px;
+    margin-top: 20px;
+  }
+  .hero-badge {
+    display: inline-block;
+    background: #0b63c7;
+    color: #fff;
+    padding: 8px 18px;
+    border-radius: 4px;
+    font-size: 14px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    letter-spacing: 0.02em;
+  }
+  .hero h1 {
+    font-size: clamp(36px, 5vw, 60px);
+    line-height: 1.35;
+    color: #0d1f3c;
+    font-weight: 900;
+    margin-bottom: 24px;
+    letter-spacing: 0.04em;
+  }
+  .hero-sub {
+    font-size: 16px;
+    line-height: 2;
+    color: #1a2a3a;
+    max-width: 520px;
+    margin-bottom: 36px;
+  }
+  .hero-btns { display: flex; gap: 16px; flex-wrap: wrap; }
+  .btn-cta-main {
+    background: #0b63c7;
+    color: #fff;
+    padding: 16px 28px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: background 0.2s, transform 0.2s;
+    box-shadow: 0 4px 16px rgba(11,99,199,0.35);
+  }
+  .btn-cta-main:hover { background: #0a52a8; transform: translateY(-2px); }
+  .btn-cta-tel {
+    background: #fff;
+    color: #0b63c7;
+    border: 2px solid #0b63c7;
+    padding: 14px 26px;
+    border-radius: 6px;
+    font-weight: 700;
+    font-size: 15px;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    transition: all 0.2s;
+  }
+  .btn-cta-tel:hover { background: #f0f6ff; }
+
+    /* ===== TRUST BAR ===== */
+  .trust-bar {
+    background: #1a4a82; color: white;
+    padding: 20px 40px; display: flex; justify-content: center; gap: 0;
+  }
+  .trust-item {
+    display: flex; flex-direction: column; align-items: center; padding: 0 40px;
+    border-right: 1px solid rgba(255,255,255,0.2);
+  }
+  .trust-item:last-child { border-right: none; }
+  .trust-num { font-size: 30px; font-weight: 900; color: #c8dff5; line-height: 1; }
+  .trust-num span { font-size: 16px; }
+  .trust-lbl { font-size: 12px; opacity: 0.8; margin-top: 4px; }
+
+  /* ===== SECTION ===== */
+  section { padding: 80px 40px; }
+  .section-header { text-align: center; margin-bottom: 52px; }
+  .section-tag {
+    display: inline-block; background: #e6f0fa; color: #2a7dd4;
+    font-size: 12px; font-weight: 700; padding: 4px 14px; border-radius: 20px;
+    margin-bottom: 12px; letter-spacing: 0.1em;
+  }
+  .section-header h2 { font-size: 30px; font-weight: 900; color: #0d1f3c; }
+  .section-header p { margin-top: 12px; color: #666; line-height: 1.8; font-size: 15px; }
+
+  /* ===== TROUBLE ===== */
+  .trouble { background: #fff8f5; }
+  .trouble-intro {
+    text-align: center; font-size: 20px; font-weight: 900; color: #0d1f3c;
+    margin-bottom: 36px;
+  }
+  .trouble-intro span { color: #ff6b35; }
+  .trouble-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; max-width: 900px; margin: 0 auto 40px; }
+  .trouble-card {
+    background: white; border-radius: 12px; padding: 24px 20px;
+    border-left: 4px solid #ff6b35; box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    display: flex; align-items: flex-start; gap: 12px;
+  }
+  .trouble-icon { font-size: 28px; flex-shrink: 0; }
+  .trouble-card p { font-size: 14px; font-weight: 700; color: #444; line-height: 1.6; }
+  .trouble-card small { font-size: 12px; color: #888; font-weight: 400; }
+  .trouble-cta { text-align: center; }
+  .trouble-arrow { font-size: 15px; color: #888; margin-bottom: 12px; }
+
+  /* ===== PRICE ===== */
+  .price-section { background: #f4f8fd; }
+  .price-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 900px; margin: 0 auto; }
+  .price-card {
+    background: white; border-radius: 16px; padding: 32px 24px; text-align: center;
+    border: 2px solid rgba(42,125,212,0.15); box-shadow: 0 4px 20px rgba(42,125,212,0.08);
+    transition: all 0.2s; position: relative;
+  }
+  .price-card:hover { transform: translateY(-4px); box-shadow: 0 8px 32px rgba(42,125,212,0.15); border-color: #2a7dd4; }
+  .price-card.featured { border-color: #2a7dd4; }
+  .popular-badge {
+    position: absolute; top: -14px; left: 50%; transform: translateX(-50%);
+    background: #ff6b35; color: white; font-size: 12px; font-weight: 700;
+    padding: 4px 16px; border-radius: 20px; white-space: nowrap;
+  }
+  .price-card-icon { font-size: 44px; margin-bottom: 12px; }
+  .price-card h3 { font-size: 16px; font-weight: 700; color: #0d1f3c; margin-bottom: 16px; }
+  .price-main { font-size: 36px; font-weight: 900; color: #1a4a82; line-height: 1; }
+  .price-main span { font-size: 18px; }
+  .price-sub { font-size: 12px; color: #888; margin-top: 4px; margin-bottom: 16px; }
+  .price-list { list-style: none; text-align: left; }
+  .price-list li { font-size: 13px; color: #555; padding: 6px 0; border-bottom: 1px solid #f0f0f0; display: flex; align-items: center; gap: 6px; }
+  .price-list li:last-child { border-bottom: none; }
+  .price-list li::before { content: '✓'; color: #2a7dd4; font-weight: 700; flex-shrink: 0; }
+
+  /* ===== FEATURES ===== */
+  .features { background: white; }
+  .features-list { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 860px; margin: 0 auto; }
+  .feature-item {
+    display: flex; gap: 20px; align-items: flex-start;
+    background: #f4f8fd; border-radius: 12px; padding: 28px 24px;
+    border: 1px solid rgba(42,125,212,0.15);
+  }
+  .feature-num {
+    width: 48px; height: 48px; background: #2a7dd4; border-radius: 12px;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 900; font-size: 20px; flex-shrink: 0;
+  }
+  .feature-body h3 { font-size: 16px; font-weight: 700; color: #0d1f3c; margin-bottom: 8px; }
+  .feature-body p { font-size: 14px; color: #666; line-height: 1.7; }
+
+  /* ===== CTA BAND ===== */
+  .cta-band {
+    background: linear-gradient(135deg, #1a4a82 0%, #2a7dd4 100%);
+    color: white; text-align: center; padding: 60px 40px;
+  }
+  .cta-band h2 { font-size: 28px; font-weight: 900; margin-bottom: 10px; }
+  .cta-band .sub { font-size: 15px; opacity: 0.85; margin-bottom: 36px; line-height: 1.8; }
+  .cta-box {
+    display: flex; justify-content: center; align-items: center; gap: 32px;
+    background: rgba(255,255,255,0.15); max-width: 640px;
+    margin: 0 auto 28px; padding: 28px 32px; border-radius: 16px; flex-wrap: wrap;
+  }
+  .cta-tel-num { font-size: 32px; font-weight: 900; line-height: 1; }
+  .cta-tel-num small { display: block; font-size: 12px; opacity: 0.75; margin-top: 4px; font-weight: 400; }
+  .cta-divider { font-size: 20px; opacity: 0.5; }
+  .btn-cta-white {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: white; color: #2a7dd4; padding: 14px 32px;
+    border-radius: 40px; font-weight: 700; font-size: 15px;
+    text-decoration: none; transition: all 0.2s;
+  }
+  .btn-cta-white:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.15); }
+
+  /* ===== FLOW ===== */
+  .flow { background: #f4f8fd; }
+  .flow-steps { display: flex; flex-direction: column; gap: 0; max-width: 640px; margin: 0 auto; }
+  .flow-step { display: flex; gap: 24px; align-items: flex-start; position: relative; padding-bottom: 32px; }
+  .flow-step:last-child { padding-bottom: 0; }
+  .flow-step:not(:last-child)::after {
+    content: ''; position: absolute; left: 23px; top: 52px; bottom: 0;
+    width: 2px; background: rgba(42,125,212,0.15);
+  }
+  .step-num {
+    width: 48px; height: 48px; background: #2a7dd4; border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    color: white; font-weight: 900; font-size: 18px; flex-shrink: 0;
+  }
+  .step-body { flex: 1; padding-top: 8px; }
+  .step-body h3 { font-size: 16px; font-weight: 700; color: #0d1f3c; margin-bottom: 6px; }
+  .step-body p { font-size: 14px; color: #666; line-height: 1.7; }
+  .step-tag { display: inline-block; background: #e6f0fa; color: #2a7dd4; font-size: 11px; font-weight: 700; padding: 2px 8px; border-radius: 10px; margin-bottom: 6px; }
+
+  /* ===== VOICES ===== */
+  .voices { background: white; }
+  .voices-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; max-width: 960px; margin: 0 auto; }
+  .voice-card {
+    background: #f4f8fd; border-radius: 12px; padding: 24px;
+    border: 1px solid rgba(42,125,212,0.15);
+  }
+  .voice-stars { color: #ffd166; margin-bottom: 10px; font-size: 18px; }
+  .voice-card p { font-size: 14px; line-height: 1.8; color: #555; margin-bottom: 14px; }
+  .voice-from { font-size: 12px; color: #888; font-weight: 600; }
+  .voice-from span { background: #e6f0fa; color: #2a7dd4; padding: 2px 8px; border-radius: 10px; font-size: 11px; margin-right: 6px; }
+
+  /* ===== FAQ ===== */
+  .faq { background: #f4f8fd; }
+  .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+  .faq-item { background: white; border-radius: 12px; border: 1px solid rgba(42,125,212,0.15); overflow: hidden; }
+  .faq-q {
+    display: flex; align-items: center; gap: 12px;
+    padding: 18px 20px; font-size: 15px; font-weight: 700; color: #0d1f3c;
+    cursor: pointer;
+  }
+  .faq-q-label {
+    width: 30px; height: 30px; background: #2a7dd4; color: white;
+    border-radius: 50%; display: flex; align-items: center; justify-content: center;
+    font-size: 14px; font-weight: 900; flex-shrink: 0;
+  }
+  .faq-a { padding: 0 20px 18px 62px; font-size: 14px; color: #666; line-height: 1.8; }
+  .faq-a-label {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 30px; height: 30px; background: #e6f0fa; color: #2a7dd4;
+    border-radius: 50%; font-size: 14px; font-weight: 900; margin-right: 8px; vertical-align: middle;
+  }
+
+  /* ===== FOOTER ===== */
+  footer { background: #0d1f3c; color: rgba(200,223,245,0.7); padding: 32px 40px; font-size: 13px; text-align: center; }
+  footer a { color: rgba(200,223,245,0.7); text-decoration: none; margin: 0 12px; }
+  footer a:hover { color: white; }
+  .footer-copy { margin-top: 12px; color: rgba(200,223,245,0.42); font-size: 12px; }
+
+  /* ===== RESPONSIVE (スマホ) ===== */
+  @media (max-width: 768px) {
+    /* 個人ページ帯 */
+    .header-indiv-bar { font-size: 11px; padding: 5px 16px; }
+
+    /* ヘッダー */
+    header { padding: 0 16px; flex-wrap: wrap; }
+    .logo-text { font-size: 14px; }
+    .logo-text small { display: none; }
+    nav { display: none; }
+    .header-right { border-left: none; width: 100%; justify-content: space-between; border-top: 1px solid #eee; }
+    .audience-btns { padding: 8px 0; gap: 6px; border-right: none; }
+    .btn-corp, .btn-indiv { padding: 7px 10px; font-size: 12px; }
+    .header-tel { padding: 8px 0; font-size: 14px; }
+
+    /* ヒーロー */
+    .hero {
+      min-height: auto;
+      background-size: cover;
+      background-position: center top;
+      padding: 48px 20px 260px;
+      align-items: flex-start;
+    }
+    .hero-text {
+      margin-left: 0;
+      margin-top: 0;
+      max-width: 100%;
+      background: rgba(255,255,255,0.82);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+      border-radius: 12px;
+      padding: 24px 20px;
+    }
+    .hero-text { padding-bottom: 0; }
+    .hero h1 { font-size: 26px; }
+    .hero-sub { font-size: 14px; }
+    .hero-badge { font-size: 11px; }
+    .hero-btns { flex-direction: column; gap: 10px; }
+    .btn-cta-main, .btn-cta-tel { justify-content: center; padding: 14px 20px; font-size: 15px; }
+    .hero h1 { font-size: 30px; }
+    .hero-sub { font-size: 14px; }
+    .hero-btns { flex-direction: column; }
+    .btn-cta-main, .btn-cta-tel { width: 100%; text-align: center; justify-content: center; }
+
+    /* トラスト */
+    .trust-bar { flex-wrap: wrap; padding: 20px 16px; gap: 12px; }
+    .trust-item { flex: 1 1 calc(50% - 6px); min-width: 120px; }
+    .trust-sep { display: none; }
+
+    /* お悩み */
+    .trouble { padding: 48px 20px; }
+    .trouble-intro { font-size: 22px; }
+    .trouble-grid { grid-template-columns: 1fr 1fr; gap: 10px; }
+    .trouble-card { padding: 16px 12px; }
+
+    /* 料金 */
+    .price-section { padding: 48px 20px; }
+    .price-cards { grid-template-columns: 1fr; gap: 16px; max-width: 100%; }
+    .price-card { padding: 24px 20px; }
+    .price-card.featured { order: -1; }
+
+    /* 選ばれる4つの理由 */
+    .features { padding: 48px 20px; }
+    .features-list { grid-template-columns: 1fr; gap: 16px; }
+    .feature-item { padding: 20px 16px; }
+    .feature-body h3 { font-size: 15px; }
+    .feature-body p { font-size: 13px; }
+
+    /* CTAバンド */
+    .cta-band { padding: 28px 20px; flex-direction: column; gap: 12px; text-align: center; }
+    .cta-band-btns { flex-direction: column; gap: 10px; width: 100%; }
+    .cta-band-btns a { width: 100%; justify-content: center; }
+
+    /* フロー */
+    .flow { padding: 48px 20px; }
+    .flow-steps { flex-direction: column; gap: 12px; }
+    .flow-arrow { transform: rotate(90deg); }
+
+    /* お客様の声 */
+    .voices { padding: 48px 20px; }
+    .voices-grid { grid-template-columns: 1fr; gap: 12px; }
+
+    /* FAQ */
+    .faq { padding: 48px 20px; }
+
+    /* フッター */
+    footer { padding: 24px 20px; }
+    footer a { display: inline-block; margin: 4px 8px; }
+  }
+
+  /* ===== FOOTER SITEMAP ===== */
+  .footer-sitemap {
+    background: #f5f2ea;
+    padding: 56px 40px 40px;
+    border-top: 1px solid #e8e2d6;
+  }
+  .footer-sitemap-inner {
+    max-width: 1120px; margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 48px;
+  }
+  .footer-sitemap h3 {
+    font-size: 13px; font-weight: 700; color: #9a7428;
+    margin-bottom: 14px; padding-bottom: 8px;
+    border-bottom: 1px solid #e0d8c8;
+  }
+  .footer-sitemap h3.sub-head {
+    font-size: 12px; color: #b58a32;
+    margin-top: 16px; margin-bottom: 8px;
+    border-bottom: none; padding-bottom: 0;
+  }
+  .footer-sitemap ul { list-style: none; padding: 0; margin: 0; }
+  .footer-sitemap li { margin-bottom: 9px; }
+  .footer-sitemap a {
+    color: #333; text-decoration: none;
+    font-size: 13px; line-height: 1.6;
+    display: inline-flex; align-items: baseline;
+  }
+  .footer-sitemap a::before {
+    content: "\203A";
+    color: #b58a32; margin-right: 6px; font-size: 14px; line-height: 1;
+  }
+  .footer-sitemap a:hover { color: #2a7dd4; }
+  .footer-copy-bar {
+    background: #0d1f3c;
+    color: rgba(200,223,245,0.65);
+    padding: 20px 40px;
+    font-size: 12px; text-align: center;
+  }
+  .footer-copy-bar a { color: rgba(200,223,245,0.65); text-decoration: none; margin: 0 10px; }
+  .footer-copy-bar a:hover { color: #c8dff5; }
+  @media (max-width: 900px) {
+    .footer-sitemap-inner { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .footer-sitemap { padding: 40px 20px 28px; }
+    .footer-sitemap-inner { grid-template-columns: 1fr; gap: 24px; }
+    .footer-copy-bar { padding: 16px 20px; }
+  }
+
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<div class="header-indiv-bar"> 個人宅の排水トラブル専用ページ｜365日24時間受付</div>
+<header>
+  <a href="index.html" class="logo-wrap"><img src="images/logo-mizunomirai-header.png" alt="株式会社ミズノミライ" class="site-logo" onerror="this.src='images/logo-mizunomirai.png'">
+  </a>
+  <nav>
+    <a href="#trouble">排水のお悩み</a>
+    <a href="#price">料金案内</a>
+    <a href="#flow">施工の流れ</a>
+    <a href="#voices">お客様の声</a>
+    <a href="#faq">よくある質問</a>
+    <a href="contact.html">お問い合わせ</a>
+  </nav>
+  <div class="header-right">
+    <div class="audience-btns">
+      <a href="index.html" class="btn-corp">法人のお客様</a>
+      <a href="b2c.html" class="btn-indiv">個人のお客様</a>
+    </div>
+    <div class="header-tel">
+      080-2157-1605
+      <small>365日24時間受付</small>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-text">
+    <span class="hero-badge">一般家庭の排水管清掃ならミズノミライ</span>
+    <h1>きれいな配管が、<br>未来をつくる。</h1>
+    <p class="hero-sub">
+      ミズノミライは、一般家庭の排水管清掃を専門に行うプロフェッショナルです。<br>
+      詰まり・悪臭・逆流などのトラブルを、確かな技術と丁寧な対応で解決します。<br>
+      ご相談・お見積りは無料です。お気軽にお問い合わせください。
+    </p>
+    <div class="hero-btns">
+      <a href="contact.html" class="btn-cta-main">無料で相談・見積りする</a>
+      <a href="tel:08021571605" class="btn-cta-tel">電話で問い合わせる</a>
+    </div>
+  </div>
+</div>
+
+<!-- TRUST BAR -->
+<div class="trust-bar">
+  <div class="trust-item">
+    <div class="trust-num">365<span>日</span></div>
+    <div class="trust-lbl">24時間受付</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num" style="font-size:18px;">緊急</div>
+    <div class="trust-lbl">夜間対応可</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num" style="font-size:18px;">全国</div>
+    <div class="trust-lbl">対応</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num" style="font-size:18px;"></div>
+    <div class="trust-lbl">カメラ調査対応</div>
+  </div>
+  <div class="trust-item">
+    <div class="trust-num" style="font-size:18px;">事前</div>
+    <div class="trust-lbl">料金説明あり</div>
+  </div>
+</div>
+
+<!-- TROUBLE -->
+<section class="trouble" id="trouble">
+  <p class="trouble-intro">こんな<span>お悩み</span>はありませんか？</p>
+  <div class="trouble-grid">
+    <div class="trouble-card">
+      <div class="trouble-icon"></div>
+      <div>
+        <p>キッチンの排水が<br>詰まって流れない</p>
+        <small>油脂・食べ残しの蓄積が原因</small>
+      </div>
+    </div>
+    <div class="trouble-card">
+      <div class="trouble-icon"></div>
+      <div>
+        <p>お風呂の水の流れが<br>だんだん遅くなった</p>
+        <small>髪の毛・石けんカスの詰まり</small>
+      </div>
+    </div>
+    <div class="trouble-card">
+      <div class="trouble-icon"></div>
+      <div>
+        <p>トイレが詰まって<br>水が流れない</p>
+        <small>異物・紙の大量投入が原因</small>
+      </div>
+    </div>
+    <div class="trouble-card">
+      <div class="trouble-icon"></div>
+      <div>
+        <p>排水口から嫌な<br>臭いがしている</p>
+        <small>汚泥・雑菌の繁殖が原因</small>
+      </div>
+    </div>
+    <div class="trouble-card">
+      <div class="trouble-icon"></div>
+      <div>
+        <p>洗面台の下から<br>水が漏れている</p>
+        <small>接続部の劣化・亀裂が原因</small>
+      </div>
+    </div>
+    <div class="trouble-card">
+      <div class="trouble-icon"></div>
+      <div>
+        <p>引っ越し前後に<br>まとめて清掃したい</p>
+        <small>全箇所パック対応あり</small>
+      </div>
+    </div>
+  </div>
+  <div class="trouble-cta">
+    <p class="trouble-arrow">⬇ そのお悩み、すべて対応します</p>
+    <a href="contact.html" class="btn-cta-main" style="display:inline-flex;"> 今すぐ無料で相談する</a>
+  </div>
+</section>
+
+<!-- PRICE -->
+<section class="price-section" id="price">
+  <div class="section-header">
+    <div class="section-tag">PRICE</div>
+    <h2>個人宅の料金案内</h2>
+    <p>緊急対応料金・通常料金を事前にご確認いただけます。</p>
+  </div>
+  <div class="price-cards">
+    <div class="price-card featured">
+      <div class="popular-badge"> 緊急対応（通常）</div>
+      <div class="price-card-icon"></div>
+      <h3>通常緊急対応<br><span style="font-size:13px; font-weight:400; color:rgba(255,255,255,0.8);">9:00〜18:00</span></h3>
+      <div class="price-main"><span>24,700</span><span style="font-size:16px;">円 / 1時間</span></div>
+      <div class="price-sub">延長：30分ごとに4,980円</div>
+      <ul class="price-list">
+        <li>対応時間：9:00〜18:00</li>
+        <li>1時間24,700円均一</li>
+        <li>延長30分ごと4,980円</li>
+        <li>作業前に料金をご説明</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <div class="popular-badge" style="background:#555;"> 夜間緊急対応</div>
+      <div class="price-card-icon"></div>
+      <h3>夜間緊急対応<br><span style="font-size:13px; font-weight:400; color:#888;">18:00〜翌9:00</span></h3>
+      <div class="price-main"><span>36,000</span><span style="font-size:16px;">円 / 1時間</span></div>
+      <div class="price-sub">延長：30分ごとに7,980円</div>
+      <ul class="price-list">
+        <li>対応時間：18:00〜翌9:00</li>
+        <li>1時間36,000円</li>
+        <li>延長30分ごと7,980円</li>
+        <li>作業前に料金をご説明</li>
+      </ul>
+    </div>
+    <div class="price-card">
+      <div class="price-card-icon"></div>
+      <h3>通常料金（目安）<br><span style="font-size:13px; font-weight:400; color:#888;">都内中心</span></h3>
+      <div class="price-main"><span>19,000</span><span style="font-size:16px;">円〜</span></div>
+      <div class="price-sub">カメラ調査・定期清掃</div>
+      <ul class="price-list">
+        <li>カメラ調査：19,000円〜</li>
+        <li>1世帯全箇所カメラ調査：45,000円</li>
+        <li>定期清掃：19,000円〜</li>
+        <li>1世帯全箇所清掃：45,000円</li>
+      </ul>
+    </div>
+  </div>
+  <div style="background:#fff8f5; border:1px solid #fed7aa; border-radius:8px; padding:14px 20px; max-width:900px; margin:20px auto 0; font-size:13px; color:#665; line-height:1.8;">
+    ※ 現場状況・作業内容により追加費用が発生する場合があります。<br>
+    ※ 通常料金の対象エリアは都内中心です。エリア外は料金が異なる場合があります（要相談）。<br>
+    ※ 正式な金額は現地確認または事前ヒアリング後にご案内します。<br>
+    ※ 上記料金は税込・税別を断定するものではありません。詳細はお問い合わせください。
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="features">
+  <div class="section-header">
+    <div class="section-tag">WHY US</div>
+    <h2>安心して選ばれる4つの理由</h2>
+  </div>
+  <div class="features-list">
+    <div class="feature-item">
+      <div class="feature-num">01</div>
+      <div class="feature-body">
+        <h3>出張費・見積もり完全無料</h3>
+        <p>現地調査から見積もりまで費用はかかりません。金額に納得いただいてからの作業開始なので、安心してご連絡ください。</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-num">02</div>
+      <div class="feature-body">
+        <h3>最短即日・365日対応</h3>
+        <p>「今すぐ来てほしい」というご要望にも対応。土日祝・夜間も受付中。急なトラブルも迅速に解決します。</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-num">03</div>
+      <div class="feature-body">
+        <h3>カメラ調査で原因を正確に特定</h3>
+        <p>管内カメラを使って配管の状態を正確に確認します。状況に応じた的確な施工が可能です。</p>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-num">04</div>
+      <div class="feature-body">
+        <h3>施工後の写真報告・保証あり</h3>
+        <p>作業前後の写真をお渡し。施工後の状態が目で確認できます。万一の場合のアフターフォローも対応します。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA BAND -->
+<div class="cta-band">
+  <h2>まずはお気軽にご相談ください</h2>
+  <p class="sub">見積もり・出張費は無料。当日対応も可能です。</p>
+  <div class="cta-box">
+    <div>
+      <div class="cta-tel-num"><a href="tel:08021571605" style="color:white; text-decoration:none;"> 080-2157-1605</a></div>
+      <small>365日24時間受付 ／ 緊急・夜間対応可</small>
+    </div>
+    <div class="cta-divider">または</div>
+    <a href="contact.html" class="btn-cta-white"> フォームで無料相談</a>
+  </div>
+</div>
+
+<!-- FLOW -->
+<section class="flow" id="flow">
+  <div class="section-header">
+    <div class="section-tag">FLOW</div>
+    <h2>ご依頼の流れ</h2>
+    <p>お問い合わせからたったの4ステップ。最短即日で解決します。</p>
+  </div>
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="step-num">1</div>
+      <div class="step-body">
+        <div class="step-tag"> 電話 /  フォーム</div>
+        <h3>お問い合わせ・症状をお伝えください</h3>
+        <p>電話またはフォームで、症状・場所・ご希望日時をお知らせください。所要時間・料金の目安もその場でお伝えします。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">2</div>
+      <div class="step-body">
+        <div class="step-tag"> 無料</div>
+        <h3>担当者が現地へ出張（出張費無料）</h3>
+        <p>ご指定の日時に担当スタッフが伺います。出張費は一切かかりません。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">3</div>
+      <div class="step-body">
+        <div class="step-tag"> 無料</div>
+        <h3>現地確認・お見積もりご提示</h3>
+        <p>状態を確認し、正確なお見積もりをご提示。料金にご納得いただいてから作業を開始します。</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="step-num">4</div>
+      <div class="step-body">
+        <div class="step-tag">✅ 完了</div>
+        <h3>施工・完了報告</h3>
+        <p>丁寧に施工し、作業前後の写真をお渡しします。お支払いは完了後でOKです。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- VOICES -->
+<section class="voices" id="voices">
+  <div class="section-header">
+    <div class="section-tag">VOICE</div>
+    <h2>お客様の声</h2>
+    <p>実際にご利用いただいたお客様からのご感想です。</p>
+  </div>
+  <div class="voices-grid">
+    <div class="voice-card">
+      <div class="voice-stars"></div>
+      <p>キッチンの排水が詰まって困っていましたが、当日に来ていただけて本当に助かりました。作業も丁寧で、臭いもなくなりスッキリしました！</p>
+      <div class="voice-from"><span>キッチン清掃</span>40代・女性</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-stars"></div>
+      <p>見積もり後に追加費用が発生しないか心配でしたが、最初の金額通りで安心しました。説明もわかりやすく、次回もお願いしたいです。</p>
+      <div class="voice-from"><span>まるごとパック</span>30代・男性</div>
+    </div>
+    <div class="voice-card">
+      <div class="voice-stars"></div>
+      <p>トイレが詰まって夜に電話したのに、翌朝早くに来てくれました。手際よく解決してくれて感謝しています。また何かあればお願いします。</p>
+      <div class="voice-from"><span>緊急対応</span>50代・女性</div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section class="faq" id="faq">
+  <div class="section-header">
+    <div class="section-tag">FAQ</div>
+    <h2>よくあるご質問</h2>
+  </div>
+  <div class="faq-list">
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-label">Q</div>
+        作業前に料金の確認はできますか？
+      </div>
+      <div class="faq-a">
+        <span class="faq-a-label">A</span>
+        現地調査・お見積もりについては、お問い合わせ時にご確認ください。作業内容と金額にご納得いただいた上で施工を開始しますので、お気軽にご相談ください。
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-label">Q</div>
+        夜間や休日でも対応してもらえますか？
+      </div>
+      <div class="faq-a">
+        <span class="faq-a-label">A</span>
+        365日24時間受付しています。通常対応時間は9:00〜18:00です。夜間（18:00〜翌9:00）は夜間緊急対応料金が適用されます。緊急の場合もお気軽にご連絡ください。
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-label">Q</div>
+        作業にはどのくらい時間がかかりますか？
+      </div>
+      <div class="faq-a">
+        <span class="faq-a-label">A</span>
+        1箇所あたり30〜60分程度が目安です。まるごとパックの場合は2〜3時間ほどいただきます。状況によって変動しますので、お問い合わせ時にお気軽にお尋ねください。
+      </div>
+    </div>
+    <div class="faq-item">
+      <div class="faq-q">
+        <div class="faq-q-label">Q</div>
+        支払い方法は何が使えますか？
+      </div>
+      <div class="faq-a">
+        <span class="faq-a-label">A</span>
+        現金・クレジットカード（主要各社）に対応しています。お支払いは作業完了後でOKです。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FINAL CTA -->
+<div class="cta-band">
+  <h2>排水トラブル、今すぐ解決しましょう</h2>
+  <p class="sub">出張費・見積もり無料。最短即日対応。まずはお気軽にご連絡ください。</p>
+  <div class="cta-box">
+    <div>
+      <div class="cta-tel-num"><a href="tel:08021571605" style="color:white; text-decoration:none;"> 080-2157-1605</a></div>
+      <small>365日24時間受付 ／ 緊急・夜間対応可</small>
+    </div>
+    <div class="cta-divider">または</div>
+    <a href="contact.html" class="btn-cta-white"> フォームで無料相談</a>
+  </div>
+</div>
+
+<!-- ===== NEW FOOTER ===== -->
+<div class="footer-sitemap">
+  <div class="footer-sitemap-inner">
+    <div>
+      <h3>サイトマップ</h3>
+      <ul>
+        <li><a href="index.html">TOP</a></li>
+        <li><a href="service.html">定期清掃</a></li>
+      </ul>
+      <h3 class="sub-head">建物から探す</h3>
+      <ul>
+        <li><a href="index.html#building">ビル清掃</a></li>
+        <li><a href="index.html#building">オフィス清掃</a></li>
+        <li><a href="index.html#building">店舗・テナント清掃</a></li>
+        <li><a href="index.html#building">マンション・アパート清掃</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>清掃内容から探す</h3>
+      <ul>
+        <li><a href="service.html">排水管清掃</a></li>
+        <li><a href="service.html">カメラ調査</a></li>
+        <li><a href="service.html">アパート・マンション・ビル定期清掃</a></li>
+        <li><a href="service.html">定期清掃契約</a></li>
+        <li><a href="service.html">緊急排水トラブル対応</a></li>
+        <li><a href="service.html">個人宅の排水トラブル対応</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>ミズノミライについて</h3>
+      <ul>
+        <li><a href="service.html#points">選ばれる理由</a></li>
+        <li><a href="service.html#flow">サービスの流れ</a></li>
+        <li><a href="service.html#pricing">料金案内</a></li>
+        <li><a href="cases.html">施工事例</a></li>
+        <li><a href="blog.html">お役立ちコラム</a></li>
+      </ul>
+    </div>
+    <div>
+      <h3>会社情報・お問い合わせ</h3>
+      <ul>
+        <li><a href="company.html">会社概要</a></li>
+        <li><a href="contact.html">お問い合わせ</a></li>
+        <li><a href="contact.html">お見積り依頼</a></li>
+        <li><a href="service.html">法人のお客様</a></li>
+        <li><a href="b2c.html">個人のお客様</a></li>
+      </ul>
+    </div>
+  </div>
+</div>
+<div class="footer-copy-bar">
+  <p>株式会社ミズノミライ｜〒154-0001 東京都世田谷区池尻3-18-16-302｜TEL: 080-2157-1605</p>
+  <p style="margin-top:6px; opacity:0.55;">© 2024 株式会社ミズノミライ All Rights Reserved.</p>
+</div>
+
+</body>
+</html>
